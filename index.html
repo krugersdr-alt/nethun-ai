@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kruger — Pipeline MKT</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --k-red: #E8001D;
+  --k-red-dark: #b5001a;
+  --k-red-soft: rgba(232,0,29,0.1);
+  --k-black: #0A0A0A;
+  --k-dark: #111318;
+  --k-card: #161B24;
+  --k-card2: #1C2333;
+  --k-border: rgba(255,255,255,0.07);
+  --k-border2: rgba(255,255,255,0.12);
+  --k-text: #E8EAF0;
+  --k-muted: #7A8399;
+  --k-muted2: #4A5568;
+  --k-green: #10B981;
+  --k-yellow: #F59E0B;
+  --k-orange: #F97316;
+  --k-blue: #3B82F6;
+  --k-purple: #8B5CF6;
+  --k-success-bg: rgba(16,185,129,0.12);
+  --k-warn-bg: rgba(245,158,11,0.12);
+  --k-danger-bg: rgba(232,0,29,0.12);
+  --k-info-bg: rgba(59,130,246,0.12);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.4);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--k-black);
+  color: var(--k-text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── HEADER ── */
+.header {
+  background: var(--k-dark);
+  border-bottom: 1px solid var(--k-border);
+  padding: 0 28px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.logo-mark {
+  width: 32px;
+  height: 32px;
+  background: var(--k-red);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  color: #fff;
+  letter-spacing: -1px;
+}
+.header-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--k-text);
+  letter-spacing: -0.3px;
+}
+.header-sub {
+  font-size: 11px;
+  color: var(--k-muted);
+  margin-top: 1px;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn-load {
+  background: var(--k-red);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 7px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: background 0.15s;
+}
+.btn-load:hover { background: var(--k-red-dark); }
+.btn-secondary {
+  background: var(--k-card2);
+  color: var(--k-text);
+  border: 1px solid var(--k-border2);
+  border-radius: var(--radius-sm);
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: background 0.15s;
+}
+.btn-secondary:hover { background: #252d3d; }
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--k-muted2);
+}
+.status-dot.live { background: var(--k-green); box-shadow: 0 0 6px var(--k-green); }
+
+/* ── LANDING ── */
+#landing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 60px);
+  padding: 40px 20px;
+}
+.landing-card {
+  background: var(--k-card);
+  border: 1px solid var(--k-border);
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 560px;
+  width: 100%;
+  text-align: center;
+}
+.landing-icon {
+  width: 56px;
+  height: 56px;
+  background: var(--k-red-soft);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 24px;
+}
+.landing-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.landing-desc {
+  font-size: 13px;
+  color: var(--k-muted);
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+.landing-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn-primary-lg {
+  background: var(--k-red);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 11px 24px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: background 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-primary-lg:hover { background: var(--k-red-dark); }
+.btn-ghost-lg {
+  background: transparent;
+  color: var(--k-muted);
+  border: 1px solid var(--k-border2);
+  border-radius: var(--radius-sm);
+  padding: 11px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: all 0.15s;
+}
+.btn-ghost-lg:hover { color: var(--k-text); border-color: var(--k-muted2); }
+.error-msg {
+  background: var(--k-danger-bg);
+  border: 1px solid rgba(232,0,29,0.3);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 12px;
+  color: #ff6b6b;
+  margin-top: 16px;
+  text-align: left;
+}
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10,10,10,0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  gap: 12px;
+}
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--k-border2);
+  border-top-color: var(--k-red);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading-text {
+  font-size: 13px;
+  color: var(--k-muted);
+}
+
+/* ── MAIN LAYOUT ── */
+#app { display: none; }
+.app-body {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  min-height: calc(100vh - 60px);
+}
+
+/* ── SIDEBAR ── */
+.sidebar {
+  background: var(--k-dark);
+  border-right: 1px solid var(--k-border);
+  padding: 20px 12px;
+  position: sticky;
+  top: 60px;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+}
+.sidebar-section {
+  margin-bottom: 24px;
+}
+.sidebar-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--k-muted2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0 8px;
+  margin-bottom: 6px;
+}
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--k-muted);
+  transition: all 0.15s;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  font-family: 'DM Sans', sans-serif;
+}
+.nav-item:hover { background: var(--k-card2); color: var(--k-text); }
+.nav-item.active { background: var(--k-red-soft); color: var(--k-red); font-weight: 600; }
+.nav-icon { font-size: 14px; width: 16px; text-align: center; }
+.nav-badge {
+  margin-left: auto;
+  background: var(--k-card2);
+  border-radius: 99px;
+  padding: 1px 7px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--k-muted);
+}
+.nav-item.active .nav-badge { background: rgba(232,0,29,0.2); color: var(--k-red); }
+
+/* ── CONTENT ── */
+.content {
+  padding: 24px 28px;
+  overflow-y: auto;
+}
+
+/* ── METRICS ROW ── */
+.metrics-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.metric-card {
+  background: var(--k-card);
+  border: 1px solid var(--k-border);
+  border-radius: var(--radius);
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.metric-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--accent, var(--k-muted2));
+}
+.metric-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--k-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 8px;
+}
+.metric-value {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  color: #fff;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+.metric-sub {
+  font-size: 11px;
+  color: var(--k-muted);
+  margin-top: 4px;
+}
+
+/* ── SECTION HEADER ── */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
+}
+.section-sub {
+  font-size: 12px;
+  color: var(--k-muted);
+  margin-top: 2px;
+}
+
+/* ── FILTERS ── */
+.filters-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  align-items: center;
+}
+.filter-pill {
+  background: var(--k-card);
+  border: 1px solid var(--k-border);
+  border-radius: 99px;
+  padding: 5px 12px;
+  font-size: 12px;
+  color: var(--k-muted);
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: 'DM Sans', sans-serif;
+}
+.filter-pill:hover { border-color: var(--k-muted2); color: var(--k-text); }
+.filter-pill.active { background: var(--k-red-soft); border-color: var(--k-red); color: var(--k-red); font-weight: 600; }
+.search-box {
+  background: var(--k-card);
+  border: 1px solid var(--k-border);
+  border-radius: var(--radius-sm);
+  padding: 6px 12px;
+  font-size: 12px;
+  color: var(--k-text);
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  width: 200px;
+  transition: border-color 0.15s;
+}
+.search-box:focus { border-color: var(--k-muted2); }
+.search-box::placeholder { color: var(--k-muted2); }
+.select-filter {
+  background: var(--k-card);
+  border: 1px solid var(--k-border);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  font-size: 12px;
+  color: var(--k-text);
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  cursor: pointer;
+}
+.select-filter option { background: var(--k-card); }
+
+/* ── FUNNEL ── */
+.funnel-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.funnel-stage {
+  background: var(--k-card);
+  border: 1px solid var(--k-border);
+  border-radius: var(--radius);
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.15s;
+  position: relative;
+  overflow: hidden;
+}
+.funnel-stage::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--stage-color, var(--k-muted2));
+  transform: scaleX(0);
+  transition: transform 0.2s;
+}
+.funnel-stage:hover::before, .funnel-stage.active::before { transform: scaleX(1); }
+.funnel-stage.active { border-color: var(--stage-color, var(--k-muted2)); background: var(--k-card2); }
+.funnel-stage-name {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--k-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+.funnel-count {
+  font-family: 'Syne', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.funnel-amount {
+  font-size: 12px;
+  color: var(--k-muted);
+}
+.funnel-bar-wrap {
+  margin-top: 10px;
+  height: 4px;
+  background: var(--k-border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.funnel-bar-fill {
+  height: 100%;
+  background: var(--stage-color, var(--k-muted2));
+  border-radius: 2px;
+  transition: width 0.6s ease;
+}
+
+/* ── DEAL CARDS ── */
+.deals-list { display: flex; flex-direction: column; gap: 8px; }
+.deal-card {
+  background: var(--k-card);
+  border: 1px solid var(--k-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+.deal-card:hover { border-color: var(--k-border2); }
+.deal-card.border-danger { border-color: rgba(232,0,29,0.3); }
+.deal-card.border-warn { border-color: rgba(245,158,11,0.3); }
+.deal-card-header {
+  padding: 14px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.deal-urgency-bar {
+  width: 3px;
+  align-self: stretch;
+  border-radius: 2px;
+  flex-shrink: 0;
+  min-height: 20px;
+}
+.deal-main { flex: 1; min-width: 0; }
+.deal-name {
+  font-weight: 600;
+  font-size: 13px;
+  color: #fff;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.deal-meta {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.deal-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.deal-amount {
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+}
+.deal-sdr {
+  font-size: 11px;
+  color: var(--k-muted);
+}
+.deal-expand-icon {
+  color: var(--k-muted2);
+  font-size: 12px;
+  transition: transform 0.2s;
+}
+.deal-expand-icon.open { transform: rotate(180deg); }
+
+/* ── DEAL DETAIL ── */
+.deal-detail {
+  border-top: 1px solid var(--k-border);
+  padding: 16px;
+  display: none;
+}
+.deal-detail.open { display: block; }
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.detail-item { }
+.detail-key {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--k-muted2);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 3px;
+}
+.detail-val {
+  font-size: 12px;
+  color: var(--k-text);
+}
+.detail-val.danger { color: #ff6b6b; }
+
+.ai-panel {
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  margin-bottom: 12px;
+}
+.ai-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+.ai-panel-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+.ai-score-pill {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 99px;
+}
+.ai-razon {
+  font-size: 12px;
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+.ai-rec {
+  font-size: 11px;
+  line-height: 1.5;
+  font-style: italic;
+}
+.ai-rec::before { content: '→ '; font-weight: 700; }
+
+.timeline-panel {
+  background: var(--k-card2);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  margin-bottom: 12px;
+}
+.timeline-title {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--k-muted2);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 10px;
+}
+.timeline-item {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+.timeline-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--k-muted2);
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+.timeline-date { color: var(--k-muted); flex-shrink: 0; }
+.timeline-text { color: var(--k-text); line-height: 1.4; }
+.no-activity { font-size: 12px; color: var(--k-muted2); font-style: italic; }
+
+.nextstep-panel {
+  background: var(--k-card2);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  margin-bottom: 12px;
+}
+.nextstep-row {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+.nextstep-key { color: var(--k-muted); min-width: 80px; }
+.nextstep-val { color: var(--k-text); }
+
+/* ── AI GESTIÓN VIEW ── */
+.gestion-summary {
+  background: var(--k-card);
+  border: 1px solid var(--k-border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.gestion-bar-row {
+  display: flex;
+  height: 32px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.gestion-bar-seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  transition: width 0.6s ease;
+}
+.gestion-legend {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+.gestion-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+.gestion-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.gestion-legend-label { color: var(--k-text); }
+.gestion-legend-count { margin-left: auto; font-weight: 600; color: var(--k-muted); }
+.gestion-legend-pct { font-size: 11px; color: var(--k-muted2); }
+
+/* ── SDR RANKING ── */
+.sdr-table {
+  background: var(--k-card);
+  border: 1px solid var(--k-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.sdr-row {
+  display: grid;
+  grid-template-columns: 28px 1fr 60px 60px 60px 80px 100px;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--k-border);
+  transition: background 0.1s;
+}
+.sdr-row:last-child { border-bottom: none; }
+.sdr-row:hover { background: var(--k-card2); }
+.sdr-row.header {
+  background: var(--k-card2);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--k-muted2);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.sdr-rank {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--k-muted2);
+}
+.sdr-rank.gold { color: #F59E0B; }
+.sdr-rank.silver { color: #94A3B8; }
+.sdr-rank.bronze { color: #CD7C32; }
+.sdr-name { font-size: 13px; font-weight: 500; color: var(--k-text); }
+.sdr-num {
+  font-size: 13px;
+  text-align: center;
+  color: var(--k-text);
+}
+.sdr-pipeline {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--k-text);
+  text-align: right;
+}
+.sdr-score-bar {
+  height: 6px;
+  background: var(--k-border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.sdr-score-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: var(--k-green);
+  transition: width 0.6s ease;
+}
+
+/* ── CLOSED DEALS ── */
+.closed-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.closed-card {
+  background: var(--k-card);
+  border: 1px solid var(--k-border);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+}
+.closed-icon { font-size: 24px; margin-bottom: 8px; }
+.closed-count {
+  font-family: 'Syne', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+.closed-label { font-size: 12px; color: var(--k-muted); }
+
+/* ── TABS ── */
+.tab-bar {
+  display: flex;
+  border-bottom: 1px solid var(--k-border);
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+.tab-item {
+  padding: 10px 16px;
+  font-size: 13px;
+  color: var(--k-muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  white-space: nowrap;
+  transition: all 0.15s;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+.tab-item:hover { color: var(--k-text); }
+.tab-item.active { color: var(--k-red); border-bottom-color: var(--k-red); font-weight: 600; }
+
+/* ── ALERTS ── */
+.alert-row {
+  background: var(--k-danger-bg);
+  border: 1px solid rgba(232,0,29,0.25);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-size: 12px;
+  color: #ff8080;
+  margin-bottom: 12px;
+}
+
+/* ── EMPTY ── */
+.empty-state {
+  text-align: center;
+  padding: 48px 20px;
+  color: var(--k-muted);
+}
+.empty-icon { font-size: 32px; margin-bottom: 12px; }
+.empty-text { font-size: 13px; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-logo">
+    <div class="logo-mark">K</div>
+    <div>
+      <div class="header-title">Kruger — Pipeline MKT</div>
+      <div class="header-sub" id="headerSub">Sin datos cargados</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="status-dot" id="statusDot"></div>
+    <button class="btn-secondary" id="btnReset" style="display:none" onclick="resetDashboard()">↺ Nuevo</button>
+    <button class="btn-load" onclick="loadFromEndpoint()">⟳ Cargar CRM</button>
+  </div>
+</header>
+
+<!-- LOADING -->
+<div class="loading-overlay" id="loadingOverlay" style="display:none">
+  <div class="spinner"></div>
+  <div class="loading-text">Cargando datos desde NetHunt...</div>
+</div>
+
+<!-- LANDING -->
+<div id="landing">
+  <div class="landing-card">
+    <div class="landing-icon">📊</div>
+    <div class="landing-title">Pipeline MKT — Kruger Corp</div>
+    <div class="landing-desc">Dashboard enriquecido con análisis de IA. Carga los datos desde el CRM o usa datos de demo para explorar.</div>
+    <div class="landing-actions">
+      <button class="btn-primary-lg" onclick="loadFromEndpoint()">
+        <span>⟳</span> Cargar desde CRM
+      </button>
+      <button class="btn-ghost-lg" onclick="loadDemo()">Ver demo</button>
+    </div>
+    <div class="error-msg" id="errorMsg" style="display:none"></div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <div class="app-body">
+    <!-- SIDEBAR -->
+    <nav class="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-label">Vistas</div>
+        <button class="nav-item active" onclick="setView('pipeline')" id="nav-pipeline">
+          <span class="nav-icon">📊</span> Pipeline
+          <span class="nav-badge" id="badge-pipeline">0</span>
+        </button>
+        <button class="nav-item" onclick="setView('gestion')" id="nav-gestion">
+          <span class="nav-icon">🤖</span> Gestión IA
+          <span class="nav-badge" id="badge-gestion">0</span>
+        </button>
+        <button class="nav-item" onclick="setView('sdrs')" id="nav-sdrs">
+          <span class="nav-icon">👤</span> Ranking SDR
+          <span class="nav-badge" id="badge-sdrs">0</span>
+        </button>
+        <button class="nav-item" onclick="setView('cerradas')" id="nav-cerradas">
+          <span class="nav-icon">📁</span> Cerradas
+          <span class="nav-badge" id="badge-cerradas">0</span>
+        </button>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Filtros</div>
+        <div style="padding:0 4px">
+          <div style="font-size:10px;color:var(--k-muted2);margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em">SDR</div>
+          <select class="select-filter" style="width:100%;margin-bottom:10px" id="sdrFilter" onchange="renderCurrentView()">
+            <option value="all">Todos</option>
+          </select>
+          <div style="font-size:10px;color:var(--k-muted2);margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em">Creador</div>
+          <select class="select-filter" style="width:100%;margin-bottom:10px" id="creadorFilter" onchange="renderCurrentView()">
+            <option value="all">Todos</option>
+          </select>
+          <div style="font-size:10px;color:var(--k-muted2);margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em">Línea</div>
+          <select class="select-filter" style="width:100%" id="lineaFilter" onchange="renderCurrentView()">
+            <option value="all">Todas</option>
+          </select>
+        </div>
+      </div>
+    </nav>
+
+    <!-- CONTENT -->
+    <main class="content">
+      <!-- SEARCH -->
+      <div style="margin-bottom:20px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <input class="search-box" type="text" placeholder="🔍  Buscar empresa, nombre..." id="searchBox" oninput="renderCurrentView()">
+        <div style="margin-left:auto;font-size:12px;color:var(--k-muted)" id="resultCount"></div>
+      </div>
+
+      <!-- VIEWS -->
+      <div id="view-pipeline"></div>
+      <div id="view-gestion" style="display:none"></div>
+      <div id="view-sdrs" style="display:none"></div>
+      <div id="view-cerradas" style="display:none"></div>
+    </main>
+  </div>
+</div>
+
+<script>
+// ── CONSTANTS ──
+const ENDPOINT = "https://script.google.com/macros/s/AKfycbxZ7zcj9Zw1B24ICzVhT0N_CbTUq-9gRl-OGfVt16nzDeYIS8LF_w8IsjNDZZcPE7wqxA/exec";
+
+const STAGE_CFG = {
+  "nuevo":           { label:"Nuevo",       color:"#64748B", order:0 },
+  "prefactibilidad": { label:"Pre Fact.",    color:"#F59E0B", order:1 },
+  "cotizacion":      { label:"Cotización",   color:"#3B82F6", order:2 },
+  "negociacion":     { label:"Negociación",  color:"#8B5CF6", order:3 },
+  "ganado":          { label:"Ganado",       color:"#10B981", order:4 },
+  "perdido":         { label:"Perdido",      color:"#6B7280", order:5 },
+  "cancelada":       { label:"Cancelada",    color:"#4B5563", order:6 },
+};
+
+const AI_CFG = {
+  "gestionada": { label:"Bien gestionada", color:"#10B981", bg:"rgba(16,185,129,0.12)", emoji:"✅" },
+  "parcial":    { label:"Gestión parcial", color:"#F59E0B", bg:"rgba(245,158,11,0.12)",  emoji:"🟡" },
+  "debil":      { label:"Gestión débil",   color:"#F97316", bg:"rgba(249,115,22,0.12)",  emoji:"🔴" },
+  "muerta":     { label:"Sin gestión",     color:"#E8001D", bg:"rgba(232,0,29,0.12)",    emoji:"💀" },
+};
+
+const SDR_NAMES = {
+  svalenzuela:"S. Valenzuela", fescobar:"F. Escobar", mguevara:"M. Guevara",
+  mreyes:"M. Reyes", lramirez:"L. Ramírez", vlema:"V. Lema",
+  ajimenez:"A. Jiménez", mroman:"M. Román", maviles:"M. Avilés",
+  jmonge:"J. Monge", crodriguez:"C. Rodríguez", cmarquez:"C. Márquez",
+  svalencia:"S. Valencia", cborja:"C. Borja", cviteri:"C. Viteri",
+  fcarvajal:"F. Carvajal", eapunte:"E. Apunte", ksisalema:"K. Sisalema"
+};
+
+// ── STATE ──
+let allDeals = [];
+let currentView = "pipeline";
+let expandedDeals = new Set();
+
+// ── HELPERS ──
+const shortEmail = e => {
+  if (!e) return "Sin asignar";
+  const u = String(e).split("@")[0].replace(/,.*/, "").trim();
+  return SDR_NAMES[u] || u;
+};
+const fmtMoney = v => {
+  const n = parseFloat(String(v).replace(/,/g, "")) || 0;
+  if (n >= 1000000) return "$" + (n/1000000).toFixed(1) + "M";
+  if (n >= 1000) return "$" + (n/1000).toFixed(0) + "k";
+  return "$" + n.toLocaleString("es-EC");
+};
+const daysSince = d => {
+  if (!d) return null;
+  const x = new Date(d);
+  if (isNaN(x)) return null;
+  return Math.floor((Date.now() - x) / 86400000);
+};
+const parseStage = s => {
+  if (!s) return { cat:"nuevo", label:"Nuevo", pct:0 };
+  const lo = String(s).toLowerCase();
+  if (lo.includes("ganado") || lo.includes("100%")) return { cat:"ganado", label:"Ganado", pct:100 };
+  if (lo.includes("perdido")) return { cat:"perdido", label:"Perdido", pct:0 };
+  if (lo.includes("cancelad")) return { cat:"cancelada", label:"Cancelada", pct:0 };
+  if (lo.includes("negoci") || lo.includes("75%")) return { cat:"negociacion", label:"Negociación", pct:75 };
+  if (lo.includes("cotizac") || lo.includes("50%")) return { cat:"cotizacion", label:"Cotización", pct:50 };
+  if (lo.includes("pre fact") || lo.includes("25%")) return { cat:"prefactibilidad", label:"Pre Fact.", pct:25 };
+  return { cat:"nuevo", label:"Nuevo", pct:0 };
+};
+const parseNextStep = txt => {
+  if (!txt) return null;
+  const clean = String(txt).replace(/\r/g, "");
+  const r = {};
+  const pats = [
+    [/¿?Qu[eé] har[eé]\??:?\s*/i, "accion"],
+    [/¿?Con qui[eé]n\??:?\s*/i, "contacto"],
+    [/¿?Cu[aá]ndo\??:?\s*/i, "cuando"],
+    [/Hasta eso ¿?qu[eé] har[eé]\??:?\s*/i, "mientras"]
+  ];
+  const parts = [];
+  for (const [rx, key] of pats) {
+    const idx = clean.search(rx);
+    if (idx !== -1) parts.push({key, idx});
+  }
+  parts.sort((a,b) => a.idx - b.idx);
+  for (let i = 0; i < parts.length; i++) {
+    const start = clean.indexOf(":", parts[i].idx) + 1;
+    const end = i < parts.length-1 ? parts[i+1].idx : clean.length;
+    const val = clean.substring(start, end).trim().replace(/\n+/g," ");
+    if (val && val.trim().length > 0) r[parts[i].key] = val;
+  }
+  if (!Object.keys(r).length) {
+    const t = clean.trim().replace(/\n+/g," ");
+    return t.length > 3 ? {accion:t} : null;
+  }
+  return r;
+};
+const stripHtml = t => String(t || "").replace(/<[^>]*>/g,"").replace(/&nbsp;/g," ").trim();
+const urgencyColor = u => {
+  if (u >= 8) return "var(--k-red)";
+  if (u >= 6) return "var(--k-orange)";
+  if (u >= 4) return "var(--k-yellow)";
+  return "var(--k-green)";
+};
+const calcUrgency = deal => {
+  const stg = parseStage(deal.Etapa || deal.stage || "");
+  const terminal = ["ganado","perdido","cancelada"].includes(stg.cat);
+  if (terminal) return 0;
+  const inactive = daysSince(deal._last_activity || deal.updated_at || deal.created_at) || 0;
+  let u = 3;
+  if (inactive > 30) u += 4;
+  else if (inactive > 21) u += 3;
+  else if (inactive > 14) u += 2;
+  else if (inactive > 7) u += 1;
+  if (stg.cat === "negociacion") u += 3;
+  else if (stg.cat === "cotizacion") u += 2;
+  else if (stg.cat === "prefactibilidad") u += 1;
+  const monto = parseFloat(String(deal.Monto||deal.monto||0).replace(/,/g,"")) || 0;
+  if (monto >= 100000) u += 2;
+  else if (monto >= 50000) u += 1;
+  const aiClasif = String(deal.ai_clasificacion||"").toLowerCase();
+  if (aiClasif === "muerta") u += 2;
+  else if (aiClasif === "debil") u += 1;
+  const fc = deal["Fecha de cierre"] || deal.fecha_cierre || "";
+  if (fc && daysSince(fc) > 0) u += 1;
+  return Math.max(1, Math.min(10, u));
+};
+
+// ── DATA LOADING ──
+async function loadFromEndpoint() {
+  showLoading(true);
+  try {
+    const res = await fetch(ENDPOINT);
+    const data = await res.json();
+    if (data.error) throw new Error(data.error);
+    processData(data);
+  } catch(e) {
+    showLoading(false);
+    showError("Error al conectar con el CRM: " + e.message);
+  }
+}
+
+function loadDemo() {
+  // Use minimal demo data
+  processData(DEMO_DATA);
+}
+
+function processData(raw) {
+  allDeals = raw.map(d => ({
+    ...d,
+    _stage: parseStage(d.Etapa || d.stage || ""),
+    _urgency: 0,
+    _monto: parseFloat(String(d.Monto || d.monto || 0).replace(/,/g,"")) || 0,
+    _sdr: d.SDR || d.sdr || "",
+    _ns: parseNextStep(d["Next Step"] || d.next_step || ""),
+    _last_activity: d._last_real_activity || d.updated_at || d.created_at || null,
+  }));
+  allDeals.forEach(d => d._urgency = calcUrgency(d));
+
+  populateFilters();
+  updateBadges();
+
+  document.getElementById("landing").style.display = "none";
+  document.getElementById("app").style.display = "block";
+  document.getElementById("btnReset").style.display = "";
+  document.getElementById("statusDot").classList.add("live");
+
+  const now = new Date().toLocaleDateString("es-EC", {day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
+  document.getElementById("headerSub").textContent = `${allDeals.length} oportunidades · Actualizado ${now}`;
+
+  showLoading(false);
+  setView("pipeline");
+}
+
+function resetDashboard() {
+  allDeals = [];
+  expandedDeals.clear();
+  document.getElementById("app").style.display = "none";
+  document.getElementById("landing").style.display = "flex";
+  document.getElementById("btnReset").style.display = "none";
+  document.getElementById("statusDot").classList.remove("live");
+  document.getElementById("headerSub").textContent = "Sin datos cargados";
+}
+
+function showLoading(v) {
+  document.getElementById("loadingOverlay").style.display = v ? "flex" : "none";
+}
+function showError(msg) {
+  const el = document.getElementById("errorMsg");
+  el.textContent = msg;
+  el.style.display = msg ? "block" : "none";
+}
+
+// ── FILTERS ──
+function populateFilters() {
+  const active = allDeals.filter(d => !["ganado","perdido","cancelada"].includes(d._stage.cat));
+  const sdrs = [...new Set(active.map(d => String(d._sdr).split(",")[0].trim()).filter(Boolean))].sort();
+  const creadores = [...new Set(active.map(d => d.Creador || d.creador || "").filter(Boolean))].sort();
+  const lineas = [...new Set(active.map(d => {
+    const l = d["Linea de Negocio"] || d.linea_negocio || "";
+    return l.split("/")[0].trim();
+  }).filter(Boolean))].sort();
+
+  const sdrSel = document.getElementById("sdrFilter");
+  sdrSel.innerHTML = '<option value="all">Todos</option>';
+  sdrs.forEach(s => {
+    const o = document.createElement("option");
+    o.value = s; o.textContent = shortEmail(s);
+    sdrSel.appendChild(o);
+  });
+
+  const crSel = document.getElementById("creadorFilter");
+  crSel.innerHTML = '<option value="all">Todos</option>';
+  creadores.forEach(c => {
+    const o = document.createElement("option");
+    o.value = c; o.textContent = shortEmail(c);
+    crSel.appendChild(o);
+  });
+
+  const lnSel = document.getElementById("lineaFilter");
+  lnSel.innerHTML = '<option value="all">Todas</option>';
+  lineas.forEach(l => {
+    const o = document.createElement("option");
+    o.value = l; o.textContent = l;
+    lnSel.appendChild(o);
+  });
+}
+
+function getFiltered(includeTerminal=false) {
+  const sdr = document.getElementById("sdrFilter").value;
+  const creador = document.getElementById("creadorFilter").value;
+  const linea = document.getElementById("lineaFilter").value;
+  const q = document.getElementById("searchBox").value.toLowerCase().trim();
+
+  return allDeals.filter(d => {
+    const isTerminal = ["ganado","perdido","cancelada"].includes(d._stage.cat);
+    if (!includeTerminal && isTerminal) return false;
+    if (includeTerminal && !isTerminal) return false;
+    if (sdr !== "all" && !String(d._sdr).includes(sdr.split("@")[0])) return false;
+    if (creador !== "all" && (d.Creador||d.creador||"") !== creador) return false;
+    if (linea !== "all") {
+      const l = (d["Linea de Negocio"]||d.linea_negocio||"").split("/")[0].trim();
+      if (l !== linea) return false;
+    }
+    if (q) {
+      const name = String(d.Name||d.name||"").toLowerCase();
+      const comp = String(d.Compañia||d.company||"").toLowerCase();
+      const sdrN = shortEmail(d._sdr).toLowerCase();
+      if (!name.includes(q) && !comp.includes(q) && !sdrN.includes(q)) return false;
+    }
+    return true;
+  });
+}
+
+function updateBadges() {
+  const active = allDeals.filter(d => !["ganado","perdido","cancelada"].includes(d._stage.cat));
+  const terminal = allDeals.filter(d => ["ganado","perdido","cancelada"].includes(d._stage.cat));
+  const sdrs = [...new Set(active.map(d => String(d._sdr).split(",")[0].trim()).filter(Boolean))];
+  document.getElementById("badge-pipeline").textContent = active.length;
+  document.getElementById("badge-gestion").textContent = active.length;
+  document.getElementById("badge-sdrs").textContent = sdrs.length;
+  document.getElementById("badge-cerradas").textContent = terminal.length;
+}
+
+// ── VIEW ROUTER ──
+function setView(v) {
+  currentView = v;
+  ["pipeline","gestion","sdrs","cerradas"].forEach(name => {
+    document.getElementById("view-" + name).style.display = name === v ? "block" : "none";
+    document.getElementById("nav-" + name).classList.toggle("active", name === v);
+  });
+  renderCurrentView();
+}
+function renderCurrentView() {
+  if (currentView === "pipeline") renderPipeline();
+  else if (currentView === "gestion") renderGestion();
+  else if (currentView === "sdrs") renderSDRs();
+  else if (currentView === "cerradas") renderCerradas();
+}
+
+// ── PIPELINE VIEW ──
+function renderPipeline() {
+  const deals = getFiltered(false).sort((a,b) => b._urgency - a._urgency);
+  document.getElementById("resultCount").textContent = deals.length + " resultado" + (deals.length !== 1 ? "s" : "");
+  const container = document.getElementById("view-pipeline");
+
+  const totalPipeline = deals.reduce((s,d) => s + d._monto, 0);
+  const revPond = deals.reduce((s,d) => {
+    const pct = d._stage.pct || 0;
+    return s + d._monto * (pct/100);
+  }, 0);
+  const calientes = deals.filter(d => d._urgency >= 7).length;
+  const sinGestion = deals.filter(d => ["muerta","debil"].includes(String(d.ai_clasificacion||"").toLowerCase())).length;
+
+  const stageGroups = {};
+  const stageOrder = ["nuevo","prefactibilidad","cotizacion","negociacion"];
+  stageOrder.forEach(s => stageGroups[s] = []);
+  deals.forEach(d => {
+    if (stageGroups[d._stage.cat] !== undefined) stageGroups[d._stage.cat].push(d);
+  });
+
+  const maxCount = Math.max(...stageOrder.map(s => stageGroups[s].length), 1);
+
+  let html = `
+  <div class="metrics-row">
+    <div class="metric-card" style="--accent:var(--k-blue)">
+      <div class="metric-label">Pipeline activo</div>
+      <div class="metric-value">${fmtMoney(totalPipeline)}</div>
+      <div class="metric-sub">${deals.length} oportunidades</div>
+    </div>
+    <div class="metric-card" style="--accent:var(--k-purple)">
+      <div class="metric-label">Rev. Ponderado</div>
+      <div class="metric-value">${fmtMoney(revPond)}</div>
+      <div class="metric-sub">Ajustado por etapa</div>
+    </div>
+    <div class="metric-card" style="--accent:var(--k-orange)">
+      <div class="metric-label">Alta urgencia</div>
+      <div class="metric-value" style="color:var(--k-orange)">${calientes}</div>
+      <div class="metric-sub">Score ≥ 7</div>
+    </div>
+    <div class="metric-card" style="--accent:var(--k-red)">
+      <div class="metric-label">Sin gestión</div>
+      <div class="metric-value" style="color:var(--k-red)">${sinGestion}</div>
+      <div class="metric-sub">Muerta o débil (IA)</div>
+    </div>
+  </div>
+
+  <div class="funnel-row">
+    ${stageOrder.map(s => {
+      const cfg = STAGE_CFG[s];
+      const items = stageGroups[s];
+      const amt = items.reduce((a,d) => a+d._monto, 0);
+      const pct = Math.round((items.length / maxCount) * 100);
+      return `<div class="funnel-stage" style="--stage-color:${cfg.color}" onclick="filterByStage('${s}')">
+        <div class="funnel-stage-name">${cfg.label}</div>
+        <div class="funnel-count">${items.length}</div>
+        <div class="funnel-amount">${fmtMoney(amt)}</div>
+        <div class="funnel-bar-wrap"><div class="funnel-bar-fill" style="width:${pct}%"></div></div>
+      </div>`;
+    }).join("")}
+  </div>
+
+  <div class="section-header">
+    <div>
+      <div class="section-title">Oportunidades activas</div>
+      <div class="section-sub">Ordenadas por urgencia</div>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap" id="stagePills">
+      <span class="filter-pill active" onclick="filterByStage('all')">Todas</span>
+      ${stageOrder.map(s => `<span class="filter-pill" onclick="filterByStage('${s}')">${STAGE_CFG[s].label}</span>`).join("")}
+    </div>
+  </div>
+
+  <div class="deals-list" id="dealsList">
+    ${deals.length === 0 ? '<div class="empty-state"><div class="empty-icon">🔍</div><div class="empty-text">Sin resultados</div></div>' : deals.map(d => renderDealCard(d)).join("")}
+  </div>`;
+
+  container.innerHTML = html;
+}
+
+let stageFilter = "all";
+function filterByStage(s) {
+  stageFilter = s;
+  document.querySelectorAll("#stagePills .filter-pill").forEach(el => {
+    const match = el.textContent === "Todas" ? s === "all" : (STAGE_CFG[s] && el.textContent === STAGE_CFG[s].label);
+    el.classList.toggle("active", match);
+  });
+  const deals = getFiltered(false)
+    .filter(d => s === "all" || d._stage.cat === s)
+    .sort((a,b) => b._urgency - a._urgency);
+  document.getElementById("dealsList").innerHTML =
+    deals.length === 0 ? '<div class="empty-state"><div class="empty-icon">🔍</div><div class="empty-text">Sin resultados</div></div>'
+    : deals.map(d => renderDealCard(d)).join("");
+}
+
+function renderDealCard(d) {
+  const stg = d._stage;
+  const stageCfg = STAGE_CFG[stg.cat] || STAGE_CFG.nuevo;
+  const aiClasif = String(d.ai_clasificacion || "").toLowerCase();
+  const aiCfg = AI_CFG[aiClasif] || null;
+  const urgency = d._urgency;
+  const uColor = urgencyColor(urgency);
+  const inactive = daysSince(d._last_activity);
+  const monto = d._monto;
+  const sdr = shortEmail(String(d._sdr||"").split(",")[0].trim());
+  const company = String(d.Compañia || d.company || "").replace(/[[\]"]/g,"").substring(0,30);
+  const name = String(d.Name || d.name || "").substring(0, 60);
+  const rid = d.record_id || d.Name;
+  const isExpanded = expandedDeals.has(rid);
+  const borderClass = aiClasif === "muerta" ? "border-danger" : aiClasif === "debil" ? "border-warn" : "";
+
+  const aiHTML = aiCfg ? `
+    <div class="ai-panel" style="background:${aiCfg.bg};margin-bottom:12px">
+      <div class="ai-panel-header">
+        <div class="ai-panel-title" style="color:${aiCfg.color}">${aiCfg.emoji} ${aiCfg.label}</div>
+        <div class="ai-score-pill" style="background:${aiCfg.bg};color:${aiCfg.color}">${d.ai_score}/10</div>
+      </div>
+      <div class="ai-razon" style="color:${aiCfg.color};opacity:.85">${stripHtml(d.ai_razon||"")}</div>
+      ${d.ai_recomendacion ? `<div class="ai-rec" style="color:${aiCfg.color};opacity:.7">${stripHtml(d.ai_recomendacion)}</div>` : ""}
+    </div>` : "";
+
+  const ns = d._ns;
+  const nsHTML = ns ? `
+    <div class="nextstep-panel">
+      <div class="timeline-title">Plan de acción</div>
+      ${ns.accion ? `<div class="nextstep-row"><span class="nextstep-key">Qué:</span><span class="nextstep-val">${ns.accion.substring(0,200)}</span></div>` : ""}
+      ${ns.contacto ? `<div class="nextstep-row"><span class="nextstep-key">Con quién:</span><span class="nextstep-val">${ns.contacto.substring(0,100)}</span></div>` : ""}
+      ${ns.cuando ? `<div class="nextstep-row"><span class="nextstep-key">Cuándo:</span><span class="nextstep-val">${ns.cuando.substring(0,100)}</span></div>` : ""}
+      ${ns.mientras ? `<div class="nextstep-row"><span class="nextstep-key">Mientras:</span><span class="nextstep-val">${ns.mientras.substring(0,150)}</span></div>` : ""}
+    </div>` : "";
+
+  const comments = String(d.Comentarios || "").split("|").map(c => c.trim()).filter(c => c.length > 5).slice(0,4);
+  const timelineHTML = comments.length > 0 ? `
+    <div class="timeline-panel">
+      <div class="timeline-title">Actividad reciente</div>
+      ${comments.map(c => {
+        const dateMatch = c.match(/^(\d{4}-\d{2}-\d{2}):\s*(.*)/);
+        if (dateMatch) return `<div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-date">${dateMatch[1]}</div><div class="timeline-text">${stripHtml(dateMatch[2]).substring(0,180)}</div></div>`;
+        return `<div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-text">${stripHtml(c).substring(0,200)}</div></div>`;
+      }).join("")}
+    </div>` : `<div class="timeline-panel"><div class="no-activity">Sin actividad registrada en CRM</div></div>`;
+
+  const fechaCierre = d["Fecha de cierre"] || d.fecha_cierre || "";
+  const cierreVencido = fechaCierre && daysSince(fechaCierre) > 0;
+
+  return `<div class="deal-card ${borderClass}" id="card-${rid.replace(/[^a-z0-9]/gi,'_')}">
+    <div class="deal-card-header" onclick="toggleDeal('${rid.replace(/'/g,"\\'")}')">
+      <div class="deal-urgency-bar" style="background:${uColor}"></div>
+      <div class="deal-main">
+        <div class="deal-name">${name}</div>
+        <div class="deal-meta">
+          <span class="badge" style="background:${stageCfg.color}22;color:${stageCfg.color}">${stageCfg.label}</span>
+          ${aiCfg ? `<span class="badge" style="background:${aiCfg.bg};color:${aiCfg.color}">${aiCfg.emoji} ${aiCfg.label}</span>` : ""}
+          ${inactive !== null ? `<span class="badge" style="background:${inactive>21?"var(--k-danger-bg)":inactive>14?"rgba(249,115,22,0.12)":"rgba(100,116,139,0.15)"};color:${inactive>21?"var(--k-red)":inactive>14?"var(--k-orange)":"var(--k-muted)"}">${inactive}d</span>` : ""}
+          ${company ? `<span style="font-size:11px;color:var(--k-muted)">${company}</span>` : ""}
+        </div>
+      </div>
+      <div class="deal-right">
+        <div class="deal-amount">${fmtMoney(monto)}</div>
+        <div class="deal-sdr">${sdr}</div>
+        <div class="deal-expand-icon ${isExpanded ? 'open' : ''}">▾</div>
+      </div>
+    </div>
+    <div class="deal-detail ${isExpanded ? 'open' : ''}">
+      <div class="detail-grid">
+        <div class="detail-item"><div class="detail-key">Creador</div><div class="detail-val">${shortEmail(d.Creador||d.creador||"")}</div></div>
+        <div class="detail-item"><div class="detail-key">SDR</div><div class="detail-val">${sdr}</div></div>
+        <div class="detail-item"><div class="detail-key">Línea</div><div class="detail-val">${String(d["Linea de Negocio"]||d.linea_negocio||"").split("/")[0]||"—"}</div></div>
+        <div class="detail-item"><div class="detail-key">Monto</div><div class="detail-val">${fmtMoney(monto)}</div></div>
+        <div class="detail-item"><div class="detail-key">Ciudad</div><div class="detail-val">${d.Ciudad||d.ciudad||"—"}</div></div>
+        <div class="detail-item"><div class="detail-key">Cierre est.</div><div class="detail-val ${cierreVencido?'danger':''}">${fechaCierre||"—"}${cierreVencido?" ⚠️":""}</div></div>
+      </div>
+      ${aiHTML}
+      ${nsHTML}
+      ${timelineHTML}
+    </div>
+  </div>`;
+}
+
+function toggleDeal(rid) {
+  if (expandedDeals.has(rid)) expandedDeals.delete(rid);
+  else expandedDeals.add(rid);
+  renderCurrentView();
+}
+
+// ── GESTIÓN VIEW ──
+function renderGestion() {
+  const deals = getFiltered(false);
+  document.getElementById("resultCount").textContent = deals.length + " activas";
+  const container = document.getElementById("view-gestion");
+
+  const groups = { gestionada:[], parcial:[], debil:[], muerta:[] };
+  deals.forEach(d => {
+    const c = String(d.ai_clasificacion||"").toLowerCase();
+    if (groups[c]) groups[c].push(d);
+    else groups.muerta.push(d); // default sin clasificacion -> muerta
+  });
+
+  const total = deals.length || 1;
+  const bars = [
+    { key:"gestionada", color:"#10B981" },
+    { key:"parcial",    color:"#F59E0B" },
+    { key:"debil",      color:"#F97316" },
+    { key:"muerta",     color:"#E8001D" },
+  ];
+
+  let html = `
+  <div class="metrics-row">
+    <div class="metric-card" style="--accent:var(--k-green)">
+      <div class="metric-label">Bien gestionadas</div>
+      <div class="metric-value" style="color:var(--k-green)">${groups.gestionada.length}</div>
+      <div class="metric-sub">${Math.round(groups.gestionada.length/total*100)}% del total</div>
+    </div>
+    <div class="metric-card" style="--accent:var(--k-yellow)">
+      <div class="metric-label">Gestión parcial</div>
+      <div class="metric-value" style="color:var(--k-yellow)">${groups.parcial.length}</div>
+      <div class="metric-sub">${Math.round(groups.parcial.length/total*100)}% del total</div>
+    </div>
+    <div class="metric-card" style="--accent:var(--k-orange)">
+      <div class="metric-label">Gestión débil</div>
+      <div class="metric-value" style="color:var(--k-orange)">${groups.debil.length}</div>
+      <div class="metric-sub">${Math.round(groups.debil.length/total*100)}% del total</div>
+    </div>
+    <div class="metric-card" style="--accent:var(--k-red)">
+      <div class="metric-label">Sin gestión</div>
+      <div class="metric-value" style="color:var(--k-red)">${groups.muerta.length}</div>
+      <div class="metric-sub">${Math.round(groups.muerta.length/total*100)}% del total</div>
+    </div>
+  </div>
+
+  <div class="gestion-summary">
+    <div class="section-header" style="margin-bottom:16px">
+      <div class="section-title">Radiografía de gestión comercial</div>
+    </div>
+    <div class="gestion-bar-row">
+      ${bars.map(b => {
+        const pct = Math.round(groups[b.key].length/total*100);
+        return pct > 0 ? `<div class="gestion-bar-seg" style="width:${pct}%;background:${b.color}">${groups[b.key].length > 1 ? groups[b.key].length : ''}</div>` : '';
+      }).join("")}
+    </div>
+    <div class="gestion-legend">
+      ${bars.map(b => {
+        const cfg = AI_CFG[b.key];
+        const pct = Math.round(groups[b.key].length/total*100);
+        return `<div class="gestion-legend-item">
+          <div class="gestion-dot" style="background:${b.color}"></div>
+          <div class="gestion-legend-label">${cfg.emoji} ${cfg.label}</div>
+          <div class="gestion-legend-count">${groups[b.key].length}</div>
+          <div class="gestion-legend-pct">${pct}%</div>
+        </div>`;
+      }).join("")}
+    </div>
+  </div>`;
+
+  // Tab bar for filtering
+  html += `
+  <div class="tab-bar" id="gestionTabs">
+    <button class="tab-item active" onclick="filterGestion('all',this)">Todas (${deals.length})</button>
+    <button class="tab-item" onclick="filterGestion('gestionada',this)">✅ Gestionadas (${groups.gestionada.length})</button>
+    <button class="tab-item" onclick="filterGestion('parcial',this)">🟡 Parciales (${groups.parcial.length})</button>
+    <button class="tab-item" onclick="filterGestion('debil',this)">🔴 Débiles (${groups.debil.length})</button>
+    <button class="tab-item" onclick="filterGestion('muerta',this)">💀 Sin gestión (${groups.muerta.length})</button>
+  </div>
+  <div class="deals-list" id="gestionList">
+    ${deals.sort((a,b) => {
+      const ord = {muerta:0,debil:1,parcial:2,gestionada:3};
+      const aO = ord[String(a.ai_clasificacion||"muerta").toLowerCase()] ?? 0;
+      const bO = ord[String(b.ai_clasificacion||"muerta").toLowerCase()] ?? 0;
+      return aO - bO;
+    }).map(d => renderDealCard(d)).join("")}
+  </div>`;
+
+  container.innerHTML = html;
+}
+
+function filterGestion(cat, btn) {
+  document.querySelectorAll("#gestionTabs .tab-item").forEach(t => t.classList.remove("active"));
+  btn.classList.add("active");
+  const deals = getFiltered(false).filter(d => cat === "all" || String(d.ai_clasificacion||"").toLowerCase() === cat);
+  document.getElementById("gestionList").innerHTML =
+    deals.length === 0 ? '<div class="empty-state"><div class="empty-icon">✅</div><div class="empty-text">Sin oportunidades en esta categoría</div></div>'
+    : deals.map(d => renderDealCard(d)).join("");
+}
+
+// ── SDR RANKING ──
+function renderSDRs() {
+  const deals = getFiltered(false);
+  document.getElementById("resultCount").textContent = "";
+  const container = document.getElementById("view-sdrs");
+
+  const sdrMap = {};
+  deals.forEach(d => {
+    const sdr = String(d._sdr||"").split(",")[0].trim();
+    if (!sdr) return;
+    if (!sdrMap[sdr]) sdrMap[sdr] = { sdr, deals:0, pipeline:0, gestionadas:0, muerta:0, avgScore:[], urgencias:[] };
+    sdrMap[sdr].deals++;
+    sdrMap[sdr].pipeline += d._monto;
+    const clasif = String(d.ai_clasificacion||"").toLowerCase();
+    if (clasif === "gestionada") sdrMap[sdr].gestionadas++;
+    if (clasif === "muerta") sdrMap[sdr].muerta++;
+    const score = parseFloat(d.ai_score) || 0;
+    sdrMap[sdr].avgScore.push(score);
+    sdrMap[sdr].urgencias.push(d._urgency);
+  });
+
+  const sdrs = Object.values(sdrMap).map(s => ({
+    ...s,
+    avgScore: s.avgScore.length ? s.avgScore.reduce((a,b)=>a+b,0)/s.avgScore.length : 0,
+    avgUrgency: s.urgencias.length ? s.urgencias.reduce((a,b)=>a+b,0)/s.urgencias.length : 0,
+  })).sort((a,b) => b.pipeline - a.pipeline);
+
+  const maxPipeline = Math.max(...sdrs.map(s => s.pipeline), 1);
+
+  let html = `
+  <div class="section-header">
+    <div>
+      <div class="section-title">Ranking de SDRs</div>
+      <div class="section-sub">Por pipeline activo · ${sdrs.length} comerciales</div>
+    </div>
+  </div>
+  <div class="sdr-table">
+    <div class="sdr-row header">
+      <div>#</div>
+      <div>SDR</div>
+      <div style="text-align:center">Deals</div>
+      <div style="text-align:center">Gestionadas</div>
+      <div style="text-align:center">Sin gestión</div>
+      <div style="text-align:right">Pipeline</div>
+      <div>Score IA</div>
+    </div>
+    ${sdrs.map((s, i) => {
+      const rankClass = i === 0 ? "gold" : i === 1 ? "silver" : i === 2 ? "bronze" : "";
+      const pct = Math.round(s.pipeline / maxPipeline * 100);
+      const scorePct = Math.round(s.avgScore / 10 * 100);
+      const scoreColor = s.avgScore >= 7 ? "var(--k-green)" : s.avgScore >= 5 ? "var(--k-yellow)" : "var(--k-orange)";
+      return `<div class="sdr-row">
+        <div class="sdr-rank ${rankClass}">${i+1}</div>
+        <div class="sdr-name">${shortEmail(s.sdr)}</div>
+        <div class="sdr-num">${s.deals}</div>
+        <div class="sdr-num" style="color:var(--k-green)">${s.gestionadas}</div>
+        <div class="sdr-num" style="color:var(--k-red)">${s.muerta}</div>
+        <div class="sdr-pipeline">${fmtMoney(s.pipeline)}</div>
+        <div>
+          <div style="display:flex;align-items:center;gap:6px">
+            <div class="sdr-score-bar" style="flex:1"><div class="sdr-score-fill" style="width:${scorePct}%;background:${scoreColor}"></div></div>
+            <span style="font-size:11px;color:${scoreColor};font-weight:600;min-width:24px">${s.avgScore.toFixed(1)}</span>
+          </div>
+        </div>
+      </div>`;
+    }).join("")}
+  </div>`;
+
+  container.innerHTML = html;
+}
+
+// ── CERRADAS VIEW ──
+function renderCerradas() {
+  const deals = getFiltered(true);
+  document.getElementById("resultCount").textContent = deals.length + " cerradas";
+  const container = document.getElementById("view-cerradas");
+
+  const ganadas = deals.filter(d => d._stage.cat === "ganado");
+  const perdidas = deals.filter(d => d._stage.cat === "perdido");
+  const canceladas = deals.filter(d => d._stage.cat === "cancelada");
+
+  let html = `
+  <div class="closed-summary">
+    <div class="closed-card">
+      <div class="closed-icon">🏆</div>
+      <div class="closed-count" style="color:var(--k-green)">${ganadas.length}</div>
+      <div class="closed-label">Ganadas · ${fmtMoney(ganadas.reduce((s,d)=>s+d._monto,0))}</div>
+    </div>
+    <div class="closed-card">
+      <div class="closed-icon">✗</div>
+      <div class="closed-count" style="color:var(--k-muted)">${perdidas.length}</div>
+      <div class="closed-label">Perdidas · ${fmtMoney(perdidas.reduce((s,d)=>s+d._monto,0))}</div>
+    </div>
+    <div class="closed-card">
+      <div class="closed-icon">⊘</div>
+      <div class="closed-count" style="color:var(--k-muted2)">${canceladas.length}</div>
+      <div class="closed-label">Canceladas</div>
+    </div>
+  </div>
+
+  <div class="tab-bar" id="cerradasTabs">
+    <button class="tab-item active" onclick="filterCerradas('all',this)">Todas (${deals.length})</button>
+    <button class="tab-item" onclick="filterCerradas('ganado',this)">🏆 Ganadas (${ganadas.length})</button>
+    <button class="tab-item" onclick="filterCerradas('perdido',this)">✗ Perdidas (${perdidas.length})</button>
+    <button class="tab-item" onclick="filterCerradas('cancelada',this)">⊘ Canceladas (${canceladas.length})</button>
+  </div>
+  <div class="deals-list" id="cerradasList">
+    ${deals.map(d => renderDealCard(d)).join("")}
+  </div>`;
+
+  container.innerHTML = html;
+}
+
+function filterCerradas(cat, btn) {
+  document.querySelectorAll("#cerradasTabs .tab-item").forEach(t => t.classList.remove("active"));
+  btn.classList.add("active");
+  const deals = getFiltered(true).filter(d => cat === "all" || d._stage.cat === cat);
+  document.getElementById("cerradasList").innerHTML =
+    deals.length === 0 ? '<div class="empty-state"><div class="empty-icon">📁</div><div class="empty-text">Sin oportunidades</div></div>'
+    : deals.map(d => renderDealCard(d)).join("");
+}
+
+// ── DEMO DATA ──
+const DEMO_DATA = [
+  {"record_id":"r001","Name":"VisionFund - Arquitectura Empresarial","Compañia":"VisionFund","Etapa":"Cotizacion | 50%","Monto":"130000","SDR":"vlema@krugercorporation.com","Creador":"cmarquez@krugercorporation.com","Fuente":"MKT","Ciudad":"Quito","País":"EC","Linea de Negocio":"Consultoría/Arquitectura","KAE feeling":"0.5","Fecha de cierre":"2026-06-30","Next Step":"¿Qué haré?: Coordinar siguiente reunión post propuesta técnica\n¿Con quién?: Magdalena Jingo y Verny Vargas\n¿Cuándo?: Martes 12 de Mayo\nHasta eso ¿qué haré?: Se avanza la parte tercerizada","Comentarios":"2026-05-10: Reunión con Magdalena positiva, están revisando presupuesto Q3 | 2026-05-05: Se envió propuesta técnica v2","ai_clasificacion":"gestionada","ai_score":"8","ai_razon":"Plan claro con contactos y fechas definidas. Comentarios recientes muestran avance.","ai_recomendacion":"Verificar ejecución del plan y pedir actualización de resultado.","updated_at":"2026-05-10"},
+  {"record_id":"r002","Name":"Cooperativa Santa Isabel - Ciberseguridad","Compañia":"Cooperativa Santa Isabel","Etapa":"Nuevo | 0%","Monto":"10000","SDR":"svalenzuela@krugercorporation.com","Creador":"crodriguez@krugercorporation.com","Fuente":"MKT","Ciudad":"Cuenca","País":"EC","Linea de Negocio":"Ciberseguridad","KAE feeling":"","Fecha de cierre":"","Next Step":"¿Qué haré?:\n¿Con quién?:\n¿Cuándo?:\nHasta eso ¿qué haré?:","Comentarios":"","ai_clasificacion":"muerta","ai_score":"0","ai_razon":"Next step vacío. Sin comentarios ni llamadas registradas.","ai_recomendacion":"Exigir al SDR que registre actividad o descartar la oportunidad.","updated_at":null},
+  {"record_id":"r003","Name":"Municipio de Ibarra - APP Ibarra Vive","Compañia":"Municipio de Ibarra","Etapa":"Negociación & Revisión | 75%","Monto":"128000","SDR":"mguevara@krugercorporation.com","Creador":"cmarquez@krugercorporation.com","Fuente":"MKT","Ciudad":"Ibarra","País":"EC","Linea de Negocio":"Desarrollo","KAE feeling":"0.75","Fecha de cierre":"2026-06-30","Next Step":"¿Qué haré?: Armar TDRs.\n¿Con quién?: Asesor de compras públicas y Sole.\n¿Cuándo?: Semana del 11 de Mayo\nHasta eso ¿qué haré?: Reuniones con Director de TICs","Comentarios":"2026-05-12: TDRs en revisión con asesor legal del municipio | 2026-05-05: Reunión presencial exitosa con Director de TICs","ai_clasificacion":"gestionada","ai_score":"9","ai_razon":"Plan detallado, múltiples comentarios sustantivos, avance real documentado.","ai_recomendacion":"Verificar avance de TDRs esta semana.","updated_at":"2026-05-12"},
+  {"record_id":"r004","Name":"Municipio de Quito - Sistema Recaudación","Compañia":"Municipio de Quito","Etapa":"Cotizacion | 50%","Monto":"500000","SDR":"mguevara@krugercorporation.com","Creador":"svalencia@krugercorporation.com","Fuente":"MKT","Ciudad":"Quito","País":"EC","Linea de Negocio":"Desarrollo","KAE feeling":"0.5","Fecha de cierre":"2026-09-30","Next Step":"El cliente indicó que recibió la propuesta, que esta elaborando informes internos para levantar el proceso con el SERCOP.","Comentarios":"2026-04-15: Cliente dice que está en proceso interno con SERCOP","ai_clasificacion":"debil","ai_score":"3","ai_razon":"Falta de especificidad en fechas y expectativas. Última actividad hace más de 30 días.","ai_recomendacion":"Programar reunión urgente con el cliente para clarificar próximos pasos.","updated_at":"2026-04-15"},
+  {"record_id":"r005","Name":"ROCHE ECUADOR - Migración a AWS","Compañia":"Roche Ecuador","Etapa":"Pre Factibilidad | 25%","Monto":"250000","SDR":"mroman@krugercorporation.com","Creador":"jmonge@krugercorporation.com","Fuente":"MKT","Ciudad":"Quito","País":"EC","Linea de Negocio":"Cloud/AWS","KAE feeling":"0.25","Fecha de cierre":"2026-08-01","Next Step":"¿Qué haré?: Revisión de cotización\n¿Con quién?: Miguel Bermudez\n¿Cuándo?: Semana 18 de mayo\nHasta eso ¿qué haré?: Dar seguimiento a preventas","Comentarios":"2026-04-27: Cliente solicitó cotización de 3 modelos | 2026-04-06: Reunión con presales y cliente","ai_clasificacion":"parcial","ai_score":"6","ai_razon":"Acción definida pero los comentarios no reflejan avance reciente del sizing.","ai_recomendacion":"Insistir con Miguel Bermudez para obtener el sizing esta semana.","updated_at":"2026-04-27"},
+  {"record_id":"r006","Name":"ECUASANITAS - Licencias Microsoft","Compañia":"Ecuasanitas","Etapa":"Ganado | 100%","Monto":"70900","SDR":"mroman@krugercorporation.com","Creador":"jmonge@krugercorporation.com","Fuente":"MKT","Ciudad":"Quito","País":"EC","Linea de Negocio":"Licenciamiento","KAE feeling":"","Fecha de cierre":"2026-02-15","Next Step":"","Comentarios":"2025-10-22: Ya se enviaron cotizaciones de licencias","ai_clasificacion":"gestionada","ai_score":"9","ai_razon":"Oportunidad ganada con historial completo de actividad.","ai_recomendacion":"Mantener relación para renovación.","updated_at":null},
+];
+</script>
+</body>
+</html>
