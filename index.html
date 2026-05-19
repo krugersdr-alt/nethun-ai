@@ -4,1630 +4,1612 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kruger — Pipeline MKT</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://res.cloudinary.com/dwcqgcl0m/image/upload/q_auto/f_auto/v1776721583/krugercorp_logo_ly65c3.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --k-red: #E8001D;
-  --k-red-dark: #b5001a;
-  --k-red-soft: rgba(232,0,29,0.1);
-  --k-black: #0A0A0A;
-  --k-dark: #111318;
-  --k-card: #161B24;
-  --k-card2: #1C2333;
+  --k-orange: #FF5B00;
+  --k-orange-dark: #cc4800;
+  --k-orange-soft: rgba(255,91,0,0.12);
+  --k-orange-glow: rgba(255,91,0,0.25);
+  --k-black: #21272A;
+  --k-dark: #1a1f22;
+  --k-card: #252c30;
+  --k-card2: #2d353a;
   --k-border: rgba(255,255,255,0.07);
-  --k-border2: rgba(255,255,255,0.12);
-  --k-text: #E8EAF0;
-  --k-muted: #7A8399;
-  --k-muted2: #4A5568;
-  --k-green: #10B981;
-  --k-yellow: #F59E0B;
-  --k-orange: #F97316;
+  --k-border2: rgba(255,255,255,0.13);
+  --k-text: #F0F2F4;
+  --k-muted: #8A9299;
+  --k-muted2: #4A5560;
+  --k-green: #22C55E;
+  --k-yellow: #EAB308;
+  --k-red: #EF4444;
   --k-blue: #3B82F6;
-  --k-purple: #8B5CF6;
-  --k-success-bg: rgba(16,185,129,0.12);
-  --k-warn-bg: rgba(245,158,11,0.12);
-  --k-danger-bg: rgba(232,0,29,0.12);
-  --k-info-bg: rgba(59,130,246,0.12);
-  --radius: 12px;
-  --radius-sm: 8px;
-  --shadow: 0 4px 24px rgba(0,0,0,0.4);
+  --radius: 14px;
+  --radius-sm: 9px;
 }
-
 * { box-sizing: border-box; margin: 0; padding: 0; }
-
+html, body { height: 100%; }
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   background: var(--k-black);
   color: var(--k-text);
-  min-height: 100vh;
   overflow-x: hidden;
 }
 
-/* ── HEADER ── */
+/* ══════════════════════════════════════
+   LOGIN SCREEN
+══════════════════════════════════════ */
+#loginScreen {
+  position: fixed;
+  inset: 0;
+  background: var(--k-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  overflow: hidden;
+}
+.login-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(255,91,0,0.18) 0%, transparent 70%),
+              radial-gradient(ellipse 60% 50% at 10% 80%, rgba(255,91,0,0.08) 0%, transparent 60%);
+}
+.login-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255,91,0,0.04) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,91,0,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.login-card {
+  position: relative;
+  background: rgba(37,44,48,0.92);
+  border: 1px solid rgba(255,91,0,0.25);
+  border-radius: 20px;
+  padding: 44px 40px;
+  width: 420px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 0 60px rgba(255,91,0,0.1);
+  animation: loginFadeIn 0.6s ease;
+}
+@keyframes loginFadeIn {
+  from { opacity:0; transform:translateY(20px); }
+  to { opacity:1; transform:translateY(0); }
+}
+.login-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+.login-logo img {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  object-fit: contain;
+  background: #fff;
+  padding: 4px;
+}
+.login-logo-text {
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+.login-logo-text span { color: var(--k-orange); }
+.login-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 4px;
+  text-align: center;
+}
+.login-sub {
+  font-size: 12px;
+  color: var(--k-muted);
+  text-align: center;
+  margin-bottom: 28px;
+}
+.login-field {
+  margin-bottom: 14px;
+}
+.login-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--k-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 7px;
+  display: block;
+}
+.login-input {
+  width: 100%;
+  background: var(--k-card2);
+  border: 1px solid var(--k-border2);
+  border-radius: var(--radius-sm);
+  padding: 11px 14px;
+  font-size: 14px;
+  color: var(--k-text);
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.login-input:focus {
+  border-color: var(--k-orange);
+  box-shadow: 0 0 0 3px var(--k-orange-soft);
+}
+.login-btn {
+  width: 100%;
+  background: var(--k-orange);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 13px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  margin-top: 8px;
+  transition: background 0.15s, transform 0.1s, box-shadow 0.2s;
+  letter-spacing: 0.02em;
+}
+.login-btn:hover {
+  background: var(--k-orange-dark);
+  box-shadow: 0 4px 20px var(--k-orange-glow);
+}
+.login-btn:active { transform: scale(0.98); }
+.login-error {
+  background: rgba(239,68,68,0.12);
+  border: 1px solid rgba(239,68,68,0.3);
+  border-radius: var(--radius-sm);
+  padding: 9px 12px;
+  font-size: 12px;
+  color: #ff8080;
+  margin-top: 12px;
+  display: none;
+  text-align: center;
+}
+.login-footer {
+  text-align: center;
+  font-size: 11px;
+  color: var(--k-muted2);
+  margin-top: 24px;
+}
+
+/* ══════════════════════════════════════
+   MAIN APP
+══════════════════════════════════════ */
+#app { display: none; height: 100vh; flex-direction: column; }
+
+/* HEADER */
 .header {
   background: var(--k-dark);
   border-bottom: 1px solid var(--k-border);
-  padding: 0 28px;
-  height: 60px;
+  height: 58px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  padding: 0 24px;
+  gap: 16px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 50;
 }
 .header-logo {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
-.logo-mark {
+.header-logo img {
   width: 32px;
   height: 32px;
-  background: var(--k-red);
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Syne', sans-serif;
-  font-weight: 800;
-  font-size: 14px;
-  color: #fff;
-  letter-spacing: -1px;
+  border-radius: 7px;
+  object-fit: contain;
+  background: #fff;
+  padding: 3px;
 }
-.header-title {
-  font-family: 'Syne', sans-serif;
-  font-weight: 700;
+.header-brand {
   font-size: 15px;
-  color: var(--k-text);
+  font-weight: 800;
+  color: #fff;
   letter-spacing: -0.3px;
 }
-.header-sub {
-  font-size: 11px;
-  color: var(--k-muted);
-  margin-top: 1px;
+.header-brand span { color: var(--k-orange); }
+.header-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--k-border2);
 }
+.header-info {
+  font-size: 12px;
+  color: var(--k-muted);
+}
+.header-info strong { color: var(--k-text); font-weight: 600; }
 .header-right {
+  margin-left: auto;
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.btn-load {
-  background: var(--k-red);
-  color: #fff;
-  border: none;
-  border-radius: var(--radius-sm);
-  padding: 7px 16px;
-  font-size: 12px;
+.live-badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--k-green);
   font-weight: 600;
-  cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
-  transition: background 0.15s;
 }
-.btn-load:hover { background: var(--k-red-dark); }
-.btn-secondary {
-  background: var(--k-card2);
-  color: var(--k-text);
-  border: 1px solid var(--k-border2);
-  border-radius: var(--radius-sm);
-  padding: 7px 14px;
-  font-size: 12px;
-  font-weight: 500;
-  cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
-  transition: background 0.15s;
-}
-.btn-secondary:hover { background: #252d3d; }
-.status-dot {
-  width: 8px;
-  height: 8px;
+.live-dot {
+  width: 7px; height: 7px;
   border-radius: 50%;
-  background: var(--k-muted2);
+  background: var(--k-green);
+  box-shadow: 0 0 6px var(--k-green);
+  animation: pulse 2s ease infinite;
 }
-.status-dot.live { background: var(--k-green); box-shadow: 0 0 6px var(--k-green); }
-
-/* ── LANDING ── */
-#landing {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: calc(100vh - 60px);
-  padding: 40px 20px;
+@keyframes pulse {
+  0%,100% { opacity:1; } 50% { opacity:0.5; }
 }
-.landing-card {
-  background: var(--k-card);
-  border: 1px solid var(--k-border);
-  border-radius: 16px;
-  padding: 40px;
-  max-width: 560px;
-  width: 100%;
-  text-align: center;
-}
-.landing-icon {
-  width: 56px;
-  height: 56px;
-  background: var(--k-red-soft);
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 20px;
-  font-size: 24px;
-}
-.landing-title {
-  font-family: 'Syne', sans-serif;
-  font-weight: 800;
-  font-size: 24px;
-  color: #fff;
-  margin-bottom: 8px;
-}
-.landing-desc {
-  font-size: 13px;
-  color: var(--k-muted);
-  line-height: 1.6;
-  margin-bottom: 28px;
-}
-.landing-actions {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.btn-primary-lg {
-  background: var(--k-red);
-  color: #fff;
-  border: none;
+.btn-sm {
+  padding: 7px 14px;
   border-radius: var(--radius-sm);
-  padding: 11px 24px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
-  transition: background 0.15s;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.15s;
+  border: 1px solid transparent;
+}
+.btn-orange { background: var(--k-orange); color: #fff; }
+.btn-orange:hover { background: var(--k-orange-dark); box-shadow: 0 0 16px var(--k-orange-glow); }
+.btn-ghost { background: var(--k-card2); color: var(--k-muted); border-color: var(--k-border2); }
+.btn-ghost:hover { color: var(--k-text); }
+.user-chip {
   display: flex;
   align-items: center;
   gap: 6px;
-}
-.btn-primary-lg:hover { background: var(--k-red-dark); }
-.btn-ghost-lg {
-  background: transparent;
-  color: var(--k-muted);
+  background: var(--k-card);
   border: 1px solid var(--k-border2);
-  border-radius: var(--radius-sm);
-  padding: 11px 20px;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
-  transition: all 0.15s;
-}
-.btn-ghost-lg:hover { color: var(--k-text); border-color: var(--k-muted2); }
-.error-msg {
-  background: var(--k-danger-bg);
-  border: 1px solid rgba(232,0,29,0.3);
-  border-radius: var(--radius-sm);
-  padding: 10px 14px;
+  border-radius: 99px;
+  padding: 4px 12px 4px 4px;
   font-size: 12px;
-  color: #ff6b6b;
-  margin-top: 16px;
-  text-align: left;
-}
-.loading-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(10,10,10,0.85);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 999;
-  gap: 12px;
-}
-.spinner {
-  width: 36px;
-  height: 36px;
-  border: 3px solid var(--k-border2);
-  border-top-color: var(--k-red);
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-.loading-text {
-  font-size: 13px;
   color: var(--k-muted);
+}
+.user-avatar {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: var(--k-orange);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 800; color: #fff;
 }
 
-/* ── MAIN LAYOUT ── */
-#app { display: none; }
+/* BODY LAYOUT */
 .app-body {
   display: grid;
-  grid-template-columns: 200px 1fr;
-  min-height: calc(100vh - 60px);
+  grid-template-columns: 210px 1fr;
+  flex: 1;
+  overflow: hidden;
 }
 
-/* ── SIDEBAR ── */
+/* SIDEBAR */
 .sidebar {
   background: var(--k-dark);
   border-right: 1px solid var(--k-border);
-  padding: 20px 12px;
-  position: sticky;
-  top: 60px;
-  height: calc(100vh - 60px);
+  padding: 20px 10px;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
-.sidebar-section {
-  margin-bottom: 24px;
-}
-.sidebar-label {
-  font-size: 10px;
-  font-weight: 600;
+.sidebar-section-title {
+  font-size: 9px;
+  font-weight: 700;
   color: var(--k-muted2);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   padding: 0 8px;
   margin-bottom: 6px;
 }
-.nav-item {
+.nav-btn {
+  width: 100%;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 10px;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  font-size: 13px;
-  color: var(--k-muted);
-  transition: all 0.15s;
+  gap: 9px;
+  padding: 9px 10px;
+  border-radius: 9px;
   border: none;
   background: none;
-  width: 100%;
+  color: var(--k-muted);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.15s;
   text-align: left;
-  font-family: 'DM Sans', sans-serif;
 }
-.nav-item:hover { background: var(--k-card2); color: var(--k-text); }
-.nav-item.active { background: var(--k-red-soft); color: var(--k-red); font-weight: 600; }
-.nav-icon { font-size: 14px; width: 16px; text-align: center; }
-.nav-badge {
+.nav-btn:hover { background: var(--k-card); color: var(--k-text); }
+.nav-btn.active {
+  background: var(--k-orange-soft);
+  color: var(--k-orange);
+  font-weight: 700;
+  box-shadow: inset 3px 0 0 var(--k-orange);
+}
+.nav-icon { font-size: 15px; width: 18px; text-align: center; flex-shrink: 0; }
+.nav-count {
   margin-left: auto;
   background: var(--k-card2);
   border-radius: 99px;
   padding: 1px 7px;
   font-size: 10px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--k-muted);
 }
-.nav-item.active .nav-badge { background: rgba(232,0,29,0.2); color: var(--k-red); }
+.nav-btn.active .nav-count { background: rgba(255,91,0,0.2); color: var(--k-orange); }
 
-/* ── CONTENT ── */
-.content {
-  padding: 24px 28px;
+.filter-group { padding: 0 2px; }
+.filter-label {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--k-muted2);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  margin-bottom: 5px;
+  display: block;
+}
+.filter-select {
+  width: 100%;
+  background: var(--k-card);
+  border: 1px solid var(--k-border2);
+  border-radius: 8px;
+  padding: 7px 9px;
+  font-size: 12px;
+  color: var(--k-text);
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: border-color 0.15s;
+}
+.filter-select:focus { border-color: var(--k-orange); }
+.filter-select option { background: var(--k-card); }
+
+/* MAIN CONTENT */
+.main {
   overflow-y: auto;
+  padding: 24px;
+  background: var(--k-black);
 }
 
-/* ── METRICS ROW ── */
-.metrics-row {
+/* LOADING */
+#loadingOverlay {
+  position: fixed; inset: 0;
+  background: rgba(33,39,42,0.9);
+  display: none; flex-direction: column;
+  align-items: center; justify-content: center;
+  z-index: 999; gap: 14px;
+  backdrop-filter: blur(6px);
+}
+.spinner {
+  width: 40px; height: 40px;
+  border: 3px solid var(--k-border2);
+  border-top-color: var(--k-orange);
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.load-text { font-size: 13px; color: var(--k-muted); }
+
+/* ══════════════════════════════════════
+   COMPONENTS
+══════════════════════════════════════ */
+
+/* METRIC CARDS */
+.metrics-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 12px;
-  margin-bottom: 24px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 22px;
 }
 .metric-card {
   background: var(--k-card);
   border: 1px solid var(--k-border);
   border-radius: var(--radius);
-  padding: 16px;
+  padding: 18px 20px;
   position: relative;
   overflow: hidden;
+  transition: border-color 0.2s;
 }
-.metric-card::before {
+.metric-card:hover { border-color: var(--k-border2); }
+.metric-card::after {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 2px;
+  height: 3px;
   background: var(--accent, var(--k-muted2));
+  border-radius: 2px 2px 0 0;
+}
+.metric-emoji {
+  font-size: 22px;
+  margin-bottom: 10px;
+  display: block;
+}
+.metric-val {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--accent, #fff);
+  letter-spacing: -1.5px;
+  line-height: 1;
+  margin-bottom: 5px;
 }
 .metric-label {
-  font-size: 10px;
-  font-weight: 600;
-  color: var(--k-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  margin-bottom: 8px;
-}
-.metric-value {
-  font-family: 'Syne', sans-serif;
-  font-weight: 700;
-  font-size: 26px;
-  color: #fff;
-  letter-spacing: -1px;
-  line-height: 1;
-}
-.metric-sub {
-  font-size: 11px;
-  color: var(--k-muted);
-  margin-top: 4px;
-}
-
-/* ── SECTION HEADER ── */
-.section-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16px;
-}
-.section-title {
-  font-family: 'Syne', sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  color: #fff;
-}
-.section-sub {
-  font-size: 12px;
-  color: var(--k-muted);
-  margin-top: 2px;
-}
-
-/* ── FILTERS ── */
-.filters-bar {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 16px;
-  align-items: center;
-}
-.filter-pill {
-  background: var(--k-card);
-  border: 1px solid var(--k-border);
-  border-radius: 99px;
-  padding: 5px 12px;
-  font-size: 12px;
-  color: var(--k-muted);
-  cursor: pointer;
-  transition: all 0.15s;
-  font-family: 'DM Sans', sans-serif;
-}
-.filter-pill:hover { border-color: var(--k-muted2); color: var(--k-text); }
-.filter-pill.active { background: var(--k-red-soft); border-color: var(--k-red); color: var(--k-red); font-weight: 600; }
-.search-box {
-  background: var(--k-card);
-  border: 1px solid var(--k-border);
-  border-radius: var(--radius-sm);
-  padding: 6px 12px;
-  font-size: 12px;
-  color: var(--k-text);
-  font-family: 'DM Sans', sans-serif;
-  outline: none;
-  width: 200px;
-  transition: border-color 0.15s;
-}
-.search-box:focus { border-color: var(--k-muted2); }
-.search-box::placeholder { color: var(--k-muted2); }
-.select-filter {
-  background: var(--k-card);
-  border: 1px solid var(--k-border);
-  border-radius: var(--radius-sm);
-  padding: 6px 10px;
-  font-size: 12px;
-  color: var(--k-text);
-  font-family: 'DM Sans', sans-serif;
-  outline: none;
-  cursor: pointer;
-}
-.select-filter option { background: var(--k-card); }
-
-/* ── FUNNEL ── */
-.funnel-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  margin-bottom: 24px;
-}
-.funnel-stage {
-  background: var(--k-card);
-  border: 1px solid var(--k-border);
-  border-radius: var(--radius);
-  padding: 16px;
-  cursor: pointer;
-  transition: all 0.15s;
-  position: relative;
-  overflow: hidden;
-}
-.funnel-stage::before {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 3px;
-  background: var(--stage-color, var(--k-muted2));
-  transform: scaleX(0);
-  transition: transform 0.2s;
-}
-.funnel-stage:hover::before, .funnel-stage.active::before { transform: scaleX(1); }
-.funnel-stage.active { border-color: var(--stage-color, var(--k-muted2)); background: var(--k-card2); }
-.funnel-stage-name {
   font-size: 11px;
   font-weight: 600;
   color: var(--k-muted);
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  margin-bottom: 8px;
 }
-.funnel-count {
-  font-family: 'Syne', sans-serif;
-  font-size: 28px;
+.metric-sub {
+  font-size: 11px;
+  color: var(--k-muted2);
+  margin-top: 3px;
+}
+
+/* FUNNEL STAGES */
+.funnel-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.stage-card {
+  background: var(--k-card);
+  border: 1px solid var(--k-border);
+  border-radius: var(--radius);
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.stage-card:hover { background: var(--k-card2); border-color: var(--k-border2); transform: translateY(-1px); }
+.stage-card.active {
+  border-color: var(--sc, var(--k-orange));
+  background: var(--k-card2);
+  box-shadow: 0 0 20px rgba(255,91,0,0.08);
+}
+.stage-card-top {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 12px;
+}
+.stage-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--k-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.stage-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--sc, var(--k-muted2));
+}
+.stage-count {
+  font-size: 36px;
   font-weight: 800;
   color: #fff;
+  letter-spacing: -2px;
   line-height: 1;
   margin-bottom: 4px;
 }
-.funnel-amount {
+.stage-amount {
   font-size: 12px;
   color: var(--k-muted);
+  margin-bottom: 10px;
 }
-.funnel-bar-wrap {
-  margin-top: 10px;
+.stage-bar {
   height: 4px;
   background: var(--k-border);
   border-radius: 2px;
   overflow: hidden;
 }
-.funnel-bar-fill {
+.stage-bar-fill {
   height: 100%;
-  background: var(--stage-color, var(--k-muted2));
+  background: var(--sc, var(--k-muted2));
   border-radius: 2px;
-  transition: width 0.6s ease;
+  transition: width 0.7s cubic-bezier(.4,0,.2,1);
 }
 
-/* ── DEAL CARDS ── */
-.deals-list { display: flex; flex-direction: column; gap: 8px; }
+/* SECTION HEADER */
+.sec-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.sec-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.3px;
+}
+.sec-sub {
+  font-size: 12px;
+  color: var(--k-muted);
+  margin-top: 2px;
+}
+
+/* FILTER PILLS */
+.pill-row {
+  display: flex; gap: 6px; flex-wrap: wrap;
+}
+.pill {
+  padding: 5px 12px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  border: 1px solid var(--k-border2);
+  background: var(--k-card);
+  color: var(--k-muted);
+  font-family: 'Inter', sans-serif;
+}
+.pill:hover { color: var(--k-text); border-color: var(--k-muted2); }
+.pill.active { background: var(--k-orange); border-color: var(--k-orange); color: #fff; }
+
+/* SEARCH */
+.search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.search-input {
+  background: var(--k-card);
+  border: 1px solid var(--k-border2);
+  border-radius: 99px;
+  padding: 8px 16px 8px 36px;
+  font-size: 13px;
+  color: var(--k-text);
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  width: 260px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%238A9299' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 16px;
+  background-position: 12px center;
+}
+.search-input:focus {
+  border-color: var(--k-orange);
+  box-shadow: 0 0 0 3px var(--k-orange-soft);
+}
+.search-input::placeholder { color: var(--k-muted2); }
+.result-count { font-size: 12px; color: var(--k-muted); margin-left: auto; }
+
+/* DEAL CARDS */
+.deals-wrap { display: flex; flex-direction: column; gap: 8px; }
 .deal-card {
   background: var(--k-card);
   border: 1px solid var(--k-border);
   border-radius: var(--radius);
   overflow: hidden;
-  transition: border-color 0.15s;
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
 .deal-card:hover { border-color: var(--k-border2); }
-.deal-card.border-danger { border-color: rgba(232,0,29,0.3); }
-.deal-card.border-warn { border-color: rgba(245,158,11,0.3); }
-.deal-card-header {
+.deal-card.warn { border-color: rgba(234,179,8,0.3); }
+.deal-card.danger { border-color: rgba(239,68,68,0.35); }
+.deal-head {
   padding: 14px 16px;
   cursor: pointer;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 12px;
 }
-.deal-urgency-bar {
-  width: 3px;
+.urgency-stripe {
+  width: 4px;
   align-self: stretch;
   border-radius: 2px;
   flex-shrink: 0;
   min-height: 20px;
 }
-.deal-main { flex: 1; min-width: 0; }
+.deal-info { flex: 1; min-width: 0; }
 .deal-name {
-  font-weight: 600;
   font-size: 13px;
+  font-weight: 600;
   color: #fff;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.deal-meta {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  align-items: center;
+.deal-tags {
+  display: flex; gap: 5px; flex-wrap: wrap; align-items: center;
 }
-.badge {
+.tag {
   display: inline-flex;
   align-items: center;
   gap: 3px;
   font-size: 10px;
-  font-weight: 600;
+  font-weight: 700;
   padding: 2px 7px;
   border-radius: 4px;
   white-space: nowrap;
+  letter-spacing: 0.02em;
 }
-.deal-right {
+.deal-end {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 4px;
   flex-shrink: 0;
 }
-.deal-amount {
-  font-family: 'Syne', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
+.deal-amt {
+  font-size: 15px;
+  font-weight: 800;
   color: #fff;
+  letter-spacing: -0.5px;
 }
-.deal-sdr {
-  font-size: 11px;
-  color: var(--k-muted);
-}
-.deal-expand-icon {
+.deal-sdr-name { font-size: 11px; color: var(--k-muted); }
+.chevron {
   color: var(--k-muted2);
-  font-size: 12px;
+  font-size: 11px;
   transition: transform 0.2s;
+  margin-top: 2px;
 }
-.deal-expand-icon.open { transform: rotate(180deg); }
+.chevron.up { transform: rotate(180deg); }
 
-/* ── DEAL DETAIL ── */
-.deal-detail {
+/* DEAL BODY */
+.deal-body {
+  display: none;
   border-top: 1px solid var(--k-border);
   padding: 16px;
-  display: none;
+  animation: slideDown 0.2s ease;
 }
-.deal-detail.open { display: block; }
-.detail-grid {
+.deal-body.open { display: block; }
+@keyframes slideDown {
+  from { opacity:0; transform:translateY(-4px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+.info-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  gap: 10px;
   margin-bottom: 14px;
 }
-.detail-item { }
-.detail-key {
-  font-size: 10px;
-  font-weight: 600;
+.info-item {}
+.info-key {
+  font-size: 9px;
+  font-weight: 700;
   color: var(--k-muted2);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   margin-bottom: 3px;
 }
-.detail-val {
-  font-size: 12px;
-  color: var(--k-text);
-}
-.detail-val.danger { color: #ff6b6b; }
+.info-val { font-size: 12px; color: var(--k-text); }
+.info-val.vencida { color: var(--k-red); }
 
-.ai-panel {
+/* AI BOX */
+.ai-box {
   border-radius: var(--radius-sm);
   padding: 12px 14px;
   margin-bottom: 12px;
 }
-.ai-panel-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.ai-box-head {
+  display: flex; align-items: center; justify-content: space-between;
   margin-bottom: 6px;
 }
-.ai-panel-title {
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
+.ai-box-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; }
+.ai-score-badge {
+  font-size: 11px; font-weight: 800;
+  padding: 2px 9px; border-radius: 99px;
 }
-.ai-score-pill {
-  font-size: 11px;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 99px;
-}
-.ai-razon {
-  font-size: 12px;
-  line-height: 1.5;
-  margin-bottom: 6px;
-}
-.ai-rec {
-  font-size: 11px;
-  line-height: 1.5;
-  font-style: italic;
-}
-.ai-rec::before { content: '→ '; font-weight: 700; }
+.ai-reason { font-size: 12px; line-height: 1.6; margin-bottom: 5px; opacity: .85; }
+.ai-rec { font-size: 11px; line-height: 1.5; font-style: italic; opacity: .7; }
+.ai-rec::before { content: '→ '; font-weight: 800; }
 
-.timeline-panel {
+/* TIMELINE */
+.timeline-box {
   background: var(--k-card2);
   border-radius: var(--radius-sm);
   padding: 12px 14px;
   margin-bottom: 12px;
 }
-.timeline-title {
-  font-size: 10px;
-  font-weight: 700;
+.box-title {
+  font-size: 9px; font-weight: 700;
   color: var(--k-muted2);
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
+  text-transform: uppercase; letter-spacing: 0.09em;
   margin-bottom: 10px;
 }
-.timeline-item {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 8px;
-  font-size: 12px;
-}
-.timeline-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--k-muted2);
-  margin-top: 5px;
-  flex-shrink: 0;
-}
-.timeline-date { color: var(--k-muted); flex-shrink: 0; }
-.timeline-text { color: var(--k-text); line-height: 1.4; }
-.no-activity { font-size: 12px; color: var(--k-muted2); font-style: italic; }
+.tl-item { display: flex; gap: 10px; margin-bottom: 8px; }
+.tl-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--k-orange); margin-top: 5px; flex-shrink: 0; }
+.tl-date { font-size: 11px; color: var(--k-muted); flex-shrink: 0; min-width: 76px; }
+.tl-text { font-size: 12px; color: var(--k-text); line-height: 1.5; }
+.no-act { font-size: 12px; color: var(--k-muted2); font-style: italic; }
 
-.nextstep-panel {
+/* NEXTSTEP */
+.ns-box {
   background: var(--k-card2);
   border-radius: var(--radius-sm);
   padding: 12px 14px;
   margin-bottom: 12px;
 }
-.nextstep-row {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 5px;
-  font-size: 12px;
-}
-.nextstep-key { color: var(--k-muted); min-width: 80px; }
-.nextstep-val { color: var(--k-text); }
+.ns-row { display: flex; gap: 8px; margin-bottom: 5px; font-size: 12px; }
+.ns-key { color: var(--k-muted); min-width: 80px; flex-shrink: 0; }
+.ns-val { color: var(--k-text); }
 
-/* ── AI GESTIÓN VIEW ── */
-.gestion-summary {
+/* ══ GESTIÓN VIEW ══ */
+.gestion-overview {
   background: var(--k-card);
   border: 1px solid var(--k-border);
   border-radius: var(--radius);
   padding: 20px;
   margin-bottom: 20px;
 }
-.gestion-bar-row {
+.stacked-bar {
   display: flex;
-  height: 32px;
-  border-radius: 6px;
+  height: 36px;
+  border-radius: 8px;
   overflow: hidden;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
+  gap: 2px;
 }
-.gestion-bar-seg {
+.sbar-seg {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 11px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 800;
   color: #fff;
-  transition: width 0.6s ease;
+  transition: width 0.7s cubic-bezier(.4,0,.2,1);
+  border-radius: 4px;
 }
 .gestion-legend {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
 }
-.gestion-legend-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-}
-.gestion-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 3px;
-  flex-shrink: 0;
-}
-.gestion-legend-label { color: var(--k-text); }
-.gestion-legend-count { margin-left: auto; font-weight: 600; color: var(--k-muted); }
-.gestion-legend-pct { font-size: 11px; color: var(--k-muted2); }
-
-/* ── SDR RANKING ── */
-.sdr-table {
-  background: var(--k-card);
-  border: 1px solid var(--k-border);
-  border-radius: var(--radius);
-  overflow: hidden;
-}
-.sdr-row {
-  display: grid;
-  grid-template-columns: 28px 1fr 60px 60px 60px 80px 100px;
-  gap: 12px;
-  align-items: center;
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--k-border);
-  transition: background 0.1s;
-}
-.sdr-row:last-child { border-bottom: none; }
-.sdr-row:hover { background: var(--k-card2); }
-.sdr-row.header {
+.gl-item {
+  display: flex; align-items: center; gap: 8px;
   background: var(--k-card2);
-  font-size: 10px;
-  font-weight: 600;
-  color: var(--k-muted2);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  border-radius: 9px;
+  padding: 10px 12px;
 }
-.sdr-rank {
-  font-family: 'Syne', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--k-muted2);
-}
-.sdr-rank.gold { color: #F59E0B; }
-.sdr-rank.silver { color: #94A3B8; }
-.sdr-rank.bronze { color: #CD7C32; }
-.sdr-name { font-size: 13px; font-weight: 500; color: var(--k-text); }
-.sdr-num {
-  font-size: 13px;
-  text-align: center;
-  color: var(--k-text);
-}
-.sdr-pipeline {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--k-text);
-  text-align: right;
-}
-.sdr-score-bar {
-  height: 6px;
-  background: var(--k-border);
-  border-radius: 3px;
-  overflow: hidden;
-}
-.sdr-score-fill {
-  height: 100%;
-  border-radius: 3px;
-  background: var(--k-green);
-  transition: width 0.6s ease;
-}
+.gl-dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+.gl-info {}
+.gl-name { font-size: 11px; font-weight: 600; color: var(--k-text); }
+.gl-stats { font-size: 13px; font-weight: 800; margin-top: 1px; }
 
-/* ── CLOSED DEALS ── */
-.closed-summary {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-bottom: 20px;
-}
-.closed-card {
-  background: var(--k-card);
-  border: 1px solid var(--k-border);
-  border-radius: var(--radius);
-  padding: 16px;
-  text-align: center;
-}
-.closed-icon { font-size: 24px; margin-bottom: 8px; }
-.closed-count {
-  font-family: 'Syne', sans-serif;
-  font-size: 32px;
-  font-weight: 800;
-  margin-bottom: 4px;
-}
-.closed-label { font-size: 12px; color: var(--k-muted); }
-
-/* ── TABS ── */
+/* TABS */
 .tab-bar {
   display: flex;
   border-bottom: 1px solid var(--k-border);
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   overflow-x: auto;
+  gap: 0;
 }
-.tab-item {
-  padding: 10px 16px;
-  font-size: 13px;
+.tab {
+  padding: 9px 16px;
+  font-size: 12px;
+  font-weight: 500;
   color: var(--k-muted);
   cursor: pointer;
   border-bottom: 2px solid transparent;
   margin-bottom: -1px;
   white-space: nowrap;
   transition: all 0.15s;
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 500;
   background: none;
-  border-top: none;
-  border-left: none;
-  border-right: none;
+  border-top: none; border-left: none; border-right: none;
+  font-family: 'Inter', sans-serif;
 }
-.tab-item:hover { color: var(--k-text); }
-.tab-item.active { color: var(--k-red); border-bottom-color: var(--k-red); font-weight: 600; }
+.tab:hover { color: var(--k-text); }
+.tab.active { color: var(--k-orange); border-bottom-color: var(--k-orange); font-weight: 700; }
 
-/* ── ALERTS ── */
-.alert-row {
-  background: var(--k-danger-bg);
-  border: 1px solid rgba(232,0,29,0.25);
-  border-radius: var(--radius-sm);
-  padding: 8px 12px;
-  font-size: 12px;
-  color: #ff8080;
-  margin-bottom: 12px;
+/* ══ SDR RANKING ══ */
+.sdr-table {
+  background: var(--k-card);
+  border: 1px solid var(--k-border);
+  border-radius: var(--radius);
+  overflow: hidden;
 }
-
-/* ── EMPTY ── */
-.empty-state {
+.sdr-head, .sdr-row-item {
+  display: grid;
+  grid-template-columns: 36px 1fr 70px 70px 70px 90px 110px;
+  gap: 12px;
+  align-items: center;
+  padding: 11px 18px;
+  border-bottom: 1px solid var(--k-border);
+}
+.sdr-head {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--k-muted2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--k-card2);
+}
+.sdr-row-item:last-child { border-bottom: none; }
+.sdr-row-item:hover { background: var(--k-card2); }
+.sdr-rank-num {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--k-muted2);
   text-align: center;
-  padding: 48px 20px;
-  color: var(--k-muted);
 }
-.empty-icon { font-size: 32px; margin-bottom: 12px; }
+.gold { color: #F59E0B !important; }
+.silver { color: #94A3B8 !important; }
+.bronze { color: #CD7C32 !important; }
+.sdr-name-cell { font-size: 13px; font-weight: 500; }
+.sdr-num-cell { font-size: 13px; text-align: center; }
+.sdr-money { font-size: 13px; font-weight: 700; text-align: right; }
+.score-bar-wrap {
+  display: flex; align-items: center; gap: 7px;
+}
+.score-bar {
+  flex: 1; height: 6px;
+  background: var(--k-border);
+  border-radius: 3px; overflow: hidden;
+}
+.score-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.7s cubic-bezier(.4,0,.2,1);
+}
+.score-val { font-size: 11px; font-weight: 700; min-width: 26px; }
+
+/* ══ CERRADAS ══ */
+.closed-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 22px;
+}
+.closed-card {
+  background: var(--k-card);
+  border: 1px solid var(--k-border);
+  border-radius: var(--radius);
+  padding: 20px;
+  text-align: center;
+  transition: border-color 0.2s;
+}
+.closed-card:hover { border-color: var(--k-border2); }
+.closed-icon { font-size: 28px; margin-bottom: 10px; }
+.closed-big {
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -2px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.closed-sub { font-size: 12px; color: var(--k-muted); }
+
+/* EMPTY */
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--k-muted2);
+}
+.empty-icon { font-size: 36px; margin-bottom: 12px; }
 .empty-text { font-size: 13px; }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="header">
-  <div class="header-logo">
-    <div class="logo-mark">K</div>
-    <div>
-      <div class="header-title">Kruger — Pipeline MKT</div>
-      <div class="header-sub" id="headerSub">Sin datos cargados</div>
+<!-- LOGIN -->
+<div id="loginScreen">
+  <div class="login-bg"></div>
+  <div class="login-grid"></div>
+  <div class="login-card">
+    <div class="login-logo">
+      <img src="https://res.cloudinary.com/dwcqgcl0m/image/upload/q_auto/f_auto/v1776721583/krugercorp_logo_ly65c3.jpg" alt="Kruger">
+      <div class="login-logo-text"><span>Kruger</span> Corp</div>
     </div>
+    <div class="login-title">Pipeline MKT — Acceso</div>
+    <div class="login-sub">Ingresa tus credenciales para continuar</div>
+    <div class="login-field">
+      <label class="login-label">Usuario</label>
+      <input class="login-input" id="loginUser" type="text" placeholder="Usuario" autocomplete="username" onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <div class="login-field">
+      <label class="login-label">Contraseña</label>
+      <input class="login-input" id="loginPass" type="password" placeholder="Contraseña" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <button class="login-btn" onclick="doLogin()">Ingresar al dashboard →</button>
+    <div class="login-error" id="loginError">Usuario o contraseña incorrectos</div>
+    <div class="login-footer">© 2026 Kruger Corporation · Uso interno</div>
   </div>
-  <div class="header-right">
-    <div class="status-dot" id="statusDot"></div>
-    <button class="btn-secondary" id="btnReset" style="display:none" onclick="resetDashboard()">↺ Nuevo</button>
-    <button class="btn-load" onclick="loadFromEndpoint()">⟳ Cargar CRM</button>
-  </div>
-</header>
-
-<!-- LOADING -->
-<div class="loading-overlay" id="loadingOverlay" style="display:none">
-  <div class="spinner"></div>
-  <div class="loading-text">Cargando datos desde NetHunt...</div>
 </div>
 
-<!-- LANDING -->
-<div id="landing">
-  <div class="landing-card">
-    <div class="landing-icon">📊</div>
-    <div class="landing-title">Pipeline MKT — Kruger Corp</div>
-    <div class="landing-desc">Dashboard enriquecido con análisis de IA. Carga los datos desde el CRM o usa datos de demo para explorar.</div>
-    <div class="landing-actions">
-      <button class="btn-primary-lg" onclick="loadFromEndpoint()">
-        <span>⟳</span> Cargar desde CRM
-      </button>
-      <button class="btn-ghost-lg" onclick="loadDemo()">Ver demo</button>
-    </div>
-    <div class="error-msg" id="errorMsg" style="display:none"></div>
-  </div>
+<!-- LOADING -->
+<div id="loadingOverlay">
+  <div class="spinner"></div>
+  <div class="load-text" id="loadText">Conectando con NetHunt CRM...</div>
 </div>
 
 <!-- APP -->
 <div id="app">
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-logo">
+      <img src="https://res.cloudinary.com/dwcqgcl0m/image/upload/q_auto/f_auto/v1776721583/krugercorp_logo_ly65c3.jpg" alt="Kruger">
+      <div class="header-brand"><span>Kruger</span> Pipeline MKT</div>
+    </div>
+    <div class="header-divider"></div>
+    <div class="header-info" id="headerInfo">—</div>
+    <div class="header-right">
+      <div class="live-badge" id="liveBadge" style="display:none">
+        <div class="live-dot"></div> En vivo
+      </div>
+      <button class="btn-sm btn-ghost" onclick="resetApp()">↺ Salir</button>
+      <button class="btn-sm btn-orange" onclick="loadCRM()">⟳ Cargar CRM</button>
+      <div class="user-chip"><div class="user-avatar">S</div>SDRAdmin</div>
+    </div>
+  </header>
+
   <div class="app-body">
     <!-- SIDEBAR -->
     <nav class="sidebar">
-      <div class="sidebar-section">
-        <div class="sidebar-label">Vistas</div>
-        <button class="nav-item active" onclick="setView('pipeline')" id="nav-pipeline">
+      <div>
+        <div class="sidebar-section-title">Vistas</div>
+        <button class="nav-btn active" id="nav-pipeline" onclick="setView('pipeline')">
           <span class="nav-icon">📊</span> Pipeline
-          <span class="nav-badge" id="badge-pipeline">0</span>
+          <span class="nav-count" id="cnt-pipeline">0</span>
         </button>
-        <button class="nav-item" onclick="setView('gestion')" id="nav-gestion">
+        <button class="nav-btn" id="nav-gestion" onclick="setView('gestion')">
           <span class="nav-icon">🤖</span> Gestión IA
-          <span class="nav-badge" id="badge-gestion">0</span>
+          <span class="nav-count" id="cnt-gestion">0</span>
         </button>
-        <button class="nav-item" onclick="setView('sdrs')" id="nav-sdrs">
-          <span class="nav-icon">👤</span> Ranking SDR
-          <span class="nav-badge" id="badge-sdrs">0</span>
+        <button class="nav-btn" id="nav-sdrs" onclick="setView('sdrs')">
+          <span class="nav-icon">🏆</span> Ranking SDR
+          <span class="nav-count" id="cnt-sdrs">0</span>
         </button>
-        <button class="nav-item" onclick="setView('cerradas')" id="nav-cerradas">
+        <button class="nav-btn" id="nav-cerradas" onclick="setView('cerradas')">
           <span class="nav-icon">📁</span> Cerradas
-          <span class="nav-badge" id="badge-cerradas">0</span>
+          <span class="nav-count" id="cnt-cerradas">0</span>
         </button>
       </div>
-      <div class="sidebar-section">
-        <div class="sidebar-label">Filtros</div>
-        <div style="padding:0 4px">
-          <div style="font-size:10px;color:var(--k-muted2);margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em">SDR</div>
-          <select class="select-filter" style="width:100%;margin-bottom:10px" id="sdrFilter" onchange="renderCurrentView()">
+      <div>
+        <div class="sidebar-section-title">Filtros</div>
+        <div class="filter-group">
+          <label class="filter-label">SDR</label>
+          <select class="filter-select" id="fSDR" onchange="renderView()">
             <option value="all">Todos</option>
           </select>
-          <div style="font-size:10px;color:var(--k-muted2);margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em">Creador</div>
-          <select class="select-filter" style="width:100%;margin-bottom:10px" id="creadorFilter" onchange="renderCurrentView()">
+          <label class="filter-label">Creador</label>
+          <select class="filter-select" id="fCreador" onchange="renderView()">
             <option value="all">Todos</option>
           </select>
-          <div style="font-size:10px;color:var(--k-muted2);margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em">Línea</div>
-          <select class="select-filter" style="width:100%" id="lineaFilter" onchange="renderCurrentView()">
+          <label class="filter-label">Línea de negocio</label>
+          <select class="filter-select" id="fLinea" onchange="renderView()">
             <option value="all">Todas</option>
           </select>
         </div>
       </div>
     </nav>
 
-    <!-- CONTENT -->
-    <main class="content">
-      <!-- SEARCH -->
-      <div style="margin-bottom:20px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-        <input class="search-box" type="text" placeholder="🔍  Buscar empresa, nombre..." id="searchBox" oninput="renderCurrentView()">
-        <div style="margin-left:auto;font-size:12px;color:var(--k-muted)" id="resultCount"></div>
-      </div>
-
-      <!-- VIEWS -->
-      <div id="view-pipeline"></div>
-      <div id="view-gestion" style="display:none"></div>
-      <div id="view-sdrs" style="display:none"></div>
-      <div id="view-cerradas" style="display:none"></div>
+    <!-- MAIN -->
+    <main class="main" id="mainContent">
+      <div class="empty"><div class="empty-icon">📊</div><div class="empty-text">Carga los datos desde el CRM para comenzar</div></div>
     </main>
   </div>
 </div>
 
 <script>
-// ── CONSTANTS ──
+// ═══════════════════════════════════════
+//   CONFIG & STATE
+// ═══════════════════════════════════════
 const ENDPOINT = "https://script.google.com/macros/s/AKfycbxZ7zcj9Zw1B24ICzVhT0N_CbTUq-9gRl-OGfVt16nzDeYIS8LF_w8IsjNDZZcPE7wqxA/exec";
+const CREDS = { user: "SDRAdmin", pass: "AdminSDR12345" };
 
-const STAGE_CFG = {
-  "nuevo":           { label:"Nuevo",       color:"#64748B", order:0 },
-  "prefactibilidad": { label:"Pre Fact.",    color:"#F59E0B", order:1 },
-  "cotizacion":      { label:"Cotización",   color:"#3B82F6", order:2 },
-  "negociacion":     { label:"Negociación",  color:"#8B5CF6", order:3 },
-  "ganado":          { label:"Ganado",       color:"#10B981", order:4 },
-  "perdido":         { label:"Perdido",      color:"#6B7280", order:5 },
-  "cancelada":       { label:"Cancelada",    color:"#4B5563", order:6 },
-};
-
-const AI_CFG = {
-  "gestionada": { label:"Bien gestionada", color:"#10B981", bg:"rgba(16,185,129,0.12)", emoji:"✅" },
-  "parcial":    { label:"Gestión parcial", color:"#F59E0B", bg:"rgba(245,158,11,0.12)",  emoji:"🟡" },
-  "debil":      { label:"Gestión débil",   color:"#F97316", bg:"rgba(249,115,22,0.12)",  emoji:"🔴" },
-  "muerta":     { label:"Sin gestión",     color:"#E8001D", bg:"rgba(232,0,29,0.12)",    emoji:"💀" },
-};
-
-const SDR_NAMES = {
-  svalenzuela:"S. Valenzuela", fescobar:"F. Escobar", mguevara:"M. Guevara",
-  mreyes:"M. Reyes", lramirez:"L. Ramírez", vlema:"V. Lema",
-  ajimenez:"A. Jiménez", mroman:"M. Román", maviles:"M. Avilés",
-  jmonge:"J. Monge", crodriguez:"C. Rodríguez", cmarquez:"C. Márquez",
-  svalencia:"S. Valencia", cborja:"C. Borja", cviteri:"C. Viteri",
-  fcarvajal:"F. Carvajal", eapunte:"E. Apunte", ksisalema:"K. Sisalema"
-};
-
-// ── STATE ──
-let allDeals = [];
+let deals = [];
 let currentView = "pipeline";
-let expandedDeals = new Set();
+let expandedSet = new Set();
+let stageFilter = "all";
+let gestionFilter = "all";
+let cerradaFilter = "all";
 
-// ── HELPERS ──
-const shortEmail = e => {
-  if (!e) return "Sin asignar";
+// ═══════════════════════════════════════
+//   BRAND / CONFIG
+// ═══════════════════════════════════════
+const STAGES = {
+  nuevo:           { label:"Nuevo",      color:"#64748B", order:0 },
+  prefactibilidad: { label:"Pre Fact.",  color:"#EAB308", order:1 },
+  cotizacion:      { label:"Cotización", color:"#3B82F6", order:2 },
+  negociacion:     { label:"Negociación",color:"#8B5CF6", order:3 },
+  ganado:          { label:"Ganado",     color:"#22C55E", order:4 },
+  perdido:         { label:"Perdido",    color:"#6B7280", order:5 },
+  cancelada:       { label:"Cancelada",  color:"#4B5563", order:6 },
+};
+const AI = {
+  gestionada: { label:"Bien gestionada", color:"#22C55E", bg:"rgba(34,197,94,0.12)",  emoji:"✅" },
+  parcial:    { label:"Gestión parcial", color:"#EAB308", bg:"rgba(234,179,8,0.12)",   emoji:"🟡" },
+  debil:      { label:"Gestión débil",   color:"#FF5B00", bg:"rgba(255,91,0,0.12)",    emoji:"🔴" },
+  muerta:     { label:"Sin gestión",     color:"#EF4444", bg:"rgba(239,68,68,0.12)",   emoji:"💀" },
+};
+const SDR_NAMES = {
+  svalenzuela:"S. Valenzuela",fescobar:"F. Escobar",mguevara:"M. Guevara",
+  mreyes:"M. Reyes",lramirez:"L. Ramírez",vlema:"V. Lema",
+  ajimenez:"A. Jiménez",mroman:"M. Román",maviles:"M. Avilés",
+  jmonge:"J. Monge",crodriguez:"C. Rodríguez",cmarquez:"C. Márquez",
+  svalencia:"S. Valencia",cborja:"C. Borja",cviteri:"C. Viteri",
+  fcarvajal:"F. Carvajal",eapunte:"E. Apunte",ksisalema:"K. Sisalema"
+};
+
+// ═══════════════════════════════════════
+//   HELPERS
+// ═══════════════════════════════════════
+const shortName = e => {
+  if (!e) return "—";
   const u = String(e).split("@")[0].replace(/,.*/, "").trim();
   return SDR_NAMES[u] || u;
 };
-const fmtMoney = v => {
-  const n = parseFloat(String(v).replace(/,/g, "")) || 0;
-  if (n >= 1000000) return "$" + (n/1000000).toFixed(1) + "M";
-  if (n >= 1000) return "$" + (n/1000).toFixed(0) + "k";
+const fmtM = v => {
+  const n = parseFloat(String(v).replace(/,/g,"")) || 0;
+  if (n >= 1000000) return "$" + (n/1e6).toFixed(1) + "M";
+  if (n >= 1000) return "$" + Math.round(n/1000) + "k";
   return "$" + n.toLocaleString("es-EC");
 };
-const daysSince = d => {
+const daysAgo = d => {
   if (!d) return null;
   const x = new Date(d);
-  if (isNaN(x)) return null;
-  return Math.floor((Date.now() - x) / 86400000);
+  return isNaN(x) ? null : Math.floor((Date.now()-x)/86400000);
 };
+const stripHtml = t => String(t||"").replace(/<[^>]*>/g,"").replace(/&nbsp;/g," ").trim();
 const parseStage = s => {
-  if (!s) return { cat:"nuevo", label:"Nuevo", pct:0 };
-  const lo = String(s).toLowerCase();
-  if (lo.includes("ganado") || lo.includes("100%")) return { cat:"ganado", label:"Ganado", pct:100 };
-  if (lo.includes("perdido")) return { cat:"perdido", label:"Perdido", pct:0 };
-  if (lo.includes("cancelad")) return { cat:"cancelada", label:"Cancelada", pct:0 };
-  if (lo.includes("negoci") || lo.includes("75%")) return { cat:"negociacion", label:"Negociación", pct:75 };
-  if (lo.includes("cotizac") || lo.includes("50%")) return { cat:"cotizacion", label:"Cotización", pct:50 };
-  if (lo.includes("pre fact") || lo.includes("25%")) return { cat:"prefactibilidad", label:"Pre Fact.", pct:25 };
-  return { cat:"nuevo", label:"Nuevo", pct:0 };
+  const lo = String(s||"").toLowerCase();
+  if (lo.includes("ganado")||lo.includes("100%")) return "ganado";
+  if (lo.includes("perdido")) return "perdido";
+  if (lo.includes("cancelad")) return "cancelada";
+  if (lo.includes("negoci")||lo.includes("75%")) return "negociacion";
+  if (lo.includes("cotizac")||lo.includes("50%")) return "cotizacion";
+  if (lo.includes("pre fact")||lo.includes("25%")) return "prefactibilidad";
+  return "nuevo";
 };
-const parseNextStep = txt => {
+const parseNS = txt => {
   if (!txt) return null;
-  const clean = String(txt).replace(/\r/g, "");
+  const clean = String(txt).replace(/\r/g,"");
   const r = {};
-  const pats = [
-    [/¿?Qu[eé] har[eé]\??:?\s*/i, "accion"],
-    [/¿?Con qui[eé]n\??:?\s*/i, "contacto"],
-    [/¿?Cu[aá]ndo\??:?\s*/i, "cuando"],
-    [/Hasta eso ¿?qu[eé] har[eé]\??:?\s*/i, "mientras"]
-  ];
-  const parts = [];
-  for (const [rx, key] of pats) {
-    const idx = clean.search(rx);
-    if (idx !== -1) parts.push({key, idx});
+  const pats = [[/¿?Qu[eé] har[eé]\??:?\s*/i,"a"],[/¿?Con qui[eé]n\??:?\s*/i,"b"],[/¿?Cu[aá]ndo\??:?\s*/i,"c"],[/Hasta eso ¿?qu[eé] har[eé]\??:?\s*/i,"d"]];
+  const pts = [];
+  for (const [rx,k] of pats) { const i=clean.search(rx); if(i!==-1) pts.push({k,i}); }
+  pts.sort((a,b)=>a.i-b.i);
+  for (let i=0;i<pts.length;i++) {
+    const s=clean.indexOf(":",pts[i].i)+1, e=i<pts.length-1?pts[i+1].i:clean.length;
+    const v=clean.substring(s,e).trim().replace(/\n+/g," ");
+    if(v&&v.length>0) r[pts[i].k]=v;
   }
-  parts.sort((a,b) => a.idx - b.idx);
-  for (let i = 0; i < parts.length; i++) {
-    const start = clean.indexOf(":", parts[i].idx) + 1;
-    const end = i < parts.length-1 ? parts[i+1].idx : clean.length;
-    const val = clean.substring(start, end).trim().replace(/\n+/g," ");
-    if (val && val.trim().length > 0) r[parts[i].key] = val;
-  }
-  if (!Object.keys(r).length) {
-    const t = clean.trim().replace(/\n+/g," ");
-    return t.length > 3 ? {accion:t} : null;
-  }
+  if(!Object.keys(r).length){const t=clean.trim().replace(/\n+/g," ");return t.length>3?{a:t}:null;}
   return r;
 };
-const stripHtml = t => String(t || "").replace(/<[^>]*>/g,"").replace(/&nbsp;/g," ").trim();
-const urgencyColor = u => {
-  if (u >= 8) return "var(--k-red)";
-  if (u >= 6) return "var(--k-orange)";
-  if (u >= 4) return "var(--k-yellow)";
-  return "var(--k-green)";
-};
-const calcUrgency = deal => {
-  const stg = parseStage(deal.Etapa || deal.stage || "");
-  const terminal = ["ganado","perdido","cancelada"].includes(stg.cat);
-  if (terminal) return 0;
-  const inactive = daysSince(deal._last_activity || deal.updated_at || deal.created_at) || 0;
+const urgencyOf = d => {
+  const cat = d._stageCat;
+  if(["ganado","perdido","cancelada"].includes(cat)) return 0;
+  const inactive = daysAgo(d._lastAct) || 0;
   let u = 3;
-  if (inactive > 30) u += 4;
-  else if (inactive > 21) u += 3;
-  else if (inactive > 14) u += 2;
-  else if (inactive > 7) u += 1;
-  if (stg.cat === "negociacion") u += 3;
-  else if (stg.cat === "cotizacion") u += 2;
-  else if (stg.cat === "prefactibilidad") u += 1;
-  const monto = parseFloat(String(deal.Monto||deal.monto||0).replace(/,/g,"")) || 0;
-  if (monto >= 100000) u += 2;
-  else if (monto >= 50000) u += 1;
-  const aiClasif = String(deal.ai_clasificacion||"").toLowerCase();
-  if (aiClasif === "muerta") u += 2;
-  else if (aiClasif === "debil") u += 1;
-  const fc = deal["Fecha de cierre"] || deal.fecha_cierre || "";
-  if (fc && daysSince(fc) > 0) u += 1;
-  return Math.max(1, Math.min(10, u));
+  if(inactive>30) u+=4; else if(inactive>21) u+=3; else if(inactive>14) u+=2; else if(inactive>7) u+=1;
+  if(cat==="negociacion") u+=3; else if(cat==="cotizacion") u+=2; else if(cat==="prefactibilidad") u+=1;
+  const m = d._monto;
+  if(m>=100000) u+=2; else if(m>=50000) u+=1;
+  const ai = String(d.ai_clasificacion||"").toLowerCase();
+  if(ai==="muerta") u+=2; else if(ai==="debil") u+=1;
+  const fc = d["Fecha de cierre"]||d.fecha_cierre||"";
+  if(fc && daysAgo(fc)>0) u+=1;
+  return Math.max(1,Math.min(10,u));
 };
+const urgColor = u => u>=8?"#EF4444":u>=6?"#FF5B00":u>=4?"#EAB308":"#22C55E";
 
-// ── DATA LOADING ──
-async function loadFromEndpoint() {
-  showLoading(true);
-  try {
-    const res = await fetch(ENDPOINT);
-    const data = await res.json();
-    if (data.error) throw new Error(data.error);
-    processData(data);
-  } catch(e) {
-    showLoading(false);
-    showError("Error al conectar con el CRM: " + e.message);
+// ═══════════════════════════════════════
+//   AUTH
+// ═══════════════════════════════════════
+function doLogin() {
+  const u = document.getElementById("loginUser").value.trim();
+  const p = document.getElementById("loginPass").value;
+  if (u === CREDS.user && p === CREDS.pass) {
+    document.getElementById("loginScreen").style.cssText = "animation:fadeOut .4s ease forwards;pointer-events:none";
+    setTimeout(() => {
+      document.getElementById("loginScreen").style.display = "none";
+      document.getElementById("app").style.display = "flex";
+    }, 400);
+    document.getElementById("loginError").style.display = "none";
+  } else {
+    const err = document.getElementById("loginError");
+    err.style.display = "block";
+    document.getElementById("loginPass").value = "";
+    document.getElementById("loginPass").focus();
+    err.style.animation = "none";
+    setTimeout(() => err.style.animation = "", 10);
   }
 }
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("loginUser").focus();
+});
 
-function loadDemo() {
-  // Use minimal demo data
-  processData(DEMO_DATA);
+// ═══════════════════════════════════════
+//   DATA
+// ═══════════════════════════════════════
+async function loadCRM() {
+  showLoad(true, "Conectando con NetHunt CRM...");
+  try {
+    setTimeout(() => setLoadText("Procesando datos de IA..."), 1500);
+    const res = await fetch(ENDPOINT);
+    const raw = await res.json();
+    if (raw.error) throw new Error(raw.error);
+    processData(raw);
+  } catch(e) {
+    showLoad(false);
+    alert("Error al cargar: " + e.message);
+  }
 }
-
 function processData(raw) {
-  allDeals = raw.map(d => ({
-    ...d,
-    _stage: parseStage(d.Etapa || d.stage || ""),
-    _urgency: 0,
-    _monto: parseFloat(String(d.Monto || d.monto || 0).replace(/,/g,"")) || 0,
-    _sdr: d.SDR || d.sdr || "",
-    _ns: parseNextStep(d["Next Step"] || d.next_step || ""),
-    _last_activity: d._last_real_activity || d.updated_at || d.created_at || null,
-  }));
-  allDeals.forEach(d => d._urgency = calcUrgency(d));
-
+  deals = raw.map(d => {
+    const cat = parseStage(d.Etapa||d.stage||"");
+    const monto = parseFloat(String(d.Monto||d.monto||0).replace(/,/g,""))||0;
+    const lastAct = d._last_real_activity||d.updated_at||d.created_at||null;
+    return {...d, _stageCat:cat, _monto:monto, _lastAct:lastAct,
+      _ns:parseNS(d["Next Step"]||d.next_step||""),
+      _sdrClean:String(d.SDR||d.sdr||"").split(",")[0].trim()
+    };
+  });
+  deals.forEach(d => d._urgency = urgencyOf(d));
   populateFilters();
-  updateBadges();
-
-  document.getElementById("landing").style.display = "none";
-  document.getElementById("app").style.display = "block";
-  document.getElementById("btnReset").style.display = "";
-  document.getElementById("statusDot").classList.add("live");
-
-  const now = new Date().toLocaleDateString("es-EC", {day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
-  document.getElementById("headerSub").textContent = `${allDeals.length} oportunidades · Actualizado ${now}`;
-
-  showLoading(false);
+  updateCounts();
+  const now = new Date().toLocaleDateString("es-EC",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
+  document.getElementById("headerInfo").innerHTML = `<strong>${deals.length}</strong> oportunidades · Actualizado ${now}`;
+  document.getElementById("liveBadge").style.display = "flex";
+  showLoad(false);
   setView("pipeline");
 }
-
-function resetDashboard() {
-  allDeals = [];
-  expandedDeals.clear();
-  document.getElementById("app").style.display = "none";
-  document.getElementById("landing").style.display = "flex";
-  document.getElementById("btnReset").style.display = "none";
-  document.getElementById("statusDot").classList.remove("live");
-  document.getElementById("headerSub").textContent = "Sin datos cargados";
+function resetApp() {
+  deals = [];
+  expandedSet.clear();
+  document.getElementById("headerInfo").textContent = "—";
+  document.getElementById("liveBadge").style.display = "none";
+  document.getElementById("mainContent").innerHTML = '<div class="empty"><div class="empty-icon">📊</div><div class="empty-text">Carga los datos desde el CRM para comenzar</div></div>';
 }
-
-function showLoading(v) {
-  document.getElementById("loadingOverlay").style.display = v ? "flex" : "none";
+function showLoad(v, txt) {
+  document.getElementById("loadingOverlay").style.display = v?"flex":"none";
+  if(txt) setLoadText(txt);
 }
-function showError(msg) {
-  const el = document.getElementById("errorMsg");
-  el.textContent = msg;
-  el.style.display = msg ? "block" : "none";
-}
+function setLoadText(t) { document.getElementById("loadText").textContent = t; }
 
-// ── FILTERS ──
+// ═══════════════════════════════════════
+//   FILTERS
+// ═══════════════════════════════════════
 function populateFilters() {
-  const active = allDeals.filter(d => !["ganado","perdido","cancelada"].includes(d._stage.cat));
-  const sdrs = [...new Set(active.map(d => String(d._sdr).split(",")[0].trim()).filter(Boolean))].sort();
-  const creadores = [...new Set(active.map(d => d.Creador || d.creador || "").filter(Boolean))].sort();
-  const lineas = [...new Set(active.map(d => {
-    const l = d["Linea de Negocio"] || d.linea_negocio || "";
-    return l.split("/")[0].trim();
-  }).filter(Boolean))].sort();
-
-  const sdrSel = document.getElementById("sdrFilter");
-  sdrSel.innerHTML = '<option value="all">Todos</option>';
-  sdrs.forEach(s => {
-    const o = document.createElement("option");
-    o.value = s; o.textContent = shortEmail(s);
-    sdrSel.appendChild(o);
-  });
-
-  const crSel = document.getElementById("creadorFilter");
-  crSel.innerHTML = '<option value="all">Todos</option>';
-  creadores.forEach(c => {
-    const o = document.createElement("option");
-    o.value = c; o.textContent = shortEmail(c);
-    crSel.appendChild(o);
-  });
-
-  const lnSel = document.getElementById("lineaFilter");
-  lnSel.innerHTML = '<option value="all">Todas</option>';
-  lineas.forEach(l => {
-    const o = document.createElement("option");
-    o.value = l; o.textContent = l;
-    lnSel.appendChild(o);
-  });
+  const active = deals.filter(d=>!["ganado","perdido","cancelada"].includes(d._stageCat));
+  const sdrs = [...new Set(active.map(d=>d._sdrClean).filter(Boolean))].sort();
+  const creadores = [...new Set(active.map(d=>d.Creador||d.creador||"").filter(Boolean))].sort();
+  const lineas = [...new Set(active.map(d=>(d["Linea de Negocio"]||d.linea_negocio||"").split("/")[0].trim()).filter(Boolean))].sort();
+  fillSelect("fSDR", sdrs, shortName);
+  fillSelect("fCreador", creadores, shortName);
+  fillSelect("fLinea", lineas, x=>x);
 }
-
-function getFiltered(includeTerminal=false) {
-  const sdr = document.getElementById("sdrFilter").value;
-  const creador = document.getElementById("creadorFilter").value;
-  const linea = document.getElementById("lineaFilter").value;
-  const q = document.getElementById("searchBox").value.toLowerCase().trim();
-
-  return allDeals.filter(d => {
-    const isTerminal = ["ganado","perdido","cancelada"].includes(d._stage.cat);
-    if (!includeTerminal && isTerminal) return false;
-    if (includeTerminal && !isTerminal) return false;
-    if (sdr !== "all" && !String(d._sdr).includes(sdr.split("@")[0])) return false;
-    if (creador !== "all" && (d.Creador||d.creador||"") !== creador) return false;
-    if (linea !== "all") {
-      const l = (d["Linea de Negocio"]||d.linea_negocio||"").split("/")[0].trim();
-      if (l !== linea) return false;
-    }
-    if (q) {
-      const name = String(d.Name||d.name||"").toLowerCase();
-      const comp = String(d.Compañia||d.company||"").toLowerCase();
-      const sdrN = shortEmail(d._sdr).toLowerCase();
-      if (!name.includes(q) && !comp.includes(q) && !sdrN.includes(q)) return false;
+function fillSelect(id, arr, fmt) {
+  const el = document.getElementById(id);
+  el.innerHTML = '<option value="all">Todos</option>';
+  arr.forEach(v => { const o=document.createElement("option"); o.value=v; o.textContent=fmt(v); el.appendChild(o); });
+}
+function getFiltered(terminal=false) {
+  const sdr = document.getElementById("fSDR").value;
+  const cr = document.getElementById("fCreador").value;
+  const ln = document.getElementById("fLinea").value;
+  const q = document.getElementById("searchInput")?.value?.toLowerCase()?.trim()||"";
+  return deals.filter(d => {
+    const isTerm = ["ganado","perdido","cancelada"].includes(d._stageCat);
+    if(terminal !== isTerm) return false;
+    if(sdr!=="all" && !d._sdrClean.includes(sdr.split("@")[0])) return false;
+    if(cr!=="all" && (d.Creador||d.creador||"")!==cr) return false;
+    if(ln!=="all" && (d["Linea de Negocio"]||d.linea_negocio||"").split("/")[0].trim()!==ln) return false;
+    if(q) {
+      const name=String(d.Name||d.name||"").toLowerCase();
+      const comp=String(d.Compañia||d.company||"").toLowerCase();
+      if(!name.includes(q)&&!comp.includes(q)&&!shortName(d._sdrClean).toLowerCase().includes(q)) return false;
     }
     return true;
   });
 }
-
-function updateBadges() {
-  const active = allDeals.filter(d => !["ganado","perdido","cancelada"].includes(d._stage.cat));
-  const terminal = allDeals.filter(d => ["ganado","perdido","cancelada"].includes(d._stage.cat));
-  const sdrs = [...new Set(active.map(d => String(d._sdr).split(",")[0].trim()).filter(Boolean))];
-  document.getElementById("badge-pipeline").textContent = active.length;
-  document.getElementById("badge-gestion").textContent = active.length;
-  document.getElementById("badge-sdrs").textContent = sdrs.length;
-  document.getElementById("badge-cerradas").textContent = terminal.length;
+function updateCounts() {
+  const act = deals.filter(d=>!["ganado","perdido","cancelada"].includes(d._stageCat));
+  const term = deals.filter(d=>["ganado","perdido","cancelada"].includes(d._stageCat));
+  const sdrs = [...new Set(act.map(d=>d._sdrClean).filter(Boolean))];
+  document.getElementById("cnt-pipeline").textContent = act.length;
+  document.getElementById("cnt-gestion").textContent = act.length;
+  document.getElementById("cnt-sdrs").textContent = sdrs.length;
+  document.getElementById("cnt-cerradas").textContent = term.length;
 }
 
-// ── VIEW ROUTER ──
+// ═══════════════════════════════════════
+//   VIEW ROUTER
+// ═══════════════════════════════════════
 function setView(v) {
   currentView = v;
-  ["pipeline","gestion","sdrs","cerradas"].forEach(name => {
-    document.getElementById("view-" + name).style.display = name === v ? "block" : "none";
-    document.getElementById("nav-" + name).classList.toggle("active", name === v);
+  ["pipeline","gestion","sdrs","cerradas"].forEach(n => {
+    document.getElementById("nav-"+n).classList.toggle("active", n===v);
   });
-  renderCurrentView();
+  renderView();
 }
-function renderCurrentView() {
-  if (currentView === "pipeline") renderPipeline();
-  else if (currentView === "gestion") renderGestion();
-  else if (currentView === "sdrs") renderSDRs();
-  else if (currentView === "cerradas") renderCerradas();
+function renderView() {
+  if(!deals.length) return;
+  if(currentView==="pipeline") renderPipeline();
+  else if(currentView==="gestion") renderGestion();
+  else if(currentView==="sdrs") renderSDRs();
+  else if(currentView==="cerradas") renderCerradas();
 }
 
-// ── PIPELINE VIEW ──
+// ═══════════════════════════════════════
+//   PIPELINE VIEW
+// ═══════════════════════════════════════
 function renderPipeline() {
-  const deals = getFiltered(false).sort((a,b) => b._urgency - a._urgency);
-  document.getElementById("resultCount").textContent = deals.length + " resultado" + (deals.length !== 1 ? "s" : "");
-  const container = document.getElementById("view-pipeline");
+  const main = document.getElementById("mainContent");
+  const all = getFiltered(false).sort((a,b)=>b._urgency-a._urgency);
+  const total = all.reduce((s,d)=>s+d._monto,0);
+  const pond = all.reduce((s,d)=>s+d._monto*(({nuevo:0,prefactibilidad:25,cotizacion:50,negociacion:75}[d._stageCat]||0)/100),0);
+  const urgent = all.filter(d=>d._urgency>=7).length;
+  const noGestion = all.filter(d=>["muerta","debil"].includes(String(d.ai_clasificacion||"").toLowerCase())).length;
 
-  const totalPipeline = deals.reduce((s,d) => s + d._monto, 0);
-  const revPond = deals.reduce((s,d) => {
-    const pct = d._stage.pct || 0;
-    return s + d._monto * (pct/100);
-  }, 0);
-  const calientes = deals.filter(d => d._urgency >= 7).length;
-  const sinGestion = deals.filter(d => ["muerta","debil"].includes(String(d.ai_clasificacion||"").toLowerCase())).length;
+  const stageKeys = ["nuevo","prefactibilidad","cotizacion","negociacion"];
+  const groups = {};
+  stageKeys.forEach(k => groups[k]=[]);
+  all.forEach(d => { if(groups[d._stageCat]!==undefined) groups[d._stageCat].push(d); });
+  const maxC = Math.max(...stageKeys.map(k=>groups[k].length),1);
 
-  const stageGroups = {};
-  const stageOrder = ["nuevo","prefactibilidad","cotizacion","negociacion"];
-  stageOrder.forEach(s => stageGroups[s] = []);
-  deals.forEach(d => {
-    if (stageGroups[d._stage.cat] !== undefined) stageGroups[d._stage.cat].push(d);
-  });
+  main.innerHTML = `
+  <div class="search-wrap">
+    <input class="search-input" id="searchInput" type="text" placeholder="Buscar empresa, nombre, SDR..." oninput="renderView()">
+    <div class="result-count" id="resCount">${all.length} resultados</div>
+  </div>
 
-  const maxCount = Math.max(...stageOrder.map(s => stageGroups[s].length), 1);
-
-  let html = `
-  <div class="metrics-row">
-    <div class="metric-card" style="--accent:var(--k-blue)">
+  <div class="metrics-grid">
+    <div class="metric-card" style="--accent:#3B82F6">
+      <span class="metric-emoji">💼</span>
+      <div class="metric-val" style="color:#3B82F6">${fmtM(total)}</div>
       <div class="metric-label">Pipeline activo</div>
-      <div class="metric-value">${fmtMoney(totalPipeline)}</div>
-      <div class="metric-sub">${deals.length} oportunidades</div>
+      <div class="metric-sub">${all.length} oportunidades</div>
     </div>
-    <div class="metric-card" style="--accent:var(--k-purple)">
-      <div class="metric-label">Rev. Ponderado</div>
-      <div class="metric-value">${fmtMoney(revPond)}</div>
+    <div class="metric-card" style="--accent:#8B5CF6">
+      <span class="metric-emoji">📈</span>
+      <div class="metric-val" style="color:#8B5CF6">${fmtM(pond)}</div>
+      <div class="metric-label">Rev. ponderado</div>
       <div class="metric-sub">Ajustado por etapa</div>
     </div>
-    <div class="metric-card" style="--accent:var(--k-orange)">
+    <div class="metric-card" style="--accent:#FF5B00">
+      <span class="metric-emoji">🔥</span>
+      <div class="metric-val" style="color:#FF5B00">${urgent}</div>
       <div class="metric-label">Alta urgencia</div>
-      <div class="metric-value" style="color:var(--k-orange)">${calientes}</div>
       <div class="metric-sub">Score ≥ 7</div>
     </div>
-    <div class="metric-card" style="--accent:var(--k-red)">
+    <div class="metric-card" style="--accent:#EF4444">
+      <span class="metric-emoji">⚠️</span>
+      <div class="metric-val" style="color:#EF4444">${noGestion}</div>
       <div class="metric-label">Sin gestión</div>
-      <div class="metric-value" style="color:var(--k-red)">${sinGestion}</div>
       <div class="metric-sub">Muerta o débil (IA)</div>
     </div>
   </div>
 
-  <div class="funnel-row">
-    ${stageOrder.map(s => {
-      const cfg = STAGE_CFG[s];
-      const items = stageGroups[s];
-      const amt = items.reduce((a,d) => a+d._monto, 0);
-      const pct = Math.round((items.length / maxCount) * 100);
-      return `<div class="funnel-stage" style="--stage-color:${cfg.color}" onclick="filterByStage('${s}')">
-        <div class="funnel-stage-name">${cfg.label}</div>
-        <div class="funnel-count">${items.length}</div>
-        <div class="funnel-amount">${fmtMoney(amt)}</div>
-        <div class="funnel-bar-wrap"><div class="funnel-bar-fill" style="width:${pct}%"></div></div>
+  <div class="funnel-grid">
+    ${stageKeys.map(k => {
+      const cfg = STAGES[k];
+      const items = groups[k];
+      const amt = items.reduce((s,d)=>s+d._monto,0);
+      const pct = Math.round(items.length/maxC*100);
+      return `<div class="stage-card" style="--sc:${cfg.color}" onclick="filterByStage('${k}')">
+        <div class="stage-card-top"><div class="stage-label">${cfg.label}</div><div class="stage-dot"></div></div>
+        <div class="stage-count">${items.length}</div>
+        <div class="stage-amount">${fmtM(amt)}</div>
+        <div class="stage-bar"><div class="stage-bar-fill" style="width:${pct}%"></div></div>
       </div>`;
     }).join("")}
   </div>
 
-  <div class="section-header">
-    <div>
-      <div class="section-title">Oportunidades activas</div>
-      <div class="section-sub">Ordenadas por urgencia</div>
-    </div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap" id="stagePills">
-      <span class="filter-pill active" onclick="filterByStage('all')">Todas</span>
-      ${stageOrder.map(s => `<span class="filter-pill" onclick="filterByStage('${s}')">${STAGE_CFG[s].label}</span>`).join("")}
+  <div class="sec-header">
+    <div><div class="sec-title">Oportunidades activas</div><div class="sec-sub">Ordenadas por urgencia</div></div>
+    <div class="pill-row" id="stagePills">
+      <button class="pill ${stageFilter==='all'?'active':''}" onclick="filterByStage('all')">Todas</button>
+      ${stageKeys.map(k=>`<button class="pill ${stageFilter===k?'active':''}" onclick="filterByStage('${k}')">${STAGES[k].label}</button>`).join("")}
     </div>
   </div>
 
-  <div class="deals-list" id="dealsList">
-    ${deals.length === 0 ? '<div class="empty-state"><div class="empty-icon">🔍</div><div class="empty-text">Sin resultados</div></div>' : deals.map(d => renderDealCard(d)).join("")}
+  <div class="deals-wrap" id="dealsList">
+    ${renderDealList(all.filter(d=>stageFilter==='all'||d._stageCat===stageFilter))}
   </div>`;
-
-  container.innerHTML = html;
 }
 
-let stageFilter = "all";
 function filterByStage(s) {
   stageFilter = s;
-  document.querySelectorAll("#stagePills .filter-pill").forEach(el => {
-    const match = el.textContent === "Todas" ? s === "all" : (STAGE_CFG[s] && el.textContent === STAGE_CFG[s].label);
-    el.classList.toggle("active", match);
+  document.querySelectorAll("#stagePills .pill").forEach(el => {
+    el.classList.toggle("active", el.textContent.trim() === (s==="all"?"Todas":STAGES[s]?.label));
   });
-  const deals = getFiltered(false)
-    .filter(d => s === "all" || d._stage.cat === s)
-    .sort((a,b) => b._urgency - a._urgency);
-  document.getElementById("dealsList").innerHTML =
-    deals.length === 0 ? '<div class="empty-state"><div class="empty-icon">🔍</div><div class="empty-text">Sin resultados</div></div>'
-    : deals.map(d => renderDealCard(d)).join("");
+  const list = getFiltered(false).filter(d=>s==="all"||d._stageCat===s).sort((a,b)=>b._urgency-a._urgency);
+  document.getElementById("dealsList").innerHTML = renderDealList(list);
+  document.getElementById("resCount").textContent = list.length + " resultados";
 }
 
-function renderDealCard(d) {
-  const stg = d._stage;
-  const stageCfg = STAGE_CFG[stg.cat] || STAGE_CFG.nuevo;
-  const aiClasif = String(d.ai_clasificacion || "").toLowerCase();
-  const aiCfg = AI_CFG[aiClasif] || null;
-  const urgency = d._urgency;
-  const uColor = urgencyColor(urgency);
-  const inactive = daysSince(d._last_activity);
-  const monto = d._monto;
-  const sdr = shortEmail(String(d._sdr||"").split(",")[0].trim());
-  const company = String(d.Compañia || d.company || "").replace(/[[\]"]/g,"").substring(0,30);
-  const name = String(d.Name || d.name || "").substring(0, 60);
-  const rid = d.record_id || d.Name;
-  const isExpanded = expandedDeals.has(rid);
-  const borderClass = aiClasif === "muerta" ? "border-danger" : aiClasif === "debil" ? "border-warn" : "";
+function renderDealList(list) {
+  if(!list.length) return '<div class="empty"><div class="empty-icon">🔍</div><div class="empty-text">Sin resultados</div></div>';
+  return list.map(d => renderCard(d)).join("");
+}
 
-  const aiHTML = aiCfg ? `
-    <div class="ai-panel" style="background:${aiCfg.bg};margin-bottom:12px">
-      <div class="ai-panel-header">
-        <div class="ai-panel-title" style="color:${aiCfg.color}">${aiCfg.emoji} ${aiCfg.label}</div>
-        <div class="ai-score-pill" style="background:${aiCfg.bg};color:${aiCfg.color}">${d.ai_score}/10</div>
-      </div>
-      <div class="ai-razon" style="color:${aiCfg.color};opacity:.85">${stripHtml(d.ai_razon||"")}</div>
-      ${d.ai_recomendacion ? `<div class="ai-rec" style="color:${aiCfg.color};opacity:.7">${stripHtml(d.ai_recomendacion)}</div>` : ""}
-    </div>` : "";
+// ═══════════════════════════════════════
+//   DEAL CARD
+// ═══════════════════════════════════════
+function renderCard(d) {
+  const cat = d._stageCat;
+  const sc = STAGES[cat]||STAGES.nuevo;
+  const ai = String(d.ai_clasificacion||"").toLowerCase();
+  const aiCfg = AI[ai];
+  const u = d._urgency;
+  const uC = urgColor(u);
+  const inactive = daysAgo(d._lastAct);
+  const sdr = shortName(d._sdrClean);
+  const name = String(d.Name||d.name||"").substring(0,65);
+  const rid = String(d.record_id||d.Name||Math.random()).replace(/[^a-z0-9]/gi,"_");
+  const open = expandedSet.has(rid);
+  const borderClass = ai==="muerta"?"danger":ai==="debil"?"warn":"";
+  const inactiveBg = inactive===null?"":inactive>21?"rgba(239,68,68,0.12)":inactive>14?"rgba(255,91,0,0.12)":"rgba(100,116,139,0.1)";
+  const inactiveC = inactive===null?"":inactive>21?"#EF4444":inactive>14?"#FF5B00":"var(--k-muted)";
 
+  const comments = String(d.Comentarios||"").split("|").map(c=>c.trim()).filter(c=>c.length>5).slice(0,4);
   const ns = d._ns;
-  const nsHTML = ns ? `
-    <div class="nextstep-panel">
-      <div class="timeline-title">Plan de acción</div>
-      ${ns.accion ? `<div class="nextstep-row"><span class="nextstep-key">Qué:</span><span class="nextstep-val">${ns.accion.substring(0,200)}</span></div>` : ""}
-      ${ns.contacto ? `<div class="nextstep-row"><span class="nextstep-key">Con quién:</span><span class="nextstep-val">${ns.contacto.substring(0,100)}</span></div>` : ""}
-      ${ns.cuando ? `<div class="nextstep-row"><span class="nextstep-key">Cuándo:</span><span class="nextstep-val">${ns.cuando.substring(0,100)}</span></div>` : ""}
-      ${ns.mientras ? `<div class="nextstep-row"><span class="nextstep-key">Mientras:</span><span class="nextstep-val">${ns.mientras.substring(0,150)}</span></div>` : ""}
-    </div>` : "";
+  const fechaCierre = d["Fecha de cierre"]||d.fecha_cierre||"";
+  const vencida = fechaCierre && daysAgo(fechaCierre)>0;
 
-  const comments = String(d.Comentarios || "").split("|").map(c => c.trim()).filter(c => c.length > 5).slice(0,4);
-  const timelineHTML = comments.length > 0 ? `
-    <div class="timeline-panel">
-      <div class="timeline-title">Actividad reciente</div>
-      ${comments.map(c => {
-        const dateMatch = c.match(/^(\d{4}-\d{2}-\d{2}):\s*(.*)/);
-        if (dateMatch) return `<div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-date">${dateMatch[1]}</div><div class="timeline-text">${stripHtml(dateMatch[2]).substring(0,180)}</div></div>`;
-        return `<div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-text">${stripHtml(c).substring(0,200)}</div></div>`;
-      }).join("")}
-    </div>` : `<div class="timeline-panel"><div class="no-activity">Sin actividad registrada en CRM</div></div>`;
+  const detail = open ? `
+  <div class="deal-body open">
+    <div class="info-grid">
+      <div class="info-item"><div class="info-key">Creador</div><div class="info-val">${shortName(d.Creador||d.creador||"")}</div></div>
+      <div class="info-item"><div class="info-key">SDR</div><div class="info-val">${sdr}</div></div>
+      <div class="info-item"><div class="info-key">Línea</div><div class="info-val">${String(d["Linea de Negocio"]||"").split("/")[0]||"—"}</div></div>
+      <div class="info-item"><div class="info-key">Monto</div><div class="info-val">${fmtM(d._monto)}</div></div>
+      <div class="info-item"><div class="info-key">Ciudad</div><div class="info-val">${d.Ciudad||d.ciudad||"—"}</div></div>
+      <div class="info-item"><div class="info-key">Cierre est.</div><div class="info-val ${vencida?"vencida":""}">${fechaCierre||"—"}${vencida?" ⚠️":""}</div></div>
+    </div>
+    ${aiCfg?`<div class="ai-box" style="background:${aiCfg.bg}">
+      <div class="ai-box-head">
+        <div class="ai-box-label" style="color:${aiCfg.color}">${aiCfg.emoji} ${aiCfg.label}</div>
+        <div class="ai-score-badge" style="background:${aiCfg.bg};color:${aiCfg.color}">${d.ai_score||"—"}/10</div>
+      </div>
+      <div class="ai-reason" style="color:${aiCfg.color}">${stripHtml(d.ai_razon||"")}</div>
+      ${d.ai_recomendacion?`<div class="ai-rec" style="color:${aiCfg.color}">${stripHtml(d.ai_recomendacion)}</div>`:""}
+    </div>`:""}
+    ${ns?`<div class="ns-box">
+      <div class="box-title">Plan de acción</div>
+      ${ns.a?`<div class="ns-row"><span class="ns-key">Qué haré:</span><span class="ns-val">${ns.a.substring(0,220)}</span></div>`:""}
+      ${ns.b?`<div class="ns-row"><span class="ns-key">Con quién:</span><span class="ns-val">${ns.b.substring(0,120)}</span></div>`:""}
+      ${ns.c?`<div class="ns-row"><span class="ns-key">Cuándo:</span><span class="ns-val">${ns.c.substring(0,120)}</span></div>`:""}
+      ${ns.d?`<div class="ns-row"><span class="ns-key">Mientras:</span><span class="ns-val">${ns.d.substring(0,160)}</span></div>`:""}
+    </div>`:""}
+    <div class="timeline-box">
+      <div class="box-title">Actividad reciente</div>
+      ${comments.length?comments.map(c=>{
+        const m=c.match(/^(\d{4}-\d{2}-\d{2}):\s*(.*)/);
+        return m?`<div class="tl-item"><div class="tl-dot"></div><div class="tl-date">${m[1]}</div><div class="tl-text">${stripHtml(m[2]).substring(0,200)}</div></div>`
+               :`<div class="tl-item"><div class="tl-dot"></div><div class="tl-text">${stripHtml(c).substring(0,200)}</div></div>`;
+      }).join(""):
+      `<div class="no-act">Sin actividad registrada</div>`}
+    </div>
+  </div>` : `<div class="deal-body"></div>`;
 
-  const fechaCierre = d["Fecha de cierre"] || d.fecha_cierre || "";
-  const cierreVencido = fechaCierre && daysSince(fechaCierre) > 0;
-
-  return `<div class="deal-card ${borderClass}" id="card-${rid.replace(/[^a-z0-9]/gi,'_')}">
-    <div class="deal-card-header" onclick="toggleDeal('${rid.replace(/'/g,"\\'")}')">
-      <div class="deal-urgency-bar" style="background:${uColor}"></div>
-      <div class="deal-main">
+  return `<div class="deal-card ${borderClass}" id="dc_${rid}">
+    <div class="deal-head" onclick="toggleCard('${rid}')">
+      <div class="urgency-stripe" style="background:${uC}"></div>
+      <div class="deal-info">
         <div class="deal-name">${name}</div>
-        <div class="deal-meta">
-          <span class="badge" style="background:${stageCfg.color}22;color:${stageCfg.color}">${stageCfg.label}</span>
-          ${aiCfg ? `<span class="badge" style="background:${aiCfg.bg};color:${aiCfg.color}">${aiCfg.emoji} ${aiCfg.label}</span>` : ""}
-          ${inactive !== null ? `<span class="badge" style="background:${inactive>21?"var(--k-danger-bg)":inactive>14?"rgba(249,115,22,0.12)":"rgba(100,116,139,0.15)"};color:${inactive>21?"var(--k-red)":inactive>14?"var(--k-orange)":"var(--k-muted)"}">${inactive}d</span>` : ""}
-          ${company ? `<span style="font-size:11px;color:var(--k-muted)">${company}</span>` : ""}
+        <div class="deal-tags">
+          <span class="tag" style="background:${sc.color}22;color:${sc.color}">${sc.label}</span>
+          ${aiCfg?`<span class="tag" style="background:${aiCfg.bg};color:${aiCfg.color}">${aiCfg.emoji} ${aiCfg.label}</span>`:""}
+          ${inactive!==null?`<span class="tag" style="background:${inactiveBg};color:${inactiveC}">${inactive}d</span>`:""}
+          ${u>0?`<span class="tag" style="background:${uC}22;color:${uC}">U:${u}</span>`:""}
         </div>
       </div>
-      <div class="deal-right">
-        <div class="deal-amount">${fmtMoney(monto)}</div>
-        <div class="deal-sdr">${sdr}</div>
-        <div class="deal-expand-icon ${isExpanded ? 'open' : ''}">▾</div>
+      <div class="deal-end">
+        <div class="deal-amt">${fmtM(d._monto)}</div>
+        <div class="deal-sdr-name">${sdr}</div>
+        <div class="chevron ${open?"up":""}">▾</div>
       </div>
     </div>
-    <div class="deal-detail ${isExpanded ? 'open' : ''}">
-      <div class="detail-grid">
-        <div class="detail-item"><div class="detail-key">Creador</div><div class="detail-val">${shortEmail(d.Creador||d.creador||"")}</div></div>
-        <div class="detail-item"><div class="detail-key">SDR</div><div class="detail-val">${sdr}</div></div>
-        <div class="detail-item"><div class="detail-key">Línea</div><div class="detail-val">${String(d["Linea de Negocio"]||d.linea_negocio||"").split("/")[0]||"—"}</div></div>
-        <div class="detail-item"><div class="detail-key">Monto</div><div class="detail-val">${fmtMoney(monto)}</div></div>
-        <div class="detail-item"><div class="detail-key">Ciudad</div><div class="detail-val">${d.Ciudad||d.ciudad||"—"}</div></div>
-        <div class="detail-item"><div class="detail-key">Cierre est.</div><div class="detail-val ${cierreVencido?'danger':''}">${fechaCierre||"—"}${cierreVencido?" ⚠️":""}</div></div>
-      </div>
-      ${aiHTML}
-      ${nsHTML}
-      ${timelineHTML}
-    </div>
+    ${detail}
   </div>`;
 }
 
-function toggleDeal(rid) {
-  if (expandedDeals.has(rid)) expandedDeals.delete(rid);
-  else expandedDeals.add(rid);
-  renderCurrentView();
+function toggleCard(rid) {
+  if(expandedSet.has(rid)) expandedSet.delete(rid);
+  else expandedSet.add(rid);
+  renderView();
 }
 
-// ── GESTIÓN VIEW ──
+// ═══════════════════════════════════════
+//   GESTIÓN VIEW
+// ═══════════════════════════════════════
 function renderGestion() {
-  const deals = getFiltered(false);
-  document.getElementById("resultCount").textContent = deals.length + " activas";
-  const container = document.getElementById("view-gestion");
-
-  const groups = { gestionada:[], parcial:[], debil:[], muerta:[] };
-  deals.forEach(d => {
+  const all = getFiltered(false);
+  const main = document.getElementById("mainContent");
+  const groups = {gestionada:[],parcial:[],debil:[],muerta:[]};
+  all.forEach(d => {
     const c = String(d.ai_clasificacion||"").toLowerCase();
-    if (groups[c]) groups[c].push(d);
-    else groups.muerta.push(d); // default sin clasificacion -> muerta
+    if(groups[c]) groups[c].push(d); else groups.muerta.push(d);
   });
+  const tot = all.length||1;
+  const bars = ["gestionada","parcial","debil","muerta"];
+  const barColors = {gestionada:"#22C55E",parcial:"#EAB308",debil:"#FF5B00",muerta:"#EF4444"};
 
-  const total = deals.length || 1;
-  const bars = [
-    { key:"gestionada", color:"#10B981" },
-    { key:"parcial",    color:"#F59E0B" },
-    { key:"debil",      color:"#F97316" },
-    { key:"muerta",     color:"#E8001D" },
-  ];
-
-  let html = `
-  <div class="metrics-row">
-    <div class="metric-card" style="--accent:var(--k-green)">
-      <div class="metric-label">Bien gestionadas</div>
-      <div class="metric-value" style="color:var(--k-green)">${groups.gestionada.length}</div>
-      <div class="metric-sub">${Math.round(groups.gestionada.length/total*100)}% del total</div>
-    </div>
-    <div class="metric-card" style="--accent:var(--k-yellow)">
-      <div class="metric-label">Gestión parcial</div>
-      <div class="metric-value" style="color:var(--k-yellow)">${groups.parcial.length}</div>
-      <div class="metric-sub">${Math.round(groups.parcial.length/total*100)}% del total</div>
-    </div>
-    <div class="metric-card" style="--accent:var(--k-orange)">
-      <div class="metric-label">Gestión débil</div>
-      <div class="metric-value" style="color:var(--k-orange)">${groups.debil.length}</div>
-      <div class="metric-sub">${Math.round(groups.debil.length/total*100)}% del total</div>
-    </div>
-    <div class="metric-card" style="--accent:var(--k-red)">
-      <div class="metric-label">Sin gestión</div>
-      <div class="metric-value" style="color:var(--k-red)">${groups.muerta.length}</div>
-      <div class="metric-sub">${Math.round(groups.muerta.length/total*100)}% del total</div>
-    </div>
+  main.innerHTML = `
+  <div class="search-wrap">
+    <input class="search-input" id="searchInput" type="text" placeholder="Buscar..." oninput="renderView()">
   </div>
-
-  <div class="gestion-summary">
-    <div class="section-header" style="margin-bottom:16px">
-      <div class="section-title">Radiografía de gestión comercial</div>
+  <div class="metrics-grid">
+    ${bars.map(k=>{
+      const cfg=AI[k]; const pct=Math.round(groups[k].length/tot*100);
+      return `<div class="metric-card" style="--accent:${cfg.color}">
+        <span class="metric-emoji">${cfg.emoji}</span>
+        <div class="metric-val" style="color:${cfg.color}">${groups[k].length}</div>
+        <div class="metric-label">${cfg.label}</div>
+        <div class="metric-sub">${pct}% del total</div>
+      </div>`;
+    }).join("")}
+  </div>
+  <div class="gestion-overview">
+    <div class="sec-header" style="margin-bottom:16px">
+      <div class="sec-title">Radiografía de gestión</div>
+      <div class="sec-sub">${all.length} oportunidades activas</div>
     </div>
-    <div class="gestion-bar-row">
-      ${bars.map(b => {
-        const pct = Math.round(groups[b.key].length/total*100);
-        return pct > 0 ? `<div class="gestion-bar-seg" style="width:${pct}%;background:${b.color}">${groups[b.key].length > 1 ? groups[b.key].length : ''}</div>` : '';
+    <div class="stacked-bar">
+      ${bars.map(k=>{
+        const pct=Math.round(groups[k].length/tot*100);
+        return pct>0?`<div class="sbar-seg" style="width:${pct}%;background:${barColors[k]}">${groups[k].length>2?groups[k].length:""}</div>`:"";
       }).join("")}
     </div>
     <div class="gestion-legend">
-      ${bars.map(b => {
-        const cfg = AI_CFG[b.key];
-        const pct = Math.round(groups[b.key].length/total*100);
-        return `<div class="gestion-legend-item">
-          <div class="gestion-dot" style="background:${b.color}"></div>
-          <div class="gestion-legend-label">${cfg.emoji} ${cfg.label}</div>
-          <div class="gestion-legend-count">${groups[b.key].length}</div>
-          <div class="gestion-legend-pct">${pct}%</div>
+      ${bars.map(k=>{
+        const cfg=AI[k]; const pct=Math.round(groups[k].length/tot*100);
+        return `<div class="gl-item">
+          <div class="gl-dot" style="background:${barColors[k]}"></div>
+          <div class="gl-info">
+            <div class="gl-name">${cfg.emoji} ${cfg.label}</div>
+            <div class="gl-stats" style="color:${barColors[k]}">${groups[k].length} <span style="font-size:11px;color:var(--k-muted);font-weight:400">(${pct}%)</span></div>
+          </div>
         </div>`;
       }).join("")}
     </div>
-  </div>`;
-
-  // Tab bar for filtering
-  html += `
-  <div class="tab-bar" id="gestionTabs">
-    <button class="tab-item active" onclick="filterGestion('all',this)">Todas (${deals.length})</button>
-    <button class="tab-item" onclick="filterGestion('gestionada',this)">✅ Gestionadas (${groups.gestionada.length})</button>
-    <button class="tab-item" onclick="filterGestion('parcial',this)">🟡 Parciales (${groups.parcial.length})</button>
-    <button class="tab-item" onclick="filterGestion('debil',this)">🔴 Débiles (${groups.debil.length})</button>
-    <button class="tab-item" onclick="filterGestion('muerta',this)">💀 Sin gestión (${groups.muerta.length})</button>
   </div>
-  <div class="deals-list" id="gestionList">
-    ${deals.sort((a,b) => {
-      const ord = {muerta:0,debil:1,parcial:2,gestionada:3};
-      const aO = ord[String(a.ai_clasificacion||"muerta").toLowerCase()] ?? 0;
-      const bO = ord[String(b.ai_clasificacion||"muerta").toLowerCase()] ?? 0;
-      return aO - bO;
-    }).map(d => renderDealCard(d)).join("")}
+
+  <div class="tab-bar" id="gTabs">
+    <button class="tab ${gestionFilter==='all'?'active':''}" onclick="setGFilter('all',this)">Todas (${all.length})</button>
+    ${bars.map(k=>`<button class="tab ${gestionFilter===k?'active':''}" onclick="setGFilter('${k}',this)">${AI[k].emoji} ${AI[k].label} (${groups[k].length})</button>`).join("")}
+  </div>
+  <div class="deals-wrap" id="gList">
+    ${renderDealList(all.filter(d=>gestionFilter==='all'||String(d.ai_clasificacion||"").toLowerCase()===gestionFilter).sort((a,b)=>{
+      const ord={muerta:0,debil:1,parcial:2,gestionada:3};
+      return (ord[String(a.ai_clasificacion||"muerta").toLowerCase()]??0)-(ord[String(b.ai_clasificacion||"muerta").toLowerCase()]??0);
+    }))}
   </div>`;
-
-  container.innerHTML = html;
 }
-
-function filterGestion(cat, btn) {
-  document.querySelectorAll("#gestionTabs .tab-item").forEach(t => t.classList.remove("active"));
+function setGFilter(k, btn) {
+  gestionFilter = k;
+  document.querySelectorAll("#gTabs .tab").forEach(t=>t.classList.remove("active"));
   btn.classList.add("active");
-  const deals = getFiltered(false).filter(d => cat === "all" || String(d.ai_clasificacion||"").toLowerCase() === cat);
-  document.getElementById("gestionList").innerHTML =
-    deals.length === 0 ? '<div class="empty-state"><div class="empty-icon">✅</div><div class="empty-text">Sin oportunidades en esta categoría</div></div>'
-    : deals.map(d => renderDealCard(d)).join("");
+  const list = getFiltered(false).filter(d=>k==='all'||String(d.ai_clasificacion||"").toLowerCase()===k);
+  document.getElementById("gList").innerHTML = renderDealList(list);
 }
 
-// ── SDR RANKING ──
+// ═══════════════════════════════════════
+//   SDR RANKING
+// ═══════════════════════════════════════
 function renderSDRs() {
-  const deals = getFiltered(false);
-  document.getElementById("resultCount").textContent = "";
-  const container = document.getElementById("view-sdrs");
-
-  const sdrMap = {};
-  deals.forEach(d => {
-    const sdr = String(d._sdr||"").split(",")[0].trim();
-    if (!sdr) return;
-    if (!sdrMap[sdr]) sdrMap[sdr] = { sdr, deals:0, pipeline:0, gestionadas:0, muerta:0, avgScore:[], urgencias:[] };
-    sdrMap[sdr].deals++;
-    sdrMap[sdr].pipeline += d._monto;
-    const clasif = String(d.ai_clasificacion||"").toLowerCase();
-    if (clasif === "gestionada") sdrMap[sdr].gestionadas++;
-    if (clasif === "muerta") sdrMap[sdr].muerta++;
-    const score = parseFloat(d.ai_score) || 0;
-    sdrMap[sdr].avgScore.push(score);
-    sdrMap[sdr].urgencias.push(d._urgency);
+  const all = getFiltered(false);
+  const main = document.getElementById("mainContent");
+  const map = {};
+  all.forEach(d => {
+    const sdr = d._sdrClean;
+    if(!sdr) return;
+    if(!map[sdr]) map[sdr]={sdr,deals:0,pipeline:0,g:0,muerta:0,scores:[],urg:[]};
+    map[sdr].deals++;
+    map[sdr].pipeline+=d._monto;
+    const ai=String(d.ai_clasificacion||"").toLowerCase();
+    if(ai==="gestionada") map[sdr].g++;
+    if(ai==="muerta") map[sdr].muerta++;
+    map[sdr].scores.push(parseFloat(d.ai_score)||0);
+    map[sdr].urg.push(d._urgency);
   });
+  const sdrs = Object.values(map).map(s=>({...s,
+    avgScore: s.scores.length?s.scores.reduce((a,b)=>a+b)/s.scores.length:0,
+    avgUrg: s.urg.length?s.urg.reduce((a,b)=>a+b)/s.urg.length:0
+  })).sort((a,b)=>b.pipeline-a.pipeline);
+  const maxP = Math.max(...sdrs.map(s=>s.pipeline),1);
 
-  const sdrs = Object.values(sdrMap).map(s => ({
-    ...s,
-    avgScore: s.avgScore.length ? s.avgScore.reduce((a,b)=>a+b,0)/s.avgScore.length : 0,
-    avgUrgency: s.urgencias.length ? s.urgencias.reduce((a,b)=>a+b,0)/s.urgencias.length : 0,
-  })).sort((a,b) => b.pipeline - a.pipeline);
-
-  const maxPipeline = Math.max(...sdrs.map(s => s.pipeline), 1);
-
-  let html = `
-  <div class="section-header">
-    <div>
-      <div class="section-title">Ranking de SDRs</div>
-      <div class="section-sub">Por pipeline activo · ${sdrs.length} comerciales</div>
-    </div>
+  main.innerHTML = `
+  <div class="sec-header">
+    <div><div class="sec-title">🏆 Ranking de SDRs</div><div class="sec-sub">${sdrs.length} comerciales activos</div></div>
   </div>
   <div class="sdr-table">
-    <div class="sdr-row header">
-      <div>#</div>
-      <div>SDR</div>
+    <div class="sdr-head">
+      <div>#</div><div>SDR</div>
       <div style="text-align:center">Deals</div>
       <div style="text-align:center">Gestionadas</div>
       <div style="text-align:center">Sin gestión</div>
       <div style="text-align:right">Pipeline</div>
-      <div>Score IA</div>
+      <div>Score IA prom.</div>
     </div>
-    ${sdrs.map((s, i) => {
-      const rankClass = i === 0 ? "gold" : i === 1 ? "silver" : i === 2 ? "bronze" : "";
-      const pct = Math.round(s.pipeline / maxPipeline * 100);
-      const scorePct = Math.round(s.avgScore / 10 * 100);
-      const scoreColor = s.avgScore >= 7 ? "var(--k-green)" : s.avgScore >= 5 ? "var(--k-yellow)" : "var(--k-orange)";
-      return `<div class="sdr-row">
-        <div class="sdr-rank ${rankClass}">${i+1}</div>
-        <div class="sdr-name">${shortEmail(s.sdr)}</div>
-        <div class="sdr-num">${s.deals}</div>
-        <div class="sdr-num" style="color:var(--k-green)">${s.gestionadas}</div>
-        <div class="sdr-num" style="color:var(--k-red)">${s.muerta}</div>
-        <div class="sdr-pipeline">${fmtMoney(s.pipeline)}</div>
-        <div>
-          <div style="display:flex;align-items:center;gap:6px">
-            <div class="sdr-score-bar" style="flex:1"><div class="sdr-score-fill" style="width:${scorePct}%;background:${scoreColor}"></div></div>
-            <span style="font-size:11px;color:${scoreColor};font-weight:600;min-width:24px">${s.avgScore.toFixed(1)}</span>
-          </div>
+    ${sdrs.map((s,i)=>{
+      const rc=i===0?"gold":i===1?"silver":i===2?"bronze":"";
+      const sc=s.avgScore>=7?"#22C55E":s.avgScore>=5?"#EAB308":"#FF5B00";
+      const spct=Math.round(s.avgScore/10*100);
+      const ppct=Math.round(s.pipeline/maxP*100);
+      return `<div class="sdr-row-item">
+        <div class="sdr-rank-num ${rc}">${i+1}</div>
+        <div class="sdr-name-cell">${shortName(s.sdr)}</div>
+        <div class="sdr-num-cell">${s.deals}</div>
+        <div class="sdr-num-cell" style="color:#22C55E;font-weight:700">${s.g}</div>
+        <div class="sdr-num-cell" style="color:#EF4444;font-weight:700">${s.muerta}</div>
+        <div class="sdr-money">${fmtM(s.pipeline)}</div>
+        <div class="score-bar-wrap">
+          <div class="score-bar"><div class="score-fill" style="width:${spct}%;background:${sc}"></div></div>
+          <span class="score-val" style="color:${sc}">${s.avgScore.toFixed(1)}</span>
         </div>
       </div>`;
     }).join("")}
   </div>`;
-
-  container.innerHTML = html;
 }
 
-// ── CERRADAS VIEW ──
+// ═══════════════════════════════════════
+//   CERRADAS VIEW
+// ═══════════════════════════════════════
 function renderCerradas() {
-  const deals = getFiltered(true);
-  document.getElementById("resultCount").textContent = deals.length + " cerradas";
-  const container = document.getElementById("view-cerradas");
+  const all = getFiltered(true);
+  const main = document.getElementById("mainContent");
+  const ganadas = all.filter(d=>d._stageCat==="ganado");
+  const perdidas = all.filter(d=>d._stageCat==="perdido");
+  const canceladas = all.filter(d=>d._stageCat==="cancelada");
 
-  const ganadas = deals.filter(d => d._stage.cat === "ganado");
-  const perdidas = deals.filter(d => d._stage.cat === "perdido");
-  const canceladas = deals.filter(d => d._stage.cat === "cancelada");
-
-  let html = `
-  <div class="closed-summary">
-    <div class="closed-card">
+  main.innerHTML = `
+  <div class="search-wrap">
+    <input class="search-input" id="searchInput" type="text" placeholder="Buscar..." oninput="renderView()">
+  </div>
+  <div class="closed-cards">
+    <div class="closed-card" style="border-color:rgba(34,197,94,.25)">
       <div class="closed-icon">🏆</div>
-      <div class="closed-count" style="color:var(--k-green)">${ganadas.length}</div>
-      <div class="closed-label">Ganadas · ${fmtMoney(ganadas.reduce((s,d)=>s+d._monto,0))}</div>
+      <div class="closed-big" style="color:#22C55E">${ganadas.length}</div>
+      <div class="closed-sub">Ganadas · ${fmtM(ganadas.reduce((s,d)=>s+d._monto,0))}</div>
     </div>
-    <div class="closed-card">
+    <div class="closed-card" style="border-color:rgba(107,114,128,.25)">
       <div class="closed-icon">✗</div>
-      <div class="closed-count" style="color:var(--k-muted)">${perdidas.length}</div>
-      <div class="closed-label">Perdidas · ${fmtMoney(perdidas.reduce((s,d)=>s+d._monto,0))}</div>
+      <div class="closed-big" style="color:var(--k-muted)">${perdidas.length}</div>
+      <div class="closed-sub">Perdidas · ${fmtM(perdidas.reduce((s,d)=>s+d._monto,0))}</div>
     </div>
-    <div class="closed-card">
+    <div class="closed-card" style="border-color:rgba(75,85,99,.25)">
       <div class="closed-icon">⊘</div>
-      <div class="closed-count" style="color:var(--k-muted2)">${canceladas.length}</div>
-      <div class="closed-label">Canceladas</div>
+      <div class="closed-big" style="color:var(--k-muted2)">${canceladas.length}</div>
+      <div class="closed-sub">Canceladas</div>
     </div>
   </div>
-
-  <div class="tab-bar" id="cerradasTabs">
-    <button class="tab-item active" onclick="filterCerradas('all',this)">Todas (${deals.length})</button>
-    <button class="tab-item" onclick="filterCerradas('ganado',this)">🏆 Ganadas (${ganadas.length})</button>
-    <button class="tab-item" onclick="filterCerradas('perdido',this)">✗ Perdidas (${perdidas.length})</button>
-    <button class="tab-item" onclick="filterCerradas('cancelada',this)">⊘ Canceladas (${canceladas.length})</button>
+  <div class="tab-bar" id="cTabs">
+    <button class="tab ${cerradaFilter==='all'?'active':''}" onclick="setCFilter('all',this)">Todas (${all.length})</button>
+    <button class="tab ${cerradaFilter==='ganado'?'active':''}" onclick="setCFilter('ganado',this)">🏆 Ganadas (${ganadas.length})</button>
+    <button class="tab ${cerradaFilter==='perdido'?'active':''}" onclick="setCFilter('perdido',this)">✗ Perdidas (${perdidas.length})</button>
+    <button class="tab ${cerradaFilter==='cancelada'?'active':''}" onclick="setCFilter('cancelada',this)">⊘ Canceladas (${canceladas.length})</button>
   </div>
-  <div class="deals-list" id="cerradasList">
-    ${deals.map(d => renderDealCard(d)).join("")}
+  <div class="deals-wrap" id="cList">
+    ${renderDealList(all.filter(d=>cerradaFilter==='all'||d._stageCat===cerradaFilter))}
   </div>`;
-
-  container.innerHTML = html;
 }
-
-function filterCerradas(cat, btn) {
-  document.querySelectorAll("#cerradasTabs .tab-item").forEach(t => t.classList.remove("active"));
+function setCFilter(k, btn) {
+  cerradaFilter = k;
+  document.querySelectorAll("#cTabs .tab").forEach(t=>t.classList.remove("active"));
   btn.classList.add("active");
-  const deals = getFiltered(true).filter(d => cat === "all" || d._stage.cat === cat);
-  document.getElementById("cerradasList").innerHTML =
-    deals.length === 0 ? '<div class="empty-state"><div class="empty-icon">📁</div><div class="empty-text">Sin oportunidades</div></div>'
-    : deals.map(d => renderDealCard(d)).join("");
+  const list = getFiltered(true).filter(d=>k==='all'||d._stageCat===k);
+  document.getElementById("cList").innerHTML = renderDealList(list);
 }
 
-// ── DEMO DATA ──
-const DEMO_DATA = [
-  {"record_id":"r001","Name":"VisionFund - Arquitectura Empresarial","Compañia":"VisionFund","Etapa":"Cotizacion | 50%","Monto":"130000","SDR":"vlema@krugercorporation.com","Creador":"cmarquez@krugercorporation.com","Fuente":"MKT","Ciudad":"Quito","País":"EC","Linea de Negocio":"Consultoría/Arquitectura","KAE feeling":"0.5","Fecha de cierre":"2026-06-30","Next Step":"¿Qué haré?: Coordinar siguiente reunión post propuesta técnica\n¿Con quién?: Magdalena Jingo y Verny Vargas\n¿Cuándo?: Martes 12 de Mayo\nHasta eso ¿qué haré?: Se avanza la parte tercerizada","Comentarios":"2026-05-10: Reunión con Magdalena positiva, están revisando presupuesto Q3 | 2026-05-05: Se envió propuesta técnica v2","ai_clasificacion":"gestionada","ai_score":"8","ai_razon":"Plan claro con contactos y fechas definidas. Comentarios recientes muestran avance.","ai_recomendacion":"Verificar ejecución del plan y pedir actualización de resultado.","updated_at":"2026-05-10"},
-  {"record_id":"r002","Name":"Cooperativa Santa Isabel - Ciberseguridad","Compañia":"Cooperativa Santa Isabel","Etapa":"Nuevo | 0%","Monto":"10000","SDR":"svalenzuela@krugercorporation.com","Creador":"crodriguez@krugercorporation.com","Fuente":"MKT","Ciudad":"Cuenca","País":"EC","Linea de Negocio":"Ciberseguridad","KAE feeling":"","Fecha de cierre":"","Next Step":"¿Qué haré?:\n¿Con quién?:\n¿Cuándo?:\nHasta eso ¿qué haré?:","Comentarios":"","ai_clasificacion":"muerta","ai_score":"0","ai_razon":"Next step vacío. Sin comentarios ni llamadas registradas.","ai_recomendacion":"Exigir al SDR que registre actividad o descartar la oportunidad.","updated_at":null},
-  {"record_id":"r003","Name":"Municipio de Ibarra - APP Ibarra Vive","Compañia":"Municipio de Ibarra","Etapa":"Negociación & Revisión | 75%","Monto":"128000","SDR":"mguevara@krugercorporation.com","Creador":"cmarquez@krugercorporation.com","Fuente":"MKT","Ciudad":"Ibarra","País":"EC","Linea de Negocio":"Desarrollo","KAE feeling":"0.75","Fecha de cierre":"2026-06-30","Next Step":"¿Qué haré?: Armar TDRs.\n¿Con quién?: Asesor de compras públicas y Sole.\n¿Cuándo?: Semana del 11 de Mayo\nHasta eso ¿qué haré?: Reuniones con Director de TICs","Comentarios":"2026-05-12: TDRs en revisión con asesor legal del municipio | 2026-05-05: Reunión presencial exitosa con Director de TICs","ai_clasificacion":"gestionada","ai_score":"9","ai_razon":"Plan detallado, múltiples comentarios sustantivos, avance real documentado.","ai_recomendacion":"Verificar avance de TDRs esta semana.","updated_at":"2026-05-12"},
-  {"record_id":"r004","Name":"Municipio de Quito - Sistema Recaudación","Compañia":"Municipio de Quito","Etapa":"Cotizacion | 50%","Monto":"500000","SDR":"mguevara@krugercorporation.com","Creador":"svalencia@krugercorporation.com","Fuente":"MKT","Ciudad":"Quito","País":"EC","Linea de Negocio":"Desarrollo","KAE feeling":"0.5","Fecha de cierre":"2026-09-30","Next Step":"El cliente indicó que recibió la propuesta, que esta elaborando informes internos para levantar el proceso con el SERCOP.","Comentarios":"2026-04-15: Cliente dice que está en proceso interno con SERCOP","ai_clasificacion":"debil","ai_score":"3","ai_razon":"Falta de especificidad en fechas y expectativas. Última actividad hace más de 30 días.","ai_recomendacion":"Programar reunión urgente con el cliente para clarificar próximos pasos.","updated_at":"2026-04-15"},
-  {"record_id":"r005","Name":"ROCHE ECUADOR - Migración a AWS","Compañia":"Roche Ecuador","Etapa":"Pre Factibilidad | 25%","Monto":"250000","SDR":"mroman@krugercorporation.com","Creador":"jmonge@krugercorporation.com","Fuente":"MKT","Ciudad":"Quito","País":"EC","Linea de Negocio":"Cloud/AWS","KAE feeling":"0.25","Fecha de cierre":"2026-08-01","Next Step":"¿Qué haré?: Revisión de cotización\n¿Con quién?: Miguel Bermudez\n¿Cuándo?: Semana 18 de mayo\nHasta eso ¿qué haré?: Dar seguimiento a preventas","Comentarios":"2026-04-27: Cliente solicitó cotización de 3 modelos | 2026-04-06: Reunión con presales y cliente","ai_clasificacion":"parcial","ai_score":"6","ai_razon":"Acción definida pero los comentarios no reflejan avance reciente del sizing.","ai_recomendacion":"Insistir con Miguel Bermudez para obtener el sizing esta semana.","updated_at":"2026-04-27"},
-  {"record_id":"r006","Name":"ECUASANITAS - Licencias Microsoft","Compañia":"Ecuasanitas","Etapa":"Ganado | 100%","Monto":"70900","SDR":"mroman@krugercorporation.com","Creador":"jmonge@krugercorporation.com","Fuente":"MKT","Ciudad":"Quito","País":"EC","Linea de Negocio":"Licenciamiento","KAE feeling":"","Fecha de cierre":"2026-02-15","Next Step":"","Comentarios":"2025-10-22: Ya se enviaron cotizaciones de licencias","ai_clasificacion":"gestionada","ai_score":"9","ai_razon":"Oportunidad ganada con historial completo de actividad.","ai_recomendacion":"Mantener relación para renovación.","updated_at":null},
-];
+// ═══════════════════════════════════════
+//   FADE OUT KEYFRAME
+// ═══════════════════════════════════════
+const style = document.createElement("style");
+style.textContent = "@keyframes fadeOut{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(.97)}}";
+document.head.appendChild(style);
 </script>
 </body>
 </html>
