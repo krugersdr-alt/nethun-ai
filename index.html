@@ -190,10 +190,16 @@ body{font-family:'Inter',sans-serif;background:var(--bk);color:var(--tx);overflo
 .ab-rc{font-size:11px;line-height:1.5;font-style:italic;opacity:.7}
 .ab-rc::before{content:'→ ';font-weight:800}
 
+/* MKT INTEL BOX (dentro del deal card) */
+.mkt-inline{background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:var(--rs);padding:12px 14px;margin-bottom:12px}
+.mkt-inline-h{font-size:9px;font-weight:700;color:#3B82F6;text-transform:uppercase;letter-spacing:.09em;margin-bottom:8px}
+.mkt-inline-g{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mkt-inline-item .ik{color:#3B82F6;opacity:.7}
+.mkt-inline-item .iv{font-size:11px;line-height:1.5}
+
 /* COMMENT BOX */
 .cmb{background:var(--cd2);border-radius:var(--rs);padding:12px 14px;margin-bottom:12px}
 .box-t{font-size:9px;font-weight:700;color:var(--mt2);text-transform:uppercase;letter-spacing:.09em;margin-bottom:10px}
-.cm-preview{font-size:12px;color:var(--tx);line-height:1.6}
 .cm-date{font-size:10px;color:var(--mt);margin-bottom:4px;font-weight:600}
 .cm-text{font-size:12px;color:var(--tx);line-height:1.6;word-break:break-word}
 .cm-more-btn{margin-top:8px;background:var(--or-s);border:1px solid rgba(255,91,0,.3);border-radius:6px;padding:5px 12px;font-size:11px;font-weight:600;color:var(--or);cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s}
@@ -251,6 +257,58 @@ body{font-family:'Inter',sans-serif;background:var(--bk);color:var(--tx);overflo
 .cc-ic{font-size:28px;margin-bottom:10px}
 .cc-big{font-size:36px;font-weight:800;letter-spacing:-2px;line-height:1;margin-bottom:4px}
 .cc-sub{font-size:12px;color:var(--mt)}
+
+/* ═══════════════════════════════
+   VISTA MERCADO (Hoja 3)
+═══════════════════════════════ */
+.mkt-header{margin-bottom:24px}
+.mkt-filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;align-items:center}
+.mkt-search{background:var(--cd);border:1px solid var(--br2);border-radius:99px;padding:8px 16px 8px 36px;font-size:13px;color:var(--tx);font-family:'Inter',sans-serif;outline:none;width:260px;transition:border-color .2s;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%238A9299' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-size:16px;background-position:12px center}
+.mkt-search:focus{border-color:var(--or);box-shadow:0 0 0 3px var(--or-s)}
+.mkt-search::placeholder{color:var(--mt2)}
+
+/* Métricas de mercado */
+.mkt-mg{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+
+/* Tabs de país */
+.mkt-country-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
+.mkt-ctab{padding:6px 14px;border-radius:99px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid var(--br2);background:var(--cd);color:var(--mt);font-family:'Inter',sans-serif;transition:all .15s}
+.mkt-ctab:hover{color:var(--tx);border-color:var(--mt2)}
+.mkt-ctab.active{background:var(--or);border-color:var(--or);color:#fff}
+
+/* Grid de cards de mercado */
+.mkt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.mkt-card{background:var(--cd);border:1px solid var(--br);border-radius:var(--r);padding:20px;transition:border-color .2s,transform .15s;cursor:default}
+.mkt-card:hover{border-color:var(--br2);transform:translateY(-1px)}
+.mkt-card-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px;gap:12px}
+.mkt-card-linea{font-size:14px;font-weight:700;color:#fff;line-height:1.3;flex:1}
+.mkt-card-pais{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:700;padding:3px 9px;border-radius:99px;white-space:nowrap;flex-shrink:0}
+.mkt-card-body{display:flex;flex-direction:column;gap:10px}
+.mkt-field{display:flex;flex-direction:column;gap:3px}
+.mkt-field-lbl{font-size:9px;font-weight:700;color:var(--mt2);text-transform:uppercase;letter-spacing:.09em}
+.mkt-field-val{font-size:12px;color:var(--mt);line-height:1.5}
+.mkt-field-val.highlight{color:var(--tx)}
+.mkt-tag-row{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px}
+.mkt-tag{font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;background:rgba(59,130,246,.1);color:#60A5FA;border:1px solid rgba(59,130,246,.15)}
+.mkt-deal-link{margin-top:12px;padding-top:12px;border-top:1px solid var(--br);display:flex;align-items:center;justify-content:space-between}
+.mkt-deal-cnt{font-size:11px;color:var(--mt)}
+.mkt-deal-cnt strong{color:var(--or);font-weight:700}
+.mkt-view-btn{font-size:11px;font-weight:600;color:var(--or);background:var(--or-s);border:1px solid rgba(255,91,0,.25);border-radius:6px;padding:4px 10px;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s}
+.mkt-view-btn:hover{background:rgba(255,91,0,.2)}
+
+/* Colores por país */
+.pais-ec{background:rgba(34,197,94,.1);color:#4ADE80;border:1px solid rgba(34,197,94,.2)}
+.pais-pe{background:rgba(239,68,68,.1);color:#FCA5A5;border:1px solid rgba(239,68,68,.2)}
+.pais-co{background:rgba(234,179,8,.1);color:#FDE68A;border:1px solid rgba(234,179,8,.2)}
+.pais-cr{background:rgba(59,130,246,.1);color:#93C5FD;border:1px solid rgba(59,130,246,.2)}
+.pais-gt{background:rgba(139,92,246,.1);color:#C4B5FD;border:1px solid rgba(139,92,246,.2)}
+.pais-pa{background:rgba(20,184,166,.1);color:#5EEAD4;border:1px solid rgba(20,184,166,.2)}
+.pais-mx{background:rgba(249,115,22,.1);color:#FDBA74;border:1px solid rgba(249,115,22,.2)}
+.pais-us{background:rgba(99,102,241,.1);color:#A5B4FC;border:1px solid rgba(99,102,241,.2)}
+.pais-do{background:rgba(236,72,153,.1);color:#F9A8D4;border:1px solid rgba(236,72,153,.2)}
+.pais-default{background:rgba(100,116,139,.1);color:#94A3B8;border:1px solid rgba(100,116,139,.2)}
 
 /* EMPTY */
 .empty{text-align:center;padding:60px 20px;color:var(--mt2)}
@@ -312,6 +370,7 @@ body{font-family:'Inter',sans-serif;background:var(--bk);color:var(--tx);overflo
         <button class="nb" id="nav-gestion" onclick="setView('gestion')"><span class="ni">🤖</span>Gestión IA<span class="nc" id="cnt-gestion">0</span></button>
         <button class="nb" id="nav-sdrs" onclick="setView('sdrs')"><span class="ni">🏆</span>Ranking SDR<span class="nc" id="cnt-sdrs">0</span></button>
         <button class="nb" id="nav-cerradas" onclick="setView('cerradas')"><span class="ni">📁</span>Cerradas<span class="nc" id="cnt-cerradas">0</span></button>
+        <button class="nb" id="nav-mercado" onclick="setView('mercado')"><span class="ni">🗺️</span>Mercado<span class="nc" id="cnt-mercado">0</span></button>
       </div>
       <div>
         <div class="sb-sec-ttl">Filtros</div>
@@ -339,7 +398,7 @@ body{font-family:'Inter',sans-serif;background:var(--bk);color:var(--tx);overflo
 const ENDPOINT = "https://script.google.com/macros/s/AKfycbxZ7zcj9Zw1B24ICzVhT0N_CbTUq-9gRl-OGfVt16nzDeYIS8LF_w8IsjNDZZcPE7wqxA/exec";
 const CREDS = { user:"SDRAdmin", pass:"AdminSDR12345" };
 
-let deals=[], view="pipeline", expanded=new Set(), stgF="all", gF="all", cF="all";
+let deals=[], market=[], view="pipeline", expanded=new Set(), stgF="all", gF="all", cF="all", mktCountry="all";
 
 const STAGES={
   nuevo:{label:"Nuevo",color:"#64748B"},
@@ -365,6 +424,26 @@ const SDR_MAP={
   fcarvajal:"F. Carvajal",eapunte:"E. Apunte",ksisalema:"K. Sisalema"
 };
 
+// Colores de bandera por país (código ISO)
+const PAIS_FLAGS={
+  "ecuador":"🇪🇨","ec":"🇪🇨",
+  "perú":"🇵🇪","peru":"🇵🇪","pe":"🇵🇪",
+  "colombia":"🇨🇴","co":"🇨🇴",
+  "costa rica":"🇨🇷","cr":"🇨🇷",
+  "guatemala":"🇬🇹","gt":"🇬🇹",
+  "panamá":"🇵🇦","panama":"🇵🇦","pa":"🇵🇦",
+  "méxico":"🇲🇽","mexico":"🇲🇽","mx":"🇲🇽",
+  "estados unidos":"🇺🇸","usa":"🇺🇸","us":"🇺🇸",
+  "república dominicana":"🇩🇴","dominicana":"🇩🇴","do":"🇩🇴",
+};
+const PAIS_CSS={
+  "ecuador":"pais-ec","perú":"pais-pe","peru":"pais-pe",
+  "colombia":"pais-co","costa rica":"pais-cr",
+  "guatemala":"pais-gt","panamá":"pais-pa","panama":"pais-pa",
+  "méxico":"pais-mx","mexico":"pais-mx",
+  "estados unidos":"pais-us","república dominicana":"pais-do","dominicana":"pais-do",
+};
+
 // ═══════════════════════════════
 //  HELPERS
 // ═══════════════════════════════
@@ -373,6 +452,8 @@ const fm=v=>{const n=parseFloat(String(v).replace(/,/g,""))||0;if(n>=1e6)return"
 const da=d=>{if(!d)return null;const x=new Date(d);return isNaN(x)?null:Math.floor((Date.now()-x)/86400000)};
 const strip=t=>String(t||"").replace(/<[^>]*>/g,"").replace(/&nbsp;/g," ").trim();
 const fmtDateStr=s=>{if(!s)return"—";try{const d=new Date(s);if(isNaN(d))return String(s).substring(0,10);return d.toLocaleDateString("es-EC",{day:"numeric",month:"short",year:"numeric"})}catch{return String(s).substring(0,10)}};
+const paisFlag=p=>{const k=String(p||"").toLowerCase().trim();return PAIS_FLAGS[k]||"🌍"};
+const paisCss=p=>{const k=String(p||"").toLowerCase().trim();return PAIS_CSS[k]||"pais-default"};
 
 const parseSt=s=>{const lo=String(s||"").toLowerCase();
   if(lo.includes("ganado")||lo.includes("100%"))return"ganado";
@@ -434,7 +515,7 @@ function login(){
   }
 }
 function logout(){
-  deals=[];expanded.clear();
+  deals=[];market=[];expanded.clear();
   document.getElementById("app").style.display="none";
   document.getElementById("loginScreen").style.cssText="";
   document.getElementById("loginScreen").style.display="flex";
@@ -460,8 +541,13 @@ async function loadCRM(){
     processData(raw);
   }catch(e){showLoad(false);alert("Error al cargar: "+e.message);}
 }
+
 function processData(raw){
-  deals=raw.map(d=>{
+  // Soporte para respuesta nueva { deals, market } y legacy (array plano)
+  const rawDeals = Array.isArray(raw) ? raw : (raw.deals || []);
+  market = Array.isArray(raw) ? [] : (raw.market || []);
+
+  deals=rawDeals.map(d=>{
     const cat=parseSt(d.Etapa||d.stage||"");
     const monto=parseFloat(String(d.Monto||d.monto||0).replace(/,/g,""))||0;
     const lastAct=d._last_real_activity||d.updated_at||d.created_at||null;
@@ -473,11 +559,12 @@ function processData(raw){
   deals.forEach(d=>d._urgency=urg(d));
   fillFilters();updateCounts();
   const now=new Date().toLocaleDateString("es-EC",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
-  document.getElementById("hdrInfo").innerHTML=`<strong>${deals.length}</strong> oportunidades · ${now}`;
+  document.getElementById("hdrInfo").innerHTML=`<strong>${deals.length}</strong> oportunidades · ${market.length} segmentos de mercado · ${now}`;
   document.getElementById("liveBadge").style.display="flex";
   showLoad(false);
   setView("pipeline");
 }
+
 function showLoad(v,t){document.getElementById("loadOv").style.display=v?"flex":"none";if(t)setLT(t);}
 function setLT(t){document.getElementById("ldTx").textContent=t;}
 
@@ -522,6 +609,7 @@ function updateCounts(){
   document.getElementById("cnt-gestion").textContent=act.length;
   document.getElementById("cnt-sdrs").textContent=[...new Set(act.map(d=>d._sdr).filter(Boolean))].length;
   document.getElementById("cnt-cerradas").textContent=term.length;
+  document.getElementById("cnt-mercado").textContent=market.length;
 }
 
 // ═══════════════════════════════
@@ -529,16 +617,17 @@ function updateCounts(){
 // ═══════════════════════════════
 function setView(v){
   view=v;
-  ["pipeline","gestion","sdrs","cerradas"].forEach(n=>{
+  ["pipeline","gestion","sdrs","cerradas","mercado"].forEach(n=>{
     document.getElementById("nav-"+n).classList.toggle("active",n===v);
   });
   renderView();
 }
-function renderView(){if(!deals.length)return;
+function renderView(){if(!deals.length&&view!=="mercado")return;
   if(view==="pipeline")renderPipeline();
   else if(view==="gestion")renderGestion();
   else if(view==="sdrs")renderSDRs();
   else if(view==="cerradas")renderCerradas();
+  else if(view==="mercado")renderMercado();
 }
 
 // ═══════════════════════════════
@@ -612,15 +701,12 @@ function renderCard(d){
   const ib=inact===null?"":inact>21?"rgba(239,68,68,.12)":inact>14?"rgba(255,91,0,.12)":"rgba(100,116,139,.1)";
   const ic=inact===null?"":inact>21?"#EF4444":inact>14?"#FF5B00":"var(--mt)";
 
-  // Fecha de creación
   const createdAt=d.created_at||d["Fecha de Creacion"]||"";
   const createdFmt=fmtDateStr(createdAt);
-
-  // Fecha de cierre
   const fechaCierre=d["Fecha de cierre"]||"";
   const venc=fechaCierre&&da(fechaCierre)>0;
 
-  // Comentarios — resumen + ver más
+  // Comentarios
   const rawComments=String(d.Comentarios||d["Comentarios"]||"");
   const commParts=rawComments.split("|").map(c=>c.trim()).filter(c=>c.length>5);
   let commHTML="";
@@ -665,6 +751,17 @@ function renderCard(d){
     ${d.ai_recomendacion?`<div class="ab-rc" style="color:${aiCfg.color}">${strip(d.ai_recomendacion)}</div>`:""}
   </div>`:"";
 
+  // Contexto de mercado inline (si existe)
+  const hasMkt=d.mkt_industrias||d.mkt_buyers||d.mkt_dolores;
+  const mktInlineHTML=hasMkt?`<div class="mkt-inline">
+    <div class="mkt-inline-h">🗺️ Contexto de mercado — ${d.mkt_linea||"—"}</div>
+    <div class="mkt-inline-g">
+      ${d.mkt_industrias?`<div class="mkt-inline-item"><div class="ik">Industrias objetivo</div><div class="iv">${d.mkt_industrias.substring(0,120)}</div></div>`:""}
+      ${d.mkt_buyers?`<div class="mkt-inline-item"><div class="ik">Buyer personas</div><div class="iv">${d.mkt_buyers.substring(0,100)}</div></div>`:""}
+      ${d.mkt_dolores?`<div class="mkt-inline-item" style="grid-column:1/-1"><div class="ik">Pain points</div><div class="iv">${d.mkt_dolores.substring(0,200)}</div></div>`:""}
+    </div>
+  </div>`:""
+
   const detail=open?`<div class="db open">
     <div class="ig">
       <div><div class="ik">Creador</div><div class="iv">${sn(d.Creador||d.creador||"")}</div></div>
@@ -677,7 +774,7 @@ function renderCard(d){
       <div><div class="ik">País</div><div class="iv">${d["País"]||d.pais||"—"}</div></div>
       <div><div class="ik">KAE Feeling</div><div class="iv">${d["KAE feeling"]||"—"}</div></div>
     </div>
-    ${aiHTML}${nsHTML}${commHTML}
+    ${aiHTML}${mktInlineHTML}${nsHTML}${commHTML}
   </div>`:`<div class="db"></div>`;
 
   return`<div class="dc ${bc}" id="dc_${rid}">
@@ -715,7 +812,7 @@ function toggleComment(id,btn){
 }
 
 // ═══════════════════════════════
-//  GESTIÓN
+//  GESTIÓN IA
 // ═══════════════════════════════
 function renderGestion(){
   const mc=document.getElementById("mainContent");
@@ -816,6 +913,146 @@ function renderCerradas(){
 }
 function setCF(k,btn){cF=k;document.querySelectorAll("#cTabs .tab").forEach(t=>t.classList.remove("active"));btn.classList.add("active");
   document.getElementById("cList").innerHTML=renderDList(getFiltered(true).filter(d=>k==='all'||d._cat===k));}
+
+// ═══════════════════════════════
+//  MERCADO (Hoja 3)
+// ═══════════════════════════════
+function renderMercado(){
+  const mc=document.getElementById("mainContent");
+
+  if(!market.length){
+    mc.innerHTML=`<div class="empty"><div class="ei">🗺️</div><div class="et">Carga los datos del CRM para ver la inteligencia de mercado</div></div>`;
+    return;
+  }
+
+  // Filtro de búsqueda
+  const q=(document.getElementById("mkt-si")?.value||"").toLowerCase().trim();
+
+  // Países únicos
+  const countries=[...new Set(market.map(m=>m.mkt_pais).filter(Boolean))].sort();
+
+  // Filtrar por país y búsqueda
+  let filtered=market.filter(m=>{
+    if(mktCountry!=="all"&&m.mkt_pais!==mktCountry)return false;
+    if(q){
+      const hay=`${m.mkt_linea} ${m.mkt_pais} ${m.mkt_industrias} ${m.mkt_buyers} ${m.mkt_dolores}`.toLowerCase();
+      if(!hay.includes(q))return false;
+    }
+    return true;
+  });
+
+  // Cuántos deals activos por línea+país
+  const dealsByKey={};
+  deals.filter(d=>!["ganado","perdido","cancelada"].includes(d._cat)).forEach(d=>{
+    const lineaCRM=(d["Linea de Negocio"]||"").split("/")[0].trim();
+    const paisCRM=d["País"]||"";
+    const key=(lineaCRM+"|"+paisCRM).toLowerCase();
+    dealsByKey[key]=(dealsByKey[key]||0)+1;
+  });
+
+  // Métricas generales
+  const totalLineas=market.length;
+  const totalPaises=countries.length;
+  const lineasConDeals=market.filter(m=>{
+    const k=(m.mkt_linea+"|"+m.mkt_pais).toLowerCase();
+    return (dealsByKey[k]||0)>0;
+  }).length;
+  const topPais=countries.reduce((acc,p)=>{
+    const n=market.filter(m=>m.mkt_pais===p).length;
+    return n>acc.n?{p,n}:acc;
+  },{p:"",n:0});
+
+  mc.innerHTML=`
+  <div class="sh mkt-header">
+    <div>
+      <div class="st">🗺️ Inteligencia de Mercado</div>
+      <div class="ss">Segmentos estratégicos por país y línea de negocio</div>
+    </div>
+  </div>
+
+  <div class="mkt-mg">
+    <div class="mc" style="--ac:#3B82F6"><span class="me">🗺️</span><div class="mv" style="color:#3B82F6">${totalLineas}</div><div class="ml">Segmentos totales</div><div class="ms">Líneas × País</div></div>
+    <div class="mc" style="--ac:#22C55E"><span class="me">🌍</span><div class="mv" style="color:#22C55E">${totalPaises}</div><div class="ml">Países cubiertos</div><div class="ms">Expansión regional</div></div>
+    <div class="mc" style="--ac:#FF5B00"><span class="me">📊</span><div class="mv" style="color:#FF5B00">${lineasConDeals}</div><div class="ml">Con pipeline activo</div><div class="ms">Segmentos con deals</div></div>
+    <div class="mc" style="--ac:#8B5CF6"><span class="me">🏆</span><div class="mv" style="color:#8B5CF6">${topPais.p}</div><div class="ml">Mayor cobertura</div><div class="ms">${topPais.n} segmentos</div></div>
+  </div>
+
+  <div class="mkt-filters">
+    <input class="mkt-search" id="mkt-si" type="text" placeholder="Buscar línea, industria, pain..." oninput="renderMercado()">
+    <div class="rc">${filtered.length} de ${totalLineas} segmentos</div>
+  </div>
+
+  <div class="mkt-country-tabs">
+    <button class="mkt-ctab ${mktCountry==='all'?'active':''}" onclick="setMktCountry('all',this)">🌍 Todos (${market.length})</button>
+    ${countries.map(p=>`<button class="mkt-ctab ${mktCountry===p?'active':''}" onclick="setMktCountry('${p}',this)">${paisFlag(p)} ${p} (${market.filter(m=>m.mkt_pais===p).length})</button>`).join("")}
+  </div>
+
+  ${filtered.length===0
+    ? `<div class="empty"><div class="ei">🔍</div><div class="et">Sin resultados para "${q}"</div></div>`
+    : `<div class="mkt-grid" id="mkt-grid">${filtered.map(m=>renderMktCard(m,dealsByKey)).join("")}</div>`
+  }`;
+}
+
+function renderMktCard(m, dealsByKey){
+  const key=(m.mkt_linea+"|"+m.mkt_pais).toLowerCase();
+  const nDeals=dealsByKey[key]||0;
+  const pFlag=paisFlag(m.mkt_pais);
+  const pCss=paisCss(m.mkt_pais);
+
+  // Industrias como tags
+  const industries=(m.mkt_industrias||"").split(",").map(s=>s.trim()).filter(Boolean);
+  const buyers=(m.mkt_buyers||"").split(",").map(s=>s.trim()).filter(Boolean);
+
+  return`<div class="mkt-card">
+    <div class="mkt-card-top">
+      <div class="mkt-card-linea">${m.mkt_linea}</div>
+      <div class="mkt-card-pais ${pCss}">${pFlag} ${m.mkt_pais}</div>
+    </div>
+    <div class="mkt-card-body">
+      ${industries.length?`<div class="mkt-field">
+        <div class="mkt-field-lbl">Industrias objetivo</div>
+        <div class="mkt-tag-row">${industries.slice(0,4).map(i=>`<span class="mkt-tag">${i}</span>`).join("")}${industries.length>4?`<span class="mkt-tag">+${industries.length-4}</span>`:""}</div>
+      </div>`:""}
+      ${buyers.length?`<div class="mkt-field">
+        <div class="mkt-field-lbl">Buyer Personas</div>
+        <div class="mkt-field-val">${buyers.join(" · ")}</div>
+      </div>`:""}
+      ${m.mkt_dolores?`<div class="mkt-field">
+        <div class="mkt-field-lbl">Pain points</div>
+        <div class="mkt-field-val highlight">${m.mkt_dolores.substring(0,160)}${m.mkt_dolores.length>160?"…":""}</div>
+      </div>`:""}
+      ${m.mkt_geo?`<div class="mkt-field">
+        <div class="mkt-field-lbl">Geografía / Perfil</div>
+        <div class="mkt-field-val">${m.mkt_geo.substring(0,120)}${m.mkt_geo.length>120?"…":""}</div>
+      </div>`:""}
+    </div>
+    <div class="mkt-deal-link">
+      <div class="mkt-deal-cnt">Pipeline activo: <strong>${nDeals > 0 ? nDeals+" deal"+(nDeals>1?"s":"") : "Sin deals aún"}</strong></div>
+      ${nDeals>0?`<button class="mkt-view-btn" onclick="goToDealsForSegment('${m.mkt_linea}','${m.mkt_pais}')">Ver deals →</button>`:""}
+    </div>
+  </div>`;
+}
+
+function setMktCountry(country, btn){
+  mktCountry=country;
+  document.querySelectorAll(".mkt-ctab").forEach(t=>t.classList.remove("active"));
+  btn.classList.add("active");
+  renderMercado();
+}
+
+function goToDealsForSegment(linea, pais){
+  // Cambiar a vista pipeline y filtrar por línea de negocio
+  const fLinea=document.getElementById("fLinea");
+  const lineaBase=linea.split("/")[0].trim();
+  // Buscar si existe la opción en el select
+  for(let i=0;i<fLinea.options.length;i++){
+    if(fLinea.options[i].value===lineaBase){
+      fLinea.value=lineaBase;
+      break;
+    }
+  }
+  setView("pipeline");
+}
 
 // keyframe logout
 const s=document.createElement("style");
