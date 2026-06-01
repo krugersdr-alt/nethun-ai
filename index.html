@@ -18,24 +18,10 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
 body{font-family:'Inter',sans-serif;background:var(--bk);color:var(--tx);overflow-x:hidden}
-
-/* ══ LOGIN ══ */
-#loginScreen{
-  position:fixed;inset:0;background:var(--bk);
-  display:flex;align-items:center;justify-content:center;z-index:1000;overflow:hidden;
-}
-.lg-bg{position:absolute;inset:0;
-  background:radial-gradient(ellipse 80% 60% at 60% 40%,rgba(255,91,0,.18) 0%,transparent 70%),
-             radial-gradient(ellipse 60% 50% at 10% 80%,rgba(255,91,0,.08) 0%,transparent 60%)}
-.lg-grid{position:absolute;inset:0;
-  background-image:linear-gradient(rgba(255,91,0,.04) 1px,transparent 1px),
-                   linear-gradient(90deg,rgba(255,91,0,.04) 1px,transparent 1px);
-  background-size:48px 48px}
-.lg-card{
-  position:relative;background:rgba(37,44,48,.93);border:1px solid rgba(255,91,0,.25);
-  border-radius:20px;padding:44px 40px;width:420px;
-  backdrop-filter:blur(20px);box-shadow:0 24px 80px rgba(0,0,0,.5),0 0 60px rgba(255,91,0,.1);
-  animation:lgIn .55s ease}
+#loginScreen{position:fixed;inset:0;background:var(--bk);display:flex;align-items:center;justify-content:center;z-index:1000;overflow:hidden;}
+.lg-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 60% 40%,rgba(255,91,0,.18) 0%,transparent 70%),radial-gradient(ellipse 60% 50% at 10% 80%,rgba(255,91,0,.08) 0%,transparent 60%)}
+.lg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,91,0,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,91,0,.04) 1px,transparent 1px);background-size:48px 48px}
+.lg-card{position:relative;background:rgba(37,44,48,.93);border:1px solid rgba(255,91,0,.25);border-radius:20px;padding:44px 40px;width:420px;backdrop-filter:blur(20px);box-shadow:0 24px 80px rgba(0,0,0,.5),0 0 60px rgba(255,91,0,.1);animation:lgIn .55s ease}
 @keyframes lgIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 .lg-logo{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:32px}
 .lg-logo img{width:44px;height:44px;border-radius:10px;object-fit:contain;background:#fff;padding:4px}
@@ -44,28 +30,14 @@ body{font-family:'Inter',sans-serif;background:var(--bk);color:var(--tx);overflo
 .lg-ttl{font-size:15px;font-weight:600;color:#fff;text-align:center;margin-bottom:4px}
 .lg-sub{font-size:12px;color:var(--mt);text-align:center;margin-bottom:28px}
 .lg-lbl{font-size:11px;font-weight:600;color:var(--mt);text-transform:uppercase;letter-spacing:.07em;display:block;margin-bottom:7px}
-.lg-inp{
-  width:100%;background:var(--cd2);border:1px solid var(--br2);border-radius:var(--rs);
-  padding:11px 14px;font-size:14px;color:var(--tx);font-family:'Inter',sans-serif;outline:none;
-  transition:border-color .2s,box-shadow .2s;margin-bottom:14px}
+.lg-inp{width:100%;background:var(--cd2);border:1px solid var(--br2);border-radius:var(--rs);padding:11px 14px;font-size:14px;color:var(--tx);font-family:'Inter',sans-serif;outline:none;transition:border-color .2s,box-shadow .2s;margin-bottom:14px}
 .lg-inp:focus{border-color:var(--or);box-shadow:0 0 0 3px var(--or-s)}
-.lg-btn{
-  width:100%;background:var(--or);color:#fff;border:none;border-radius:var(--rs);
-  padding:13px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;
-  margin-top:8px;transition:background .15s,box-shadow .2s}
+.lg-btn{width:100%;background:var(--or);color:#fff;border:none;border-radius:var(--rs);padding:13px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;margin-top:8px;transition:background .15s,box-shadow .2s}
 .lg-btn:hover{background:var(--or-d);box-shadow:0 4px 20px var(--or-g)}
-.lg-err{
-  background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3);border-radius:var(--rs);
-  padding:9px 12px;font-size:12px;color:#ff8080;margin-top:12px;display:none;text-align:center}
+.lg-err{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3);border-radius:var(--rs);padding:9px 12px;font-size:12px;color:#ff8080;margin-top:12px;display:none;text-align:center}
 .lg-foot{text-align:center;font-size:11px;color:var(--mt2);margin-top:24px}
-
-/* ══ APP ══ */
 #app{display:none;height:100vh;flex-direction:column}
-
-/* HEADER */
-.hdr{
-  background:var(--dk);border-bottom:1px solid var(--br);height:58px;
-  display:flex;align-items:center;padding:0 24px;gap:16px;flex-shrink:0;position:relative;z-index:50}
+.hdr{background:var(--dk);border-bottom:1px solid var(--br);height:58px;display:flex;align-items:center;padding:0 24px;gap:16px;flex-shrink:0;position:relative;z-index:50}
 .hdr-logo{display:flex;align-items:center;gap:10px}
 .hdr-logo img{width:32px;height:32px;border-radius:7px;object-fit:contain;background:#fff;padding:3px}
 .hdr-brand{font-size:15px;font-weight:800;color:#fff;letter-spacing:-.3px}
@@ -80,17 +52,11 @@ body{font-family:'Inter',sans-serif;background:var(--bk);color:var(--tx);overflo
 .btn-sm{padding:7px 14px;border-radius:var(--rs);font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;border:1px solid transparent}
 .btn-or{background:var(--or);color:#fff}
 .btn-or:hover{background:var(--or-d);box-shadow:0 0 14px var(--or-g)}
-.btn-gh{background:var(--cd2);color:var(--mt);border-color:var(--br2)}
-.btn-gh:hover{color:var(--tx)}
 .btn-logout{background:rgba(239,68,68,.12);color:#ff8080;border-color:rgba(239,68,68,.25)}
 .btn-logout:hover{background:rgba(239,68,68,.22);color:#ff8080}
 .usr-chip{display:flex;align-items:center;gap:6px;background:var(--cd);border:1px solid var(--br2);border-radius:99px;padding:4px 12px 4px 4px;font-size:12px;color:var(--mt)}
 .usr-av{width:24px;height:24px;border-radius:50%;background:var(--or);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff}
-
-/* BODY */
 .app-body{display:grid;grid-template-columns:210px 1fr;flex:1;overflow:hidden}
-
-/* SIDEBAR */
 .sb{background:var(--dk);border-right:1px solid var(--br);padding:20px 10px;overflow-y:auto;display:flex;flex-direction:column;gap:24px}
 .sb-sec-ttl{font-size:9px;font-weight:700;color:var(--mt2);text-transform:uppercase;letter-spacing:.1em;padding:0 8px;margin-bottom:6px}
 .nb{width:100%;display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:9px;border:none;background:none;color:var(--mt);font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;text-align:left}
@@ -103,17 +69,11 @@ body{font-family:'Inter',sans-serif;background:var(--bk);color:var(--tx);overflo
 .fl-sel{width:100%;background:var(--cd);border:1px solid var(--br2);border-radius:8px;padding:7px 9px;font-size:12px;color:var(--tx);font-family:'Inter',sans-serif;outline:none;cursor:pointer;margin-bottom:10px;transition:border-color .15s}
 .fl-sel:focus{border-color:var(--or)}
 .fl-sel option{background:var(--cd)}
-
-/* MAIN */
 .main{overflow-y:auto;padding:24px;background:var(--bk)}
-
-/* LOADING */
 #loadOv{position:fixed;inset:0;background:rgba(33,39,42,.9);display:none;flex-direction:column;align-items:center;justify-content:center;z-index:999;gap:14px;backdrop-filter:blur(6px)}
 .sp{width:40px;height:40px;border:3px solid var(--br2);border-top-color:var(--or);border-radius:50%;animation:spin .75s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .ld-tx{font-size:13px;color:var(--mt)}
-
-/* METRICS */
 .mg{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
 .mc{background:var(--cd);border:1px solid var(--br);border-radius:var(--r);padding:18px 20px;position:relative;overflow:hidden;transition:border-color .2s}
 .mc:hover{border-color:var(--br2)}
@@ -122,8 +82,6 @@ body{font-family:'Inter',sans-serif;background:var(--bk);color:var(--tx);overflo
 .mv{font-size:28px;font-weight:800;color:var(--ac,#fff);letter-spacing:-1.5px;line-height:1;margin-bottom:5px}
 .ml{font-size:11px;font-weight:600;color:var(--mt);text-transform:uppercase;letter-spacing:.06em}
 .ms{font-size:11px;color:var(--mt2);margin-top:3px}
-
-/* FUNNEL */
 .fg{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
 .sc{background:var(--cd);border:1px solid var(--br);border-radius:var(--r);padding:16px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
 .sc:hover{background:var(--cd2);border-color:var(--br2);transform:translateY(-1px)}
@@ -135,8 +93,6 @@ body{font-family:'Inter',sans-serif;background:var(--bk);color:var(--tx);overflo
 .sc-amt{font-size:12px;color:var(--mt);margin-bottom:10px}
 .sc-bar{height:4px;background:var(--br);border-radius:2px;overflow:hidden}
 .sc-fill{height:100%;background:var(--sc,var(--mt2));border-radius:2px;transition:width .7s cubic-bezier(.4,0,.2,1)}
-
-/* SECTION */
 .sh{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px}
 .st{font-size:15px;font-weight:700;color:#fff;letter-spacing:-.3px}
 .ss{font-size:12px;color:var(--mt);margin-top:2px}
@@ -144,17 +100,11 @@ body{font-family:'Inter',sans-serif;background:var(--bk);color:var(--tx);overflo
 .pill{padding:5px 12px;border-radius:99px;font-size:11px;font-weight:600;cursor:pointer;transition:all .15s;border:1px solid var(--br2);background:var(--cd);color:var(--mt);font-family:'Inter',sans-serif}
 .pill:hover{color:var(--tx);border-color:var(--mt2)}
 .pill.active{background:var(--or);border-color:var(--or);color:#fff}
-
-/* SEARCH */
 .sw{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap}
-.si{background:var(--cd);border:1px solid var(--br2);border-radius:99px;padding:8px 16px 8px 36px;font-size:13px;color:var(--tx);font-family:'Inter',sans-serif;outline:none;width:260px;transition:border-color .2s,box-shadow .2s;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%238A9299' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-size:16px;background-position:12px center}
+.si{background:var(--cd);border:1px solid var(--br2);border-radius:99px;padding:8px 16px 8px 36px;font-size:13px;color:var(--tx);font-family:'Inter',sans-serif;outline:none;width:260px;transition:border-color .2s,box-shadow .2s;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%238A9299' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");background-repeat:no-repeat;background-size:16px;background-position:12px center}
 .si:focus{border-color:var(--or);box-shadow:0 0 0 3px var(--or-s)}
 .si::placeholder{color:var(--mt2)}
 .rc{font-size:12px;color:var(--mt);margin-left:auto}
-
-/* DEAL CARDS */
 .dw{display:flex;flex-direction:column;gap:8px}
 .dc{background:var(--cd);border:1px solid var(--br);border-radius:var(--r);overflow:hidden;transition:border-color .15s}
 .dc:hover{border-color:var(--br2)}
@@ -171,8 +121,6 @@ body{font-family:'Inter',sans-serif;background:var(--bk);color:var(--tx);overflo
 .ds{font-size:11px;color:var(--mt)}
 .chv{color:var(--mt2);font-size:11px;transition:transform .2s;margin-top:2px}
 .chv.up{transform:rotate(180deg)}
-
-/* DEAL BODY */
 .db{display:none;border-top:1px solid var(--br);padding:16px;animation:sd .2s ease}
 .db.open{display:block}
 @keyframes sd{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
@@ -180,8 +128,6 @@ body{font-family:'Inter',sans-serif;background:var(--bk);color:var(--tx);overflo
 .ik{font-size:9px;font-weight:700;color:var(--mt2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px}
 .iv{font-size:12px;color:var(--tx)}
 .iv.venc{color:var(--rd)}
-
-/* AI BOX */
 .ab{border-radius:var(--rs);padding:12px 14px;margin-bottom:12px}
 .ab-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
 .ab-l{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em}
@@ -189,15 +135,11 @@ body{font-family:'Inter',sans-serif;background:var(--bk);color:var(--tx);overflo
 .ab-r{font-size:12px;line-height:1.6;margin-bottom:5px;opacity:.85}
 .ab-rc{font-size:11px;line-height:1.5;font-style:italic;opacity:.7}
 .ab-rc::before{content:'→ ';font-weight:800}
-
-/* MKT INTEL BOX (dentro del deal card) */
 .mkt-inline{background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:var(--rs);padding:12px 14px;margin-bottom:12px}
 .mkt-inline-h{font-size:9px;font-weight:700;color:#3B82F6;text-transform:uppercase;letter-spacing:.09em;margin-bottom:8px}
 .mkt-inline-g{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .mkt-inline-item .ik{color:#3B82F6;opacity:.7}
 .mkt-inline-item .iv{font-size:11px;line-height:1.5}
-
-/* COMMENT BOX */
 .cmb{background:var(--cd2);border-radius:var(--rs);padding:12px 14px;margin-bottom:12px}
 .box-t{font-size:9px;font-weight:700;color:var(--mt2);text-transform:uppercase;letter-spacing:.09em;margin-bottom:10px}
 .cm-date{font-size:10px;color:var(--mt);margin-bottom:4px;font-weight:600}
@@ -211,14 +153,10 @@ body{font-family:'Inter',sans-serif;background:var(--bk);color:var(--tx);overflo
 .tl-date{font-size:11px;color:var(--mt);flex-shrink:0;min-width:76px}
 .tl-text{font-size:12px;color:var(--tx);line-height:1.5}
 .no-act{font-size:12px;color:var(--mt2);font-style:italic}
-
-/* NEXTSTEP */
 .nsb{background:var(--cd2);border-radius:var(--rs);padding:12px 14px;margin-bottom:12px}
 .ns-row{display:flex;gap:8px;margin-bottom:5px;font-size:12px}
 .ns-k{color:var(--mt);min-width:80px;flex-shrink:0}
 .ns-v{color:var(--tx)}
-
-/* GESTIÓN */
 .gov{background:var(--cd);border:1px solid var(--br);border-radius:var(--r);padding:20px;margin-bottom:20px}
 .sbar{display:flex;height:36px;border-radius:8px;overflow:hidden;margin-bottom:18px;gap:2px}
 .sbs{display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;transition:width .7s cubic-bezier(.4,0,.2,1);border-radius:4px}
@@ -227,14 +165,10 @@ body{font-family:'Inter',sans-serif;background:var(--bk);color:var(--tx);overflo
 .gl-d{width:10px;height:10px;border-radius:3px;flex-shrink:0}
 .gl-n{font-size:11px;font-weight:600;color:var(--tx)}
 .gl-s{font-size:13px;font-weight:800;margin-top:1px}
-
-/* TABS */
 .tab-bar{display:flex;border-bottom:1px solid var(--br);margin-bottom:18px;overflow-x:auto;gap:0}
 .tab{padding:9px 16px;font-size:12px;font-weight:500;color:var(--mt);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;transition:all .15s;background:none;border-top:none;border-left:none;border-right:none;font-family:'Inter',sans-serif}
 .tab:hover{color:var(--tx)}
 .tab.active{color:var(--or);border-bottom-color:var(--or);font-weight:700}
-
-/* SDR */
 .sdr-t{background:var(--cd);border:1px solid var(--br);border-radius:var(--r);overflow:hidden}
 .sdr-h,.sdr-r{display:grid;grid-template-columns:36px 1fr 70px 70px 70px 90px 110px;gap:12px;align-items:center;padding:11px 18px;border-bottom:1px solid var(--br)}
 .sdr-h{font-size:9px;font-weight:700;color:var(--mt2);text-transform:uppercase;letter-spacing:.08em;background:var(--cd2)}
@@ -249,36 +183,22 @@ body{font-family:'Inter',sans-serif;background:var(--bk);color:var(--tx);overflo
 .sb-b{flex:1;height:6px;background:var(--br);border-radius:3px;overflow:hidden}
 .sb-f{height:100%;border-radius:3px;transition:width .7s cubic-bezier(.4,0,.2,1)}
 .sb-v{font-size:11px;font-weight:700;min-width:26px}
-
-/* CERRADAS */
 .cc{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px}
 .ccd{background:var(--cd);border:1px solid var(--br);border-radius:var(--r);padding:20px;text-align:center;transition:border-color .2s}
 .ccd:hover{border-color:var(--br2)}
 .cc-ic{font-size:28px;margin-bottom:10px}
 .cc-big{font-size:36px;font-weight:800;letter-spacing:-2px;line-height:1;margin-bottom:4px}
 .cc-sub{font-size:12px;color:var(--mt)}
-
-/* ═══════════════════════════════
-   VISTA MERCADO (Hoja 3)
-═══════════════════════════════ */
 .mkt-header{margin-bottom:24px}
 .mkt-filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;align-items:center}
-.mkt-search{background:var(--cd);border:1px solid var(--br2);border-radius:99px;padding:8px 16px 8px 36px;font-size:13px;color:var(--tx);font-family:'Inter',sans-serif;outline:none;width:260px;transition:border-color .2s;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%238A9299' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-size:16px;background-position:12px center}
+.mkt-search{background:var(--cd);border:1px solid var(--br2);border-radius:99px;padding:8px 16px 8px 36px;font-size:13px;color:var(--tx);font-family:'Inter',sans-serif;outline:none;width:260px;transition:border-color .2s;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%238A9299' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");background-repeat:no-repeat;background-size:16px;background-position:12px center}
 .mkt-search:focus{border-color:var(--or);box-shadow:0 0 0 3px var(--or-s)}
 .mkt-search::placeholder{color:var(--mt2)}
-
-/* Métricas de mercado */
 .mkt-mg{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
-
-/* Tabs de país */
 .mkt-country-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
 .mkt-ctab{padding:6px 14px;border-radius:99px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid var(--br2);background:var(--cd);color:var(--mt);font-family:'Inter',sans-serif;transition:all .15s}
 .mkt-ctab:hover{color:var(--tx);border-color:var(--mt2)}
 .mkt-ctab.active{background:var(--or);border-color:var(--or);color:#fff}
-
-/* Grid de cards de mercado */
 .mkt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 .mkt-card{background:var(--cd);border:1px solid var(--br);border-radius:var(--r);padding:20px;transition:border-color .2s,transform .15s;cursor:default}
 .mkt-card:hover{border-color:var(--br2);transform:translateY(-1px)}
@@ -297,8 +217,6 @@ body{font-family:'Inter',sans-serif;background:var(--bk);color:var(--tx);overflo
 .mkt-deal-cnt strong{color:var(--or);font-weight:700}
 .mkt-view-btn{font-size:11px;font-weight:600;color:var(--or);background:var(--or-s);border:1px solid rgba(255,91,0,.25);border-radius:6px;padding:4px 10px;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s}
 .mkt-view-btn:hover{background:rgba(255,91,0,.2)}
-
-/* Colores por país */
 .pais-ec{background:rgba(34,197,94,.1);color:#4ADE80;border:1px solid rgba(34,197,94,.2)}
 .pais-pe{background:rgba(239,68,68,.1);color:#FCA5A5;border:1px solid rgba(239,68,68,.2)}
 .pais-co{background:rgba(234,179,8,.1);color:#FDE68A;border:1px solid rgba(234,179,8,.2)}
@@ -309,8 +227,6 @@ body{font-family:'Inter',sans-serif;background:var(--bk);color:var(--tx);overflo
 .pais-us{background:rgba(99,102,241,.1);color:#A5B4FC;border:1px solid rgba(99,102,241,.2)}
 .pais-do{background:rgba(236,72,153,.1);color:#F9A8D4;border:1px solid rgba(236,72,153,.2)}
 .pais-default{background:rgba(100,116,139,.1);color:#94A3B8;border:1px solid rgba(100,116,139,.2)}
-
-/* EMPTY */
 .empty{text-align:center;padding:60px 20px;color:var(--mt2)}
 .ei{font-size:36px;margin-bottom:12px}
 .et{font-size:13px}
@@ -361,7 +277,6 @@ body{font-family:'Inter',sans-serif;background:var(--bk);color:var(--tx);overflo
       <button class="btn-sm btn-logout" onclick="logout()">↩ Cerrar sesión</button>
     </div>
   </header>
-
   <div class="app-body">
     <nav class="sb">
       <div>
@@ -384,7 +299,6 @@ body{font-family:'Inter',sans-serif;background:var(--bk);color:var(--tx);overflo
         </div>
       </div>
     </nav>
-
     <main class="main" id="mainContent">
       <div class="empty"><div class="ei">📊</div><div class="et">Carga los datos desde el CRM para comenzar</div></div>
     </main>
@@ -392,61 +306,15 @@ body{font-family:'Inter',sans-serif;background:var(--bk);color:var(--tx);overflo
 </div>
 
 <script>
-// ═══════════════════════════════
-//  CONFIG
-// ═══════════════════════════════
 const ENDPOINT = "https://script.google.com/macros/s/AKfycbxZ7zcj9Zw1B24ICzVhT0N_CbTUq-9gRl-OGfVt16nzDeYIS8LF_w8IsjNDZZcPE7wqxA/exec";
 const CREDS = { user:"SDRAdmin", pass:"AdminSDR12345" };
-
 let deals=[], market=[], view="pipeline", expanded=new Set(), stgF="all", gF="all", cF="all", mktCountry="all";
+const STAGES={nuevo:{label:"Nuevo",color:"#64748B"},prefactibilidad:{label:"Pre Fact.",color:"#EAB308"},cotizacion:{label:"Cotización",color:"#3B82F6"},negociacion:{label:"Negociación",color:"#8B5CF6"},ganado:{label:"Ganado",color:"#22C55E"},perdido:{label:"Perdido",color:"#6B7280"},cancelada:{label:"Cancelada",color:"#4B5563"}};
+const AI={gestionada:{label:"Bien gestionada",color:"#22C55E",bg:"rgba(34,197,94,.12)",emoji:"✅"},parcial:{label:"Gestión parcial",color:"#EAB308",bg:"rgba(234,179,8,.12)",emoji:"🟡"},debil:{label:"Gestión débil",color:"#FF5B00",bg:"rgba(255,91,0,.12)",emoji:"🔴"},muerta:{label:"Sin gestión",color:"#EF4444",bg:"rgba(239,68,68,.12)",emoji:"💀"}};
+const SDR_MAP={svalenzuela:"S. Valenzuela",fescobar:"F. Escobar",mguevara:"M. Guevara",mreyes:"M. Reyes",lramirez:"L. Ramírez",vlema:"V. Lema",ajimenez:"A. Jiménez",mroman:"M. Román",maviles:"M. Avilés",jmonge:"J. Monge",crodriguez:"C. Rodríguez",cmarquez:"C. Márquez",svalencia:"S. Valencia",cborja:"C. Borja",cviteri:"C. Viteri",fcarvajal:"F. Carvajal",eapunte:"E. Apunte",ksisalema:"K. Sisalema"};
+const PAIS_FLAGS={"ecuador":"🇪🇨","ec":"🇪🇨","perú":"🇵🇪","peru":"🇵🇪","pe":"🇵🇪","colombia":"🇨🇴","co":"🇨🇴","costa rica":"🇨🇷","cr":"🇨🇷","guatemala":"🇬🇹","gt":"🇬🇹","panamá":"🇵🇦","panama":"🇵🇦","pa":"🇵🇦","méxico":"🇲🇽","mexico":"🇲🇽","mx":"🇲🇽","estados unidos":"🇺🇸","usa":"🇺🇸","us":"🇺🇸","república dominicana":"🇩🇴","dominicana":"🇩🇴","do":"🇩🇴"};
+const PAIS_CSS={"ecuador":"pais-ec","perú":"pais-pe","peru":"pais-pe","colombia":"pais-co","costa rica":"pais-cr","guatemala":"pais-gt","panamá":"pais-pa","panama":"pais-pa","méxico":"pais-mx","mexico":"pais-mx","estados unidos":"pais-us","república dominicana":"pais-do","dominicana":"pais-do"};
 
-const STAGES={
-  nuevo:{label:"Nuevo",color:"#64748B"},
-  prefactibilidad:{label:"Pre Fact.",color:"#EAB308"},
-  cotizacion:{label:"Cotización",color:"#3B82F6"},
-  negociacion:{label:"Negociación",color:"#8B5CF6"},
-  ganado:{label:"Ganado",color:"#22C55E"},
-  perdido:{label:"Perdido",color:"#6B7280"},
-  cancelada:{label:"Cancelada",color:"#4B5563"},
-};
-const AI={
-  gestionada:{label:"Bien gestionada",color:"#22C55E",bg:"rgba(34,197,94,.12)",emoji:"✅"},
-  parcial:   {label:"Gestión parcial",color:"#EAB308",bg:"rgba(234,179,8,.12)", emoji:"🟡"},
-  debil:     {label:"Gestión débil",  color:"#FF5B00",bg:"rgba(255,91,0,.12)",  emoji:"🔴"},
-  muerta:    {label:"Sin gestión",    color:"#EF4444",bg:"rgba(239,68,68,.12)", emoji:"💀"},
-};
-const SDR_MAP={
-  svalenzuela:"S. Valenzuela",fescobar:"F. Escobar",mguevara:"M. Guevara",
-  mreyes:"M. Reyes",lramirez:"L. Ramírez",vlema:"V. Lema",
-  ajimenez:"A. Jiménez",mroman:"M. Román",maviles:"M. Avilés",
-  jmonge:"J. Monge",crodriguez:"C. Rodríguez",cmarquez:"C. Márquez",
-  svalencia:"S. Valencia",cborja:"C. Borja",cviteri:"C. Viteri",
-  fcarvajal:"F. Carvajal",eapunte:"E. Apunte",ksisalema:"K. Sisalema"
-};
-
-// Colores de bandera por país (código ISO)
-const PAIS_FLAGS={
-  "ecuador":"🇪🇨","ec":"🇪🇨",
-  "perú":"🇵🇪","peru":"🇵🇪","pe":"🇵🇪",
-  "colombia":"🇨🇴","co":"🇨🇴",
-  "costa rica":"🇨🇷","cr":"🇨🇷",
-  "guatemala":"🇬🇹","gt":"🇬🇹",
-  "panamá":"🇵🇦","panama":"🇵🇦","pa":"🇵🇦",
-  "méxico":"🇲🇽","mexico":"🇲🇽","mx":"🇲🇽",
-  "estados unidos":"🇺🇸","usa":"🇺🇸","us":"🇺🇸",
-  "república dominicana":"🇩🇴","dominicana":"🇩🇴","do":"🇩🇴",
-};
-const PAIS_CSS={
-  "ecuador":"pais-ec","perú":"pais-pe","peru":"pais-pe",
-  "colombia":"pais-co","costa rica":"pais-cr",
-  "guatemala":"pais-gt","panamá":"pais-pa","panama":"pais-pa",
-  "méxico":"pais-mx","mexico":"pais-mx",
-  "estados unidos":"pais-us","república dominicana":"pais-do","dominicana":"pais-do",
-};
-
-// ═══════════════════════════════
-//  HELPERS
-// ═══════════════════════════════
 const sn=e=>{if(!e)return"—";const u=String(e).split("@")[0].replace(/,.*/,"").trim();return SDR_MAP[u]||u};
 const fm=v=>{const n=parseFloat(String(v).replace(/,/g,""))||0;if(n>=1e6)return"$"+(n/1e6).toFixed(1)+"M";if(n>=1000)return"$"+Math.round(n/1000)+"k";return"$"+n.toLocaleString("es-EC")};
 const da=d=>{if(!d)return null;const x=new Date(d);return isNaN(x)?null:Math.floor((Date.now()-x)/86400000)};
@@ -454,51 +322,11 @@ const strip=t=>String(t||"").replace(/<[^>]*>/g,"").replace(/&nbsp;/g," ").trim(
 const fmtDateStr=s=>{if(!s)return"—";try{const d=new Date(s);if(isNaN(d))return String(s).substring(0,10);return d.toLocaleDateString("es-EC",{day:"numeric",month:"short",year:"numeric"})}catch{return String(s).substring(0,10)}};
 const paisFlag=p=>{const k=String(p||"").toLowerCase().trim();return PAIS_FLAGS[k]||"🌍"};
 const paisCss=p=>{const k=String(p||"").toLowerCase().trim();return PAIS_CSS[k]||"pais-default"};
-
-const parseSt=s=>{const lo=String(s||"").toLowerCase();
-  if(lo.includes("ganado")||lo.includes("100%"))return"ganado";
-  if(lo.includes("perdido"))return"perdido";
-  if(lo.includes("cancelad"))return"cancelada";
-  if(lo.includes("negoci")||lo.includes("75%"))return"negociacion";
-  if(lo.includes("cotizac")||lo.includes("50%"))return"cotizacion";
-  if(lo.includes("pre fact")||lo.includes("25%"))return"prefactibilidad";
-  return"nuevo"};
-
-const parseNS=txt=>{
-  if(!txt)return null;
-  const clean=String(txt).replace(/\r/g,"");
-  const r={};
-  const pats=[[/¿?Qu[eé] har[eé]\??:?\s*/i,"a"],[/¿?Con qui[eé]n\??:?\s*/i,"b"],[/¿?Cu[aá]ndo\??:?\s*/i,"c"],[/Hasta eso ¿?qu[eé] har[eé]\??:?\s*/i,"d"]];
-  const pts=[];
-  for(const[rx,k]of pats){const i=clean.search(rx);if(i!==-1)pts.push({k,i});}
-  pts.sort((a,b)=>a.i-b.i);
-  for(let i=0;i<pts.length;i++){
-    const s=clean.indexOf(":",pts[i].i)+1,e=i<pts.length-1?pts[i+1].i:clean.length;
-    const v=clean.substring(s,e).trim().replace(/\n+/g," ");
-    if(v&&v.length>0)r[pts[i].k]=v;
-  }
-  if(!Object.keys(r).length){const t=clean.trim().replace(/\n+/g," ");return t.length>3?{a:t}:null;}
-  return r;
-};
-
-const urg=d=>{
-  const cat=d._cat;
-  if(["ganado","perdido","cancelada"].includes(cat))return 0;
-  const inact=da(d._lastAct)||0;
-  let u=3;
-  if(inact>30)u+=4;else if(inact>21)u+=3;else if(inact>14)u+=2;else if(inact>7)u+=1;
-  if(cat==="negociacion")u+=3;else if(cat==="cotizacion")u+=2;else if(cat==="prefactibilidad")u+=1;
-  const m=d._monto;if(m>=100000)u+=2;else if(m>=50000)u+=1;
-  const ai=String(d.ai_clasificacion||"").toLowerCase();
-  if(ai==="muerta")u+=2;else if(ai==="debil")u+=1;
-  const fc=d["Fecha de cierre"]||"";if(fc&&da(fc)>0)u+=1;
-  return Math.max(1,Math.min(10,u));
-};
+const parseSt=s=>{const lo=String(s||"").toLowerCase();if(lo.includes("ganado")||lo.includes("100%"))return"ganado";if(lo.includes("perdido"))return"perdido";if(lo.includes("cancelad"))return"cancelada";if(lo.includes("negoci")||lo.includes("75%"))return"negociacion";if(lo.includes("cotizac")||lo.includes("50%"))return"cotizacion";if(lo.includes("pre fact")||lo.includes("25%"))return"prefactibilidad";return"nuevo"};
+const parseNS=txt=>{if(!txt)return null;const clean=String(txt).replace(/\r/g,"");const r={};const pats=[[/¿?Qu[eé] har[eé]\??:?\s*/i,"a"],[/¿?Con qui[eé]n\??:?\s*/i,"b"],[/¿?Cu[aá]ndo\??:?\s*/i,"c"],[/Hasta eso ¿?qu[eé] har[eé]\??:?\s*/i,"d"]];const pts=[];for(const[rx,k]of pats){const i=clean.search(rx);if(i!==-1)pts.push({k,i});}pts.sort((a,b)=>a.i-b.i);for(let i=0;i<pts.length;i++){const s=clean.indexOf(":",pts[i].i)+1,e=i<pts.length-1?pts[i+1].i:clean.length;const v=clean.substring(s,e).trim().replace(/\n+/g," ");if(v&&v.length>0)r[pts[i].k]=v;}if(!Object.keys(r).length){const t=clean.trim().replace(/\n+/g," ");return t.length>3?{a:t}:null;}return r;};
+const urg=d=>{const cat=d._cat;if(["ganado","perdido","cancelada"].includes(cat))return 0;const inact=da(d._lastAct)||0;let u=3;if(inact>30)u+=4;else if(inact>21)u+=3;else if(inact>14)u+=2;else if(inact>7)u+=1;if(cat==="negociacion")u+=3;else if(cat==="cotizacion")u+=2;else if(cat==="prefactibilidad")u+=1;const m=d._monto;if(m>=100000)u+=2;else if(m>=50000)u+=1;const ai=String(d.ai_clasificacion||"").toLowerCase();if(ai==="muerta")u+=2;else if(ai==="debil")u+=1;const fc=d["Fecha de cierre"]||"";if(fc&&da(fc)>0)u+=1;return Math.max(1,Math.min(10,u));};
 const uC=u=>u>=8?"#EF4444":u>=6?"#FF5B00":u>=4?"#EAB308":"#22C55E";
 
-// ═══════════════════════════════
-//  AUTH
-// ═══════════════════════════════
 function login(){
   const u=document.getElementById("lgU").value.trim();
   const p=document.getElementById("lgP").value;
@@ -508,8 +336,7 @@ function login(){
     setTimeout(()=>{ls.style.display="none";document.getElementById("app").style.display="flex";},400);
     document.getElementById("lgErr").style.display="none";
   } else {
-    const e=document.getElementById("lgErr");
-    e.style.display="block";
+    document.getElementById("lgErr").style.display="block";
     document.getElementById("lgP").value="";
     document.getElementById("lgP").focus();
   }
@@ -519,8 +346,7 @@ function logout(){
   document.getElementById("app").style.display="none";
   document.getElementById("loginScreen").style.cssText="";
   document.getElementById("loginScreen").style.display="flex";
-  document.getElementById("lgU").value="";
-  document.getElementById("lgP").value="";
+  document.getElementById("lgU").value="";document.getElementById("lgP").value="";
   document.getElementById("lgErr").style.display="none";
   document.getElementById("hdrInfo").textContent="—";
   document.getElementById("liveBadge").style.display="none";
@@ -528,9 +354,6 @@ function logout(){
 }
 document.addEventListener("DOMContentLoaded",()=>document.getElementById("lgU").focus());
 
-// ═══════════════════════════════
-//  DATA
-// ═══════════════════════════════
 async function loadCRM(){
   showLoad(true,"Conectando con NetHunt CRM...");
   try{
@@ -543,14 +366,14 @@ async function loadCRM(){
 }
 
 function processData(raw){
-  // Soporte para respuesta nueva { deals, market } y legacy (array plano)
-  const rawDeals = Array.isArray(raw) ? raw : (raw.deals || []);
-  market = Array.isArray(raw) ? [] : (raw.market || []);
-
+  const rawDeals=Array.isArray(raw)?raw:(raw.deals||[]);
+  market=Array.isArray(raw)?[]:(raw.market||[]);
   deals=rawDeals.map(d=>{
     const cat=parseSt(d.Etapa||d.stage||"");
     const monto=parseFloat(String(d.Monto||d.monto||0).replace(/,/g,""))||0;
-    const lastAct=d._last_real_activity||d.updated_at||d.created_at||null;
+    // ── FIX: updated_at ahora viene calculado desde última actividad real (Apps Script)
+    // Si viene vacío (deal sin comentarios ni llamadas), caer a created_at
+    const lastAct=(d.updated_at&&String(d.updated_at).trim()!=="")?d.updated_at:(d.created_at||null);
     return{...d,_cat:cat,_monto:monto,_lastAct:lastAct,
       _ns:parseNS(d["Next Step"]||d.next_step||""),
       _sdr:String(d.SDR||d.sdr||"").split(",")[0].trim()
@@ -568,9 +391,6 @@ function processData(raw){
 function showLoad(v,t){document.getElementById("loadOv").style.display=v?"flex":"none";if(t)setLT(t);}
 function setLT(t){document.getElementById("ldTx").textContent=t;}
 
-// ═══════════════════════════════
-//  FILTERS
-// ═══════════════════════════════
 function fillFilters(){
   const act=deals.filter(d=>!["ganado","perdido","cancelada"].includes(d._cat));
   const sdrs=[...new Set(act.map(d=>d._sdr).filter(Boolean))].sort();
@@ -594,11 +414,7 @@ function getFiltered(term=false){
     if(sdr!=="all"&&!d._sdr.includes(sdr.split("@")[0]))return false;
     if(cr!=="all"&&(d.Creador||d.creador||"")!==cr)return false;
     if(ln!=="all"&&(d["Linea de Negocio"]||"").split("/")[0].trim()!==ln)return false;
-    if(q){
-      const nm=String(d.Name||d.name||"").toLowerCase();
-      const co=String(d.Compañia||"").toLowerCase();
-      if(!nm.includes(q)&&!co.includes(q)&&!sn(d._sdr).toLowerCase().includes(q))return false;
-    }
+    if(q){const nm=String(d.Name||d.name||"").toLowerCase();const co=String(d.Compañia||"").toLowerCase();if(!nm.includes(q)&&!co.includes(q)&&!sn(d._sdr).toLowerCase().includes(q))return false;}
     return true;
   });
 }
@@ -612,27 +428,13 @@ function updateCounts(){
   document.getElementById("cnt-mercado").textContent=market.length;
 }
 
-// ═══════════════════════════════
-//  VIEWS
-// ═══════════════════════════════
 function setView(v){
   view=v;
-  ["pipeline","gestion","sdrs","cerradas","mercado"].forEach(n=>{
-    document.getElementById("nav-"+n).classList.toggle("active",n===v);
-  });
+  ["pipeline","gestion","sdrs","cerradas","mercado"].forEach(n=>{document.getElementById("nav-"+n).classList.toggle("active",n===v);});
   renderView();
 }
-function renderView(){if(!deals.length&&view!=="mercado")return;
-  if(view==="pipeline")renderPipeline();
-  else if(view==="gestion")renderGestion();
-  else if(view==="sdrs")renderSDRs();
-  else if(view==="cerradas")renderCerradas();
-  else if(view==="mercado")renderMercado();
-}
+function renderView(){if(!deals.length&&view!=="mercado")return;if(view==="pipeline")renderPipeline();else if(view==="gestion")renderGestion();else if(view==="sdrs")renderSDRs();else if(view==="cerradas")renderCerradas();else if(view==="mercado")renderMercado();}
 
-// ═══════════════════════════════
-//  PIPELINE
-// ═══════════════════════════════
 function renderPipeline(){
   const mc=document.getElementById("mainContent");
   const all=getFiltered(false).sort((a,b)=>b._urgency-a._urgency);
@@ -644,28 +446,16 @@ function renderPipeline(){
   const gr={};stKeys.forEach(k=>gr[k]=[]);
   all.forEach(d=>{if(gr[d._cat]!==undefined)gr[d._cat].push(d);});
   const maxC=Math.max(...stKeys.map(k=>gr[k].length),1);
-
   mc.innerHTML=`
-  <div class="sw">
-    <input class="si" id="si" type="text" placeholder="Buscar empresa, nombre, SDR..." oninput="renderView()">
-    <div class="rc" id="rc">${all.length} resultados</div>
-  </div>
+  <div class="sw"><input class="si" id="si" type="text" placeholder="Buscar empresa, nombre, SDR..." oninput="renderView()"><div class="rc" id="rc">${all.length} resultados</div></div>
   <div class="mg">
     <div class="mc" style="--ac:#3B82F6"><span class="me">💼</span><div class="mv" style="color:#3B82F6">${fm(total)}</div><div class="ml">Pipeline activo</div><div class="ms">${all.length} oportunidades</div></div>
     <div class="mc" style="--ac:#8B5CF6"><span class="me">📈</span><div class="mv" style="color:#8B5CF6">${fm(pond)}</div><div class="ml">Rev. ponderado</div><div class="ms">Ajustado por etapa</div></div>
     <div class="mc" style="--ac:#FF5B00"><span class="me">🔥</span><div class="mv" style="color:#FF5B00">${urgent}</div><div class="ml">Alta urgencia</div><div class="ms">Score ≥ 7</div></div>
     <div class="mc" style="--ac:#EF4444"><span class="me">⚠️</span><div class="mv" style="color:#EF4444">${noG}</div><div class="ml">Sin gestión</div><div class="ms">Muerta o débil (IA)</div></div>
   </div>
-  <div class="fg">
-    ${stKeys.map(k=>{const cfg=STAGES[k],items=gr[k],amt=items.reduce((s,d)=>s+d._monto,0),pct=Math.round(items.length/maxC*100);
-      return`<div class="sc ${stgF===k?'active':''}" style="--sc:${cfg.color}" onclick="filterSt('${k}')">
-        <div class="sc-top"><div class="sc-lbl">${cfg.label}</div><div class="sc-dot"></div></div>
-        <div class="sc-cnt">${items.length}</div><div class="sc-amt">${fm(amt)}</div>
-        <div class="sc-bar"><div class="sc-fill" style="width:${pct}%"></div></div>
-      </div>`;}).join("")}
-  </div>
-  <div class="sh">
-    <div><div class="st">Oportunidades activas</div><div class="ss">Ordenadas por urgencia</div></div>
+  <div class="fg">${stKeys.map(k=>{const cfg=STAGES[k],items=gr[k],amt=items.reduce((s,d)=>s+d._monto,0),pct=Math.round(items.length/maxC*100);return`<div class="sc ${stgF===k?'active':''}" style="--sc:${cfg.color}" onclick="filterSt('${k}')"><div class="sc-top"><div class="sc-lbl">${cfg.label}</div><div class="sc-dot"></div></div><div class="sc-cnt">${items.length}</div><div class="sc-amt">${fm(amt)}</div><div class="sc-bar"><div class="sc-fill" style="width:${pct}%"></div></div></div>`;}).join("")}</div>
+  <div class="sh"><div><div class="st">Oportunidades activas</div><div class="ss">Ordenadas por urgencia</div></div>
     <div class="pill-row" id="spills">
       <button class="pill ${stgF==='all'?'active':''}" onclick="filterSt('all')">Todas</button>
       ${stKeys.map(k=>`<button class="pill ${stgF===k?'active':''}" onclick="filterSt('${k}')">${STAGES[k].label}</button>`).join("")}
@@ -680,15 +470,8 @@ function filterSt(s){
   document.getElementById("dlist").innerHTML=renderDList(list);
   document.getElementById("rc").textContent=list.length+" resultados";
 }
+function renderDList(list){if(!list.length)return'<div class="empty"><div class="ei">🔍</div><div class="et">Sin resultados</div></div>';return list.map(d=>renderCard(d)).join("");}
 
-function renderDList(list){
-  if(!list.length)return'<div class="empty"><div class="ei">🔍</div><div class="et">Sin resultados</div></div>';
-  return list.map(d=>renderCard(d)).join("");
-}
-
-// ═══════════════════════════════
-//  DEAL CARD
-// ═══════════════════════════════
 function renderCard(d){
   const cat=d._cat,sc=STAGES[cat]||STAGES.nuevo;
   const ai=String(d.ai_clasificacion||"").toLowerCase(),aiCfg=AI[ai];
@@ -700,13 +483,10 @@ function renderCard(d){
   const bc=ai==="muerta"?"danger":ai==="debil"?"warn":"";
   const ib=inact===null?"":inact>21?"rgba(239,68,68,.12)":inact>14?"rgba(255,91,0,.12)":"rgba(100,116,139,.1)";
   const ic=inact===null?"":inact>21?"#EF4444":inact>14?"#FF5B00":"var(--mt)";
-
   const createdAt=d.created_at||d["Fecha de Creacion"]||"";
   const createdFmt=fmtDateStr(createdAt);
   const fechaCierre=d["Fecha de cierre"]||"";
   const venc=fechaCierre&&da(fechaCierre)>0;
-
-  // Comentarios
   const rawComments=String(d.Comentarios||d["Comentarios"]||"");
   const commParts=rawComments.split("|").map(c=>c.trim()).filter(c=>c.length>5);
   let commHTML="";
@@ -717,103 +497,23 @@ function renderCard(d){
     const textFull=dateM?strip(dateM[2]):strip(first);
     const preview=textFull.length>160?textFull.substring(0,160)+"…":textFull;
     const hasMore=textFull.length>160||commParts.length>1;
-    const fullHTML=commParts.map(c=>{
-      const m=c.match(/^(\d{4}-\d{2}-\d{2}):\s*(.*)/s);
-      return m
-        ?`<div class="tl-item"><div class="tl-dot"></div><div class="tl-date">${m[1]}</div><div class="tl-text">${strip(m[2]).substring(0,300)}</div></div>`
-        :`<div class="tl-item"><div class="tl-dot"></div><div class="tl-text">${strip(c).substring(0,300)}</div></div>`;
-    }).join("");
-    commHTML=`<div class="cmb">
-      <div class="box-t">Comentarios NetHunt</div>
-      ${dateLabel?`<div class="cm-date">${dateLabel}</div>`:""}
-      <div class="cm-text">${preview}</div>
-      ${hasMore?`<button class="cm-more-btn" onclick="toggleComment('cm_${rid}',this)">Ver comentario completo ▾</button>
-      <div class="cm-full" id="cm_${rid}">${fullHTML}</div>`:""}
-    </div>`;
+    const fullHTML=commParts.map(c=>{const m=c.match(/^(\d{4}-\d{2}-\d{2}):\s*(.*)/s);return m?`<div class="tl-item"><div class="tl-dot"></div><div class="tl-date">${m[1]}</div><div class="tl-text">${strip(m[2]).substring(0,300)}</div></div>`:`<div class="tl-item"><div class="tl-dot"></div><div class="tl-text">${strip(c).substring(0,300)}</div></div>`;}).join("");
+    commHTML=`<div class="cmb"><div class="box-t">Comentarios NetHunt</div>${dateLabel?`<div class="cm-date">${dateLabel}</div>`:""}<div class="cm-text">${preview}</div>${hasMore?`<button class="cm-more-btn" onclick="toggleComment('cm_${rid}',this)">Ver comentario completo ▾</button><div class="cm-full" id="cm_${rid}">${fullHTML}</div>`:""}</div>`;
   } else {
     commHTML=`<div class="cmb"><div class="box-t">Comentarios NetHunt</div><div class="no-act">Sin comentarios registrados</div></div>`;
   }
-
   const ns=d._ns;
-  const nsHTML=ns?`<div class="nsb"><div class="box-t">Plan de acción</div>
-    ${ns.a?`<div class="ns-row"><span class="ns-k">Qué haré:</span><span class="ns-v">${ns.a.substring(0,220)}</span></div>`:""}
-    ${ns.b?`<div class="ns-row"><span class="ns-k">Con quién:</span><span class="ns-v">${ns.b.substring(0,120)}</span></div>`:""}
-    ${ns.c?`<div class="ns-row"><span class="ns-k">Cuándo:</span><span class="ns-v">${ns.c.substring(0,120)}</span></div>`:""}
-    ${ns.d?`<div class="ns-row"><span class="ns-k">Mientras:</span><span class="ns-v">${ns.d.substring(0,160)}</span></div>`:""}
-  </div>`:"";
-
-  const aiHTML=aiCfg?`<div class="ab" style="background:${aiCfg.bg}">
-    <div class="ab-h">
-      <div class="ab-l" style="color:${aiCfg.color}">${aiCfg.emoji} ${aiCfg.label}</div>
-      <div class="ab-s" style="background:${aiCfg.bg};color:${aiCfg.color}">${d.ai_score||"—"}/10</div>
-    </div>
-    <div class="ab-r" style="color:${aiCfg.color}">${strip(d.ai_razon||"")}</div>
-    ${d.ai_recomendacion?`<div class="ab-rc" style="color:${aiCfg.color}">${strip(d.ai_recomendacion)}</div>`:""}
-  </div>`:"";
-
-  // Contexto de mercado inline (si existe)
+  const nsHTML=ns?`<div class="nsb"><div class="box-t">Plan de acción</div>${ns.a?`<div class="ns-row"><span class="ns-k">Qué haré:</span><span class="ns-v">${ns.a.substring(0,220)}</span></div>`:""}${ns.b?`<div class="ns-row"><span class="ns-k">Con quién:</span><span class="ns-v">${ns.b.substring(0,120)}</span></div>`:""}${ns.c?`<div class="ns-row"><span class="ns-k">Cuándo:</span><span class="ns-v">${ns.c.substring(0,120)}</span></div>`:""}${ns.d?`<div class="ns-row"><span class="ns-k">Mientras:</span><span class="ns-v">${ns.d.substring(0,160)}</span></div>`:""}</div>`:"";
+  const aiHTML=aiCfg?`<div class="ab" style="background:${aiCfg.bg}"><div class="ab-h"><div class="ab-l" style="color:${aiCfg.color}">${aiCfg.emoji} ${aiCfg.label}</div><div class="ab-s" style="background:${aiCfg.bg};color:${aiCfg.color}">${d.ai_score||"—"}/10</div></div><div class="ab-r" style="color:${aiCfg.color}">${strip(d.ai_razon||"")}</div>${d.ai_recomendacion?`<div class="ab-rc" style="color:${aiCfg.color}">${strip(d.ai_recomendacion)}</div>`:""}</div>`:"";
   const hasMkt=d.mkt_industrias||d.mkt_buyers||d.mkt_dolores;
-  const mktInlineHTML=hasMkt?`<div class="mkt-inline">
-    <div class="mkt-inline-h">🗺️ Contexto de mercado — ${d.mkt_linea||"—"}</div>
-    <div class="mkt-inline-g">
-      ${d.mkt_industrias?`<div class="mkt-inline-item"><div class="ik">Industrias objetivo</div><div class="iv">${d.mkt_industrias.substring(0,120)}</div></div>`:""}
-      ${d.mkt_buyers?`<div class="mkt-inline-item"><div class="ik">Buyer personas</div><div class="iv">${d.mkt_buyers.substring(0,100)}</div></div>`:""}
-      ${d.mkt_dolores?`<div class="mkt-inline-item" style="grid-column:1/-1"><div class="ik">Pain points</div><div class="iv">${d.mkt_dolores.substring(0,200)}</div></div>`:""}
-    </div>
-  </div>`:""
-
-  const detail=open?`<div class="db open">
-    <div class="ig">
-      <div><div class="ik">Comercial</div><div class="iv">${sn(d.Creador||d.creador||"")}</div></div>
-      <div><div class="ik">SDR</div><div class="iv">${sn(d._sdr)}</div></div>
-      <div><div class="ik">Línea</div><div class="iv">${String(d["Linea de Negocio"]||"").split("/")[0]||"—"}</div></div>
-      <div><div class="ik">Monto</div><div class="iv">${fm(d._monto)}</div></div>
-      <div><div class="ik">Fecha de creación</div><div class="iv">${createdFmt}</div></div>
-      <div><div class="ik">Cierre estimado</div><div class="iv ${venc?"venc":""}">${fechaCierre||"—"}${venc?" ⚠️":""}</div></div>
-      <div><div class="ik">Ciudad</div><div class="iv">${d.Ciudad||d.ciudad||"—"}</div></div>
-      <div><div class="ik">País</div><div class="iv">${d["País"]||d.pais||"—"}</div></div>
-      <div><div class="ik">KAE Feeling</div><div class="iv">${d["KAE feeling"]||"—"}</div></div>
-    </div>
-    ${aiHTML}${mktInlineHTML}${nsHTML}${commHTML}
-  </div>`:`<div class="db"></div>`;
-
-  return`<div class="dc ${bc}" id="dc_${rid}">
-    <div class="dh" onclick="toggleCard('${rid}')">
-      <div class="us" style="background:${uc}"></div>
-      <div class="di">
-        <div class="dn">${name}</div>
-        <div class="dt">
-          <span class="tg" style="background:${sc.color}22;color:${sc.color}">${sc.label}</span>
-          ${aiCfg?`<span class="tg" style="background:${aiCfg.bg};color:${aiCfg.color}">${aiCfg.emoji} ${aiCfg.label}</span>`:""}
-          ${inact!==null?`<span class="tg" style="background:${ib};color:${ic}">${inact}d sin actividad</span>`:""}
-          ${u>0?`<span class="tg" style="background:${uc}22;color:${uc}">U:${u}</span>`:""}
-          <span class="tg" style="background:rgba(100,116,139,.12);color:var(--mt)">Creado: ${createdFmt}</span>
-        </div>
-      </div>
-      <div class="de">
-        <div class="da">${fm(d._monto)}</div>
-        <div class="ds">${sn(d._sdr)}</div>
-        <div class="chv ${open?"up":""}">▾</div>
-      </div>
-    </div>
-    ${detail}
-  </div>`;
+  const mktInlineHTML=hasMkt?`<div class="mkt-inline"><div class="mkt-inline-h">🗺️ Contexto de mercado — ${d.mkt_linea||"—"}</div><div class="mkt-inline-g">${d.mkt_industrias?`<div class="mkt-inline-item"><div class="ik">Industrias objetivo</div><div class="iv">${d.mkt_industrias.substring(0,120)}</div></div>`:""}${d.mkt_buyers?`<div class="mkt-inline-item"><div class="ik">Buyer personas</div><div class="iv">${d.mkt_buyers.substring(0,100)}</div></div>`:""}${d.mkt_dolores?`<div class="mkt-inline-item" style="grid-column:1/-1"><div class="ik">Pain points</div><div class="iv">${d.mkt_dolores.substring(0,200)}</div></div>`:""}</div></div>`:"";
+  const detail=open?`<div class="db open"><div class="ig"><div><div class="ik">Comercial</div><div class="iv">${sn(d.Creador||d.creador||"")}</div></div><div><div class="ik">SDR</div><div class="iv">${sn(d._sdr)}</div></div><div><div class="ik">Línea</div><div class="iv">${String(d["Linea de Negocio"]||"").split("/")[0]||"—"}</div></div><div><div class="ik">Monto</div><div class="iv">${fm(d._monto)}</div></div><div><div class="ik">Fecha de creación</div><div class="iv">${createdFmt}</div></div><div><div class="ik">Cierre estimado</div><div class="iv ${venc?"venc":""}">${fechaCierre||"—"}${venc?" ⚠️":""}</div></div><div><div class="ik">Ciudad</div><div class="iv">${d.Ciudad||d.ciudad||"—"}</div></div><div><div class="ik">País</div><div class="iv">${d["País"]||d.pais||"—"}</div></div><div><div class="ik">KAE Feeling</div><div class="iv">${d["KAE feeling"]||"—"}</div></div></div>${aiHTML}${mktInlineHTML}${nsHTML}${commHTML}</div>`:`<div class="db"></div>`;
+  return`<div class="dc ${bc}" id="dc_${rid}"><div class="dh" onclick="toggleCard('${rid}')"><div class="us" style="background:${uc}"></div><div class="di"><div class="dn">${name}</div><div class="dt"><span class="tg" style="background:${sc.color}22;color:${sc.color}">${sc.label}</span>${aiCfg?`<span class="tg" style="background:${aiCfg.bg};color:${aiCfg.color}">${aiCfg.emoji} ${aiCfg.label}</span>`:""}${inact!==null?`<span class="tg" style="background:${ib};color:${ic}">${inact}d sin actividad</span>`:""}${u>0?`<span class="tg" style="background:${uc}22;color:${uc}">U:${u}</span>`:""}<span class="tg" style="background:rgba(100,116,139,.12);color:var(--mt)">Creado: ${createdFmt}</span></div></div><div class="de"><div class="da">${fm(d._monto)}</div><div class="ds">${sn(d._sdr)}</div><div class="chv ${open?"up":""}">▾</div></div></div>${detail}</div>`;
 }
 
-function toggleCard(rid){
-  if(expanded.has(rid))expanded.delete(rid);else expanded.add(rid);
-  renderView();
-}
-function toggleComment(id,btn){
-  const el=document.getElementById(id);
-  if(!el)return;
-  const isOpen=el.classList.toggle("open");
-  btn.textContent=isOpen?"Ocultar comentarios ▴":"Ver comentario completo ▾";
-}
+function toggleCard(rid){if(expanded.has(rid))expanded.delete(rid);else expanded.add(rid);renderView();}
+function toggleComment(id,btn){const el=document.getElementById(id);if(!el)return;const isOpen=el.classList.toggle("open");btn.textContent=isOpen?"Ocultar comentarios ▴":"Ver comentario completo ▾";}
 
-// ═══════════════════════════════
-//  GESTIÓN IA
-// ═══════════════════════════════
 function renderGestion(){
   const mc=document.getElementById("mainContent");
   const all=getFiltered(false);
@@ -822,20 +522,12 @@ function renderGestion(){
   const tot=all.length||1;
   const bars=["gestionada","parcial","debil","muerta"];
   const bc={gestionada:"#22C55E",parcial:"#EAB308",debil:"#FF5B00",muerta:"#EF4444"};
-
   mc.innerHTML=`
   <div class="sw"><input class="si" id="si" type="text" placeholder="Buscar..." oninput="renderView()"></div>
-  <div class="mg">
-    ${bars.map(k=>{const cfg=AI[k],pct=Math.round(gr[k].length/tot*100);
-      return`<div class="mc" style="--ac:${bc[k]}"><span class="me">${cfg.emoji}</span><div class="mv" style="color:${bc[k]}">${gr[k].length}</div><div class="ml">${cfg.label}</div><div class="ms">${pct}% del total</div></div>`;
-    }).join("")}
-  </div>
-  <div class="gov">
-    <div class="sh" style="margin-bottom:16px"><div class="st">Radiografía de gestión</div><div class="ss">${all.length} oportunidades activas</div></div>
+  <div class="mg">${bars.map(k=>{const cfg=AI[k],pct=Math.round(gr[k].length/tot*100);return`<div class="mc" style="--ac:${bc[k]}"><span class="me">${cfg.emoji}</span><div class="mv" style="color:${bc[k]}">${gr[k].length}</div><div class="ml">${cfg.label}</div><div class="ms">${pct}% del total</div></div>`;}).join("")}</div>
+  <div class="gov"><div class="sh" style="margin-bottom:16px"><div class="st">Radiografía de gestión</div><div class="ss">${all.length} oportunidades activas</div></div>
     <div class="sbar">${bars.map(k=>{const pct=Math.round(gr[k].length/tot*100);return pct>0?`<div class="sbs" style="width:${pct}%;background:${bc[k]}">${gr[k].length>2?gr[k].length:""}</div>`:"";}).join("")}</div>
-    <div class="gl">${bars.map(k=>{const cfg=AI[k],pct=Math.round(gr[k].length/tot*100);
-      return`<div class="gl-i"><div class="gl-d" style="background:${bc[k]}"></div><div><div class="gl-n">${cfg.emoji} ${cfg.label}</div><div class="gl-s" style="color:${bc[k]}">${gr[k].length} <span style="font-size:11px;color:var(--mt);font-weight:400">(${pct}%)</span></div></div></div>`;
-    }).join("")}</div>
+    <div class="gl">${bars.map(k=>{const cfg=AI[k],pct=Math.round(gr[k].length/tot*100);return`<div class="gl-i"><div class="gl-d" style="background:${bc[k]}"></div><div><div class="gl-n">${cfg.emoji} ${cfg.label}</div><div class="gl-s" style="color:${bc[k]}">${gr[k].length} <span style="font-size:11px;color:var(--mt);font-weight:400">(${pct}%)</span></div></div></div>`;}).join("")}</div>
   </div>
   <div class="tab-bar" id="gTabs">
     <button class="tab ${gF==='all'?'active':''}" onclick="setGF('all',this)">Todas (${all.length})</button>
@@ -843,59 +535,28 @@ function renderGestion(){
   </div>
   <div class="dw" id="gList">${renderDList(all.filter(d=>gF==='all'||String(d.ai_clasificacion||"").toLowerCase()===gF).sort((a,b)=>{const o={muerta:0,debil:1,parcial:2,gestionada:3};return(o[String(a.ai_clasificacion||"muerta").toLowerCase()]??0)-(o[String(b.ai_clasificacion||"muerta").toLowerCase()]??0);}))}</div>`;
 }
-function setGF(k,btn){gF=k;document.querySelectorAll("#gTabs .tab").forEach(t=>t.classList.remove("active"));btn.classList.add("active");
-  const list=getFiltered(false).filter(d=>k==='all'||String(d.ai_clasificacion||"").toLowerCase()===k);
-  document.getElementById("gList").innerHTML=renderDList(list);}
+function setGF(k,btn){gF=k;document.querySelectorAll("#gTabs .tab").forEach(t=>t.classList.remove("active"));btn.classList.add("active");document.getElementById("gList").innerHTML=renderDList(getFiltered(false).filter(d=>k==='all'||String(d.ai_clasificacion||"").toLowerCase()===k));}
 
-// ═══════════════════════════════
-//  SDR RANKING
-// ═══════════════════════════════
 function renderSDRs(){
   const mc=document.getElementById("mainContent");
   const all=getFiltered(false);
   const map={};
-  all.forEach(d=>{
-    const sdr=d._sdr;if(!sdr)return;
-    if(!map[sdr])map[sdr]={sdr,deals:0,pipeline:0,g:0,muerta:0,scores:[],urg:[]};
-    map[sdr].deals++;map[sdr].pipeline+=d._monto;
-    const ai=String(d.ai_clasificacion||"").toLowerCase();
-    if(ai==="gestionada")map[sdr].g++;if(ai==="muerta")map[sdr].muerta++;
-    map[sdr].scores.push(parseFloat(d.ai_score)||0);map[sdr].urg.push(d._urgency);
-  });
+  all.forEach(d=>{const sdr=d._sdr;if(!sdr)return;if(!map[sdr])map[sdr]={sdr,deals:0,pipeline:0,g:0,muerta:0,scores:[],urg:[]};map[sdr].deals++;map[sdr].pipeline+=d._monto;const ai=String(d.ai_clasificacion||"").toLowerCase();if(ai==="gestionada")map[sdr].g++;if(ai==="muerta")map[sdr].muerta++;map[sdr].scores.push(parseFloat(d.ai_score)||0);map[sdr].urg.push(d._urgency);});
   const sdrs=Object.values(map).map(s=>({...s,avgScore:s.scores.length?s.scores.reduce((a,b)=>a+b)/s.scores.length:0})).sort((a,b)=>b.pipeline-a.pipeline);
-  const maxP=Math.max(...sdrs.map(s=>s.pipeline),1);
-
   mc.innerHTML=`
   <div class="sh"><div><div class="st">🏆 Ranking de SDRs</div><div class="ss">${sdrs.length} comerciales activos</div></div></div>
   <div class="sdr-t">
     <div class="sdr-h"><div>#</div><div>SDR</div><div style="text-align:center">Deals</div><div style="text-align:center">Gestionadas</div><div style="text-align:center">Sin gestión</div><div style="text-align:right">Pipeline</div><div>Score IA</div></div>
-    ${sdrs.map((s,i)=>{
-      const rc=i===0?"gold":i===1?"silver":i===2?"bronze":"";
-      const sc=s.avgScore>=7?"#22C55E":s.avgScore>=5?"#EAB308":"#FF5B00";
-      const sp=Math.round(s.avgScore/10*100);
-      return`<div class="sdr-r">
-        <div class="sdr-rk ${rc}">${i+1}</div>
-        <div class="sdr-nm">${sn(s.sdr)}</div>
-        <div class="sdr-n">${s.deals}</div>
-        <div class="sdr-n" style="color:#22C55E;font-weight:700">${s.g}</div>
-        <div class="sdr-n" style="color:#EF4444;font-weight:700">${s.muerta}</div>
-        <div class="sdr-m">${fm(s.pipeline)}</div>
-        <div class="sb-w"><div class="sb-b"><div class="sb-f" style="width:${sp}%;background:${sc}"></div></div><span class="sb-v" style="color:${sc}">${s.avgScore.toFixed(1)}</span></div>
-      </div>`;
-    }).join("")}
+    ${sdrs.map((s,i)=>{const rc=i===0?"gold":i===1?"silver":i===2?"bronze":"";const sc=s.avgScore>=7?"#22C55E":s.avgScore>=5?"#EAB308":"#FF5B00";const sp=Math.round(s.avgScore/10*100);return`<div class="sdr-r"><div class="sdr-rk ${rc}">${i+1}</div><div class="sdr-nm">${sn(s.sdr)}</div><div class="sdr-n">${s.deals}</div><div class="sdr-n" style="color:#22C55E;font-weight:700">${s.g}</div><div class="sdr-n" style="color:#EF4444;font-weight:700">${s.muerta}</div><div class="sdr-m">${fm(s.pipeline)}</div><div class="sb-w"><div class="sb-b"><div class="sb-f" style="width:${sp}%;background:${sc}"></div></div><span class="sb-v" style="color:${sc}">${s.avgScore.toFixed(1)}</span></div></div>`;}).join("")}
   </div>`;
 }
 
-// ═══════════════════════════════
-//  CERRADAS
-// ═══════════════════════════════
 function renderCerradas(){
   const mc=document.getElementById("mainContent");
   const all=getFiltered(true);
   const gn=all.filter(d=>d._cat==="ganado");
   const pd=all.filter(d=>d._cat==="perdido");
   const ca=all.filter(d=>d._cat==="cancelada");
-
   mc.innerHTML=`
   <div class="sw"><input class="si" id="si" type="text" placeholder="Buscar..." oninput="renderView()"></div>
   <div class="cc">
@@ -911,150 +572,54 @@ function renderCerradas(){
   </div>
   <div class="dw" id="cList">${renderDList(all.filter(d=>cF==='all'||d._cat===cF))}</div>`;
 }
-function setCF(k,btn){cF=k;document.querySelectorAll("#cTabs .tab").forEach(t=>t.classList.remove("active"));btn.classList.add("active");
-  document.getElementById("cList").innerHTML=renderDList(getFiltered(true).filter(d=>k==='all'||d._cat===k));}
+function setCF(k,btn){cF=k;document.querySelectorAll("#cTabs .tab").forEach(t=>t.classList.remove("active"));btn.classList.add("active");document.getElementById("cList").innerHTML=renderDList(getFiltered(true).filter(d=>k==='all'||d._cat===k));}
 
-// ═══════════════════════════════
-//  MERCADO (Hoja 3)
-// ═══════════════════════════════
 function renderMercado(){
   const mc=document.getElementById("mainContent");
-
-  if(!market.length){
-    mc.innerHTML=`<div class="empty"><div class="ei">🗺️</div><div class="et">Carga los datos del CRM para ver la inteligencia de mercado</div></div>`;
-    return;
-  }
-
-  // Filtro de búsqueda
+  if(!market.length){mc.innerHTML=`<div class="empty"><div class="ei">🗺️</div><div class="et">Carga los datos del CRM para ver la inteligencia de mercado</div></div>`;return;}
   const q=(document.getElementById("mkt-si")?.value||"").toLowerCase().trim();
-
-  // Países únicos
   const countries=[...new Set(market.map(m=>m.mkt_pais).filter(Boolean))].sort();
-
-  // Filtrar por país y búsqueda
-  let filtered=market.filter(m=>{
-    if(mktCountry!=="all"&&m.mkt_pais!==mktCountry)return false;
-    if(q){
-      const hay=`${m.mkt_linea} ${m.mkt_pais} ${m.mkt_industrias} ${m.mkt_buyers} ${m.mkt_dolores}`.toLowerCase();
-      if(!hay.includes(q))return false;
-    }
-    return true;
-  });
-
-  // Cuántos deals activos por línea+país
+  let filtered=market.filter(m=>{if(mktCountry!=="all"&&m.mkt_pais!==mktCountry)return false;if(q){const hay=`${m.mkt_linea} ${m.mkt_pais} ${m.mkt_industrias} ${m.mkt_buyers} ${m.mkt_dolores}`.toLowerCase();if(!hay.includes(q))return false;}return true;});
   const dealsByKey={};
-  deals.filter(d=>!["ganado","perdido","cancelada"].includes(d._cat)).forEach(d=>{
-    const lineaCRM=(d["Linea de Negocio"]||"").split("/")[0].trim();
-    const paisCRM=d["País"]||"";
-    const key=(lineaCRM+"|"+paisCRM).toLowerCase();
-    dealsByKey[key]=(dealsByKey[key]||0)+1;
-  });
-
-  // Métricas generales
-  const totalLineas=market.length;
-  const totalPaises=countries.length;
-  const lineasConDeals=market.filter(m=>{
-    const k=(m.mkt_linea+"|"+m.mkt_pais).toLowerCase();
-    return (dealsByKey[k]||0)>0;
-  }).length;
-  const topPais=countries.reduce((acc,p)=>{
-    const n=market.filter(m=>m.mkt_pais===p).length;
-    return n>acc.n?{p,n}:acc;
-  },{p:"",n:0});
-
+  deals.filter(d=>!["ganado","perdido","cancelada"].includes(d._cat)).forEach(d=>{const lineaCRM=(d["Linea de Negocio"]||"").split("/")[0].trim();const paisCRM=d["País"]||"";const key=(lineaCRM+"|"+paisCRM).toLowerCase();dealsByKey[key]=(dealsByKey[key]||0)+1;});
+  const totalLineas=market.length,totalPaises=countries.length;
+  const lineasConDeals=market.filter(m=>(dealsByKey[(m.mkt_linea+"|"+m.mkt_pais).toLowerCase()]||0)>0).length;
+  const topPais=countries.reduce((acc,p)=>{const n=market.filter(m=>m.mkt_pais===p).length;return n>acc.n?{p,n}:acc;},{p:"",n:0});
   mc.innerHTML=`
-  <div class="sh mkt-header">
-    <div>
-      <div class="st">🗺️ Inteligencia de Mercado</div>
-      <div class="ss">Segmentos estratégicos por país y línea de negocio</div>
-    </div>
-  </div>
-
+  <div class="sh mkt-header"><div><div class="st">🗺️ Inteligencia de Mercado</div><div class="ss">Segmentos estratégicos por país y línea de negocio</div></div></div>
   <div class="mkt-mg">
     <div class="mc" style="--ac:#3B82F6"><span class="me">🗺️</span><div class="mv" style="color:#3B82F6">${totalLineas}</div><div class="ml">Segmentos totales</div><div class="ms">Líneas × País</div></div>
     <div class="mc" style="--ac:#22C55E"><span class="me">🌍</span><div class="mv" style="color:#22C55E">${totalPaises}</div><div class="ml">Países cubiertos</div><div class="ms">Expansión regional</div></div>
     <div class="mc" style="--ac:#FF5B00"><span class="me">📊</span><div class="mv" style="color:#FF5B00">${lineasConDeals}</div><div class="ml">Con pipeline activo</div><div class="ms">Segmentos con deals</div></div>
     <div class="mc" style="--ac:#8B5CF6"><span class="me">🏆</span><div class="mv" style="color:#8B5CF6">${topPais.p}</div><div class="ml">Mayor cobertura</div><div class="ms">${topPais.n} segmentos</div></div>
   </div>
-
-  <div class="mkt-filters">
-    <input class="mkt-search" id="mkt-si" type="text" placeholder="Buscar línea, industria, pain..." oninput="renderMercado()">
-    <div class="rc">${filtered.length} de ${totalLineas} segmentos</div>
-  </div>
-
+  <div class="mkt-filters"><input class="mkt-search" id="mkt-si" type="text" placeholder="Buscar línea, industria, pain..." oninput="renderMercado()"><div class="rc">${filtered.length} de ${totalLineas} segmentos</div></div>
   <div class="mkt-country-tabs">
     <button class="mkt-ctab ${mktCountry==='all'?'active':''}" onclick="setMktCountry('all',this)">🌍 Todos (${market.length})</button>
     ${countries.map(p=>`<button class="mkt-ctab ${mktCountry===p?'active':''}" onclick="setMktCountry('${p}',this)">${paisFlag(p)} ${p} (${market.filter(m=>m.mkt_pais===p).length})</button>`).join("")}
   </div>
-
-  ${filtered.length===0
-    ? `<div class="empty"><div class="ei">🔍</div><div class="et">Sin resultados para "${q}"</div></div>`
-    : `<div class="mkt-grid" id="mkt-grid">${filtered.map(m=>renderMktCard(m,dealsByKey)).join("")}</div>`
-  }`;
+  ${filtered.length===0?`<div class="empty"><div class="ei">🔍</div><div class="et">Sin resultados para "${q}"</div></div>`:`<div class="mkt-grid" id="mkt-grid">${filtered.map(m=>renderMktCard(m,dealsByKey)).join("")}</div>`}`;
 }
 
-function renderMktCard(m, dealsByKey){
+function renderMktCard(m,dealsByKey){
   const key=(m.mkt_linea+"|"+m.mkt_pais).toLowerCase();
   const nDeals=dealsByKey[key]||0;
-  const pFlag=paisFlag(m.mkt_pais);
-  const pCss=paisCss(m.mkt_pais);
-
-  // Industrias como tags
   const industries=(m.mkt_industrias||"").split(",").map(s=>s.trim()).filter(Boolean);
   const buyers=(m.mkt_buyers||"").split(",").map(s=>s.trim()).filter(Boolean);
-
-  return`<div class="mkt-card">
-    <div class="mkt-card-top">
-      <div class="mkt-card-linea">${m.mkt_linea}</div>
-      <div class="mkt-card-pais ${pCss}">${pFlag} ${m.mkt_pais}</div>
-    </div>
+  return`<div class="mkt-card"><div class="mkt-card-top"><div class="mkt-card-linea">${m.mkt_linea}</div><div class="mkt-card-pais ${paisCss(m.mkt_pais)}">${paisFlag(m.mkt_pais)} ${m.mkt_pais}</div></div>
     <div class="mkt-card-body">
-      ${industries.length?`<div class="mkt-field">
-        <div class="mkt-field-lbl">Industrias objetivo</div>
-        <div class="mkt-tag-row">${industries.slice(0,4).map(i=>`<span class="mkt-tag">${i}</span>`).join("")}${industries.length>4?`<span class="mkt-tag">+${industries.length-4}</span>`:""}</div>
-      </div>`:""}
-      ${buyers.length?`<div class="mkt-field">
-        <div class="mkt-field-lbl">Buyer Personas</div>
-        <div class="mkt-field-val">${buyers.join(" · ")}</div>
-      </div>`:""}
-      ${m.mkt_dolores?`<div class="mkt-field">
-        <div class="mkt-field-lbl">Pain points</div>
-        <div class="mkt-field-val highlight">${m.mkt_dolores.substring(0,160)}${m.mkt_dolores.length>160?"…":""}</div>
-      </div>`:""}
-      ${m.mkt_geo?`<div class="mkt-field">
-        <div class="mkt-field-lbl">Geografía / Perfil</div>
-        <div class="mkt-field-val">${m.mkt_geo.substring(0,120)}${m.mkt_geo.length>120?"…":""}</div>
-      </div>`:""}
+      ${industries.length?`<div class="mkt-field"><div class="mkt-field-lbl">Industrias objetivo</div><div class="mkt-tag-row">${industries.slice(0,4).map(i=>`<span class="mkt-tag">${i}</span>`).join("")}${industries.length>4?`<span class="mkt-tag">+${industries.length-4}</span>`:""}</div></div>`:""}
+      ${buyers.length?`<div class="mkt-field"><div class="mkt-field-lbl">Buyer Personas</div><div class="mkt-field-val">${buyers.join(" · ")}</div></div>`:""}
+      ${m.mkt_dolores?`<div class="mkt-field"><div class="mkt-field-lbl">Pain points</div><div class="mkt-field-val highlight">${m.mkt_dolores.substring(0,160)}${m.mkt_dolores.length>160?"…":""}</div></div>`:""}
+      ${m.mkt_geo?`<div class="mkt-field"><div class="mkt-field-lbl">Geografía / Perfil</div><div class="mkt-field-val">${m.mkt_geo.substring(0,120)}${m.mkt_geo.length>120?"…":""}</div></div>`:""}
     </div>
-    <div class="mkt-deal-link">
-      <div class="mkt-deal-cnt">Pipeline activo: <strong>${nDeals > 0 ? nDeals+" deal"+(nDeals>1?"s":"") : "Sin deals aún"}</strong></div>
-      ${nDeals>0?`<button class="mkt-view-btn" onclick="goToDealsForSegment('${m.mkt_linea}','${m.mkt_pais}')">Ver deals →</button>`:""}
-    </div>
+    <div class="mkt-deal-link"><div class="mkt-deal-cnt">Pipeline activo: <strong>${nDeals>0?nDeals+" deal"+(nDeals>1?"s":""):"Sin deals aún"}</strong></div>${nDeals>0?`<button class="mkt-view-btn" onclick="goToDealsForSegment('${m.mkt_linea}','${m.mkt_pais}')">Ver deals →</button>`:""}</div>
   </div>`;
 }
 
-function setMktCountry(country, btn){
-  mktCountry=country;
-  document.querySelectorAll(".mkt-ctab").forEach(t=>t.classList.remove("active"));
-  btn.classList.add("active");
-  renderMercado();
-}
+function setMktCountry(country,btn){mktCountry=country;document.querySelectorAll(".mkt-ctab").forEach(t=>t.classList.remove("active"));btn.classList.add("active");renderMercado();}
+function goToDealsForSegment(linea,pais){const fLinea=document.getElementById("fLinea");const lineaBase=linea.split("/")[0].trim();for(let i=0;i<fLinea.options.length;i++){if(fLinea.options[i].value===lineaBase){fLinea.value=lineaBase;break;}}setView("pipeline");}
 
-function goToDealsForSegment(linea, pais){
-  // Cambiar a vista pipeline y filtrar por línea de negocio
-  const fLinea=document.getElementById("fLinea");
-  const lineaBase=linea.split("/")[0].trim();
-  // Buscar si existe la opción en el select
-  for(let i=0;i<fLinea.options.length;i++){
-    if(fLinea.options[i].value===lineaBase){
-      fLinea.value=lineaBase;
-      break;
-    }
-  }
-  setView("pipeline");
-}
-
-// keyframe logout
 const s=document.createElement("style");
 s.textContent="@keyframes lgOut{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(.97)}}";
 document.head.appendChild(s);
